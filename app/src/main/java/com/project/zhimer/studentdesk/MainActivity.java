@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.project.zhimer.studentdesk.view.Login;
 import com.project.zhimer.studentdesk.view.fragment.Biodata;
 import com.project.zhimer.studentdesk.view.fragment.ChatOnline;
 import com.project.zhimer.studentdesk.view.fragment.HalamanUtama;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Nilai nilai;
     private SemesterPendek semesterPendek;
 
+    SessionManager sessionManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        sessionManager = new SessionManager(this);
+
+
 
         //header sidebar
         View header = navigationView.getHeaderView(0);
@@ -118,8 +125,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setFragment(halamanUtama);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -180,6 +185,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.sp_perkuliahan:
                 setFragment(semesterPendek);
+
+            case R.id.logout:
+                sessionManager.setLogin(false);
+                Intent logout = new Intent(MainActivity.this, Login.class);
+                startActivity(logout);
 
             default:
                 return true;
