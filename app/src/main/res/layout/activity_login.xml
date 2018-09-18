@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".view.Login">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:importantForAccessibility="no"
+        app:srcCompat="@drawable/logosd" />
+
+    <LinearLayout
+        android:id="@+id/form_nim"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+            app:srcCompat="@drawable/icon_user" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etNim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint_nim"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textStyle="bold"
+            android:textColorHint="@android:color/white"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="10"
+            app:met_primaryColor="@android:color/white"
+            app:met_textColorHint="@android:color/white"
+            app:met_underlineColor="@android:color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/form_pass"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/form_nim"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+            app:srcCompat="@drawable/icon_password" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPassword"
+            android:hint="@string/hint_password"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:met_textColorHint="@android:color/white"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_underlineColor="@android:color/white"
+            app:met_primaryColor="@android:color/white"
+            android:imeOptions="actionGo"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/bLogin"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/form_pass"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        app:cardBackgroundColor="@android:color/darker_gray"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/keterangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/hint_login"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

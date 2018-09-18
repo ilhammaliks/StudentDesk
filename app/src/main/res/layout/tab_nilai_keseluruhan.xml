@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.tabNilai.Keseluruhan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_nomor"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_kode"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_matakuliah"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_huruf"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_angka"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_sks"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/kolom_bobot"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+            </TableRow>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewSeluruhNilai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/field_ipk"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvIpk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/field_sks_taken"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvTotalSks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/kolom_sks_lulus"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvSksLulus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/kolom_sks_ulang"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvSksUlang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:text="@string/field_nilai_uet"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvNilaiUet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

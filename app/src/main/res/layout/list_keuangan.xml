@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black">
+
+    <TextView
+        android:id="@+id/tvSemester"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/tvBiaya"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_weight="2"
+        android:background="@android:color/white"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/tvPotongan"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_weight="2"
+        android:background="@android:color/white"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/tvBayar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_weight="2"
+        android:background="@android:color/white"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+</TableRow>

@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">StudentDesk</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="menu_halaman_utama">Halaman Utama</string>
+    <string name="menu_biodata">Biodata</string>
+    <string name="menu_permintaan_surat">Permintaan Surat</string>
+    <string name="menu_chat_online">Chat Online</string>
+    <string name="menu_test_qur_an">Test Qur\'an</string>
+    <string name="menu_uai_english_test">UAI English Test</string>
+    <string name="menu_ringkasan_akademik">Ringkasan Akademik</string>
+    <string name="menu_keuangan">Keuangan</string>
+    <string name="menu_isi_krs">Isi KRS</string>
+    <string name="menu_perkuliahan">Perkuliahan</string>
+    <string name="menu_nilai">Nilai</string>
+    <string name="menu_krs_semester_pendek">KRS Semester Pendek</string>
+    <string name="menu_perkuliahan_sp">Perkuliahan SP</string>
+    <string name="menu_nilai_sp">Nilai SP</string>
+    <string name="menu_daftar_sidang">Daftar SIdang</string>
+    <string name="menu_daftar_wisuda">Daftar Wisuda</string>
+
+    <string name="hint_nim">NIM</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_login">Login</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_halaman_utama">Halaman Utama</string>
+    <string name="nav_biodata">Biodata</string>
+    <string name="nav_permintaan_surat">Permintaan Surat</string>
+    <string name="nav_test_qur_an">Test Qur\'an</string>
+    <string name="nav_uai_english_test">UAI English Test</string>
+    <string name="nav_ringkasan_akademik">Ringkasan Akademik</string>
+    <string name="nav_keuangan">Keuangan</string>
+    <string name="nav_isi_krs">Isi KRS</string>
+    <string name="nav_perkuliahan">Perkuliahan</string>
+    <string name="nav_nilai">Nilai</string>
+    <string name="nav_krs_sp">KRS Semester Pendek</string>
+    <string name="nav_semester_pendek">Semester Pendek</string>
+    <string name="nav_perkuliahan_sp">Semester Pendek</string>
+    <string name="nav_daftar_sidang">Daftar Sidang</string>
+    <string name="nav_daftar_wisuda">Daftar Wisuda</string>
+
+    <string name="sub_nav_halaman_utama">Selamat Datang di Student Desk</string>
+    <string name="subtitle_quran_informasi">Informasi</string>
+    <string name="subtitle_score_test_quran">Score Test Baca Quran</string>
+    <string name="subtitle_gradeNilai">Grade Nilai</string>
+    <string name="subtitle_matakuliahRendah">Mata Kuliah D/E</string>
+
+    <string name="field_nama">Nama</string>
+    <string name="field_nim">NIM</string>
+    <string name="field_prodi">Program Studi</string>
+    <string name="field_pembimbing_akademik">Pembimbing Akademik</string>
+    <string name="field_jalur_masuk">Jalur Masuk</string>
+    <string name="field_status_akademik">Status Akademik</string>
+    <string name="field_alamat">Alamat</string>
+    <string name="field_kota_kode_pos">Kota, Kode Pos</string>
+    <string name="field_telp">No. Telepon</string>
+    <string name="field_phone">No. Handphone</string>
+    <string name="field_e_mail">E - Mail</string>
+    <string name="field_sks_taken">Total SKS Diambil</string>
+    <string name="field_nilai_uet">Nilai UET</string>
+
+    <string name="field_sks">SKS</string>
+    <string name="field_ipk">IPK</string>
+    <string name="field_uet">UET</string>
+    <string name="field_tilawah">Tilawah</string>
+    <string name="devider">|</string>
+    <string name="field_uet_tanggal_test">Tanggal Test</string>
+    <string name="field_uet_score">Score</string>
+    <string name="hint_type_a_message">Type a message</string>
+
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="e">E</string>
+
+    <string name="kolom_hadir">H</string>
+    <string name="kolom_sakit">S</string>
+    <string name="kolom_izin">I</string>
+    <string name="kolom_alpha">A</string>
+    <string name="kolom_percent">%</string>
+    <string name="kolom_nomor">#</string>
+
+    <string name="kolom_tanggal">Tanggal</string>
+    <string name="kolom_jenis_permintaan">Jenis Permintaan</string>
+    <string name="kolom_siap_diambil">Siap Diambil</string>
+    <string name="kolom_nilai">Nilai</string>
+    <string name="kolom_jumlah">Jumlah</string>
+    <string name="kolom_kode">Kode</string>
+    <string name="kolom_matakuliah">Mata Kuliah</string>
+    <string name="kolom_sks_lulus">SKS A/B/C</string>
+    <string name="kolom_sks_ulang">SKS D/E</string>
+    <string name="kolom_sks">SKS</string>
+    <string name="kolom_semester">Semester</string>
+    <string name="kolom_tagihan">Jumlah Biaya</string>
+    <string name="kolom_potongan">Potongan</string>
+    <string name="kolom_jumlahBayar">Jumlah Bayar</string>
+    <string name="kolom_kelas">Kelas</string>
+    <string name="kolom_status">Status</string>
+    <string name="kolom_waktu">Waktu</string>
+    <string name="kolom_dosen">Dosen</string>
+    <string name="kolom_ruang">Ruang</string>
+    <string name="kolom_berhalangan">Kuliah Berhalangan</string>
+    <string name="kolom_pengganti">Kuliah Pengganti</string>
+    <string name="kolom_huruf">Huruf</string>
+    <string name="kolom_angka">Angka</string>
+    <string name="kolom_bobot">Bobot</string>
+
+    <string name="text">TextView</string>
+</resources>
