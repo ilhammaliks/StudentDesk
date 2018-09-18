@@ -12,30 +12,47 @@ public class SessionManager {
 
     private static final String PREF_NAME = "studentdesk";
 
-    public SessionManager(Context context)
-    {
+    public SessionManager(Context context) {
         this._context = context;
         preferences = _context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = preferences.edit();
     }
 
-    public void setMahasiswa(String data)
-    {
+    public void setNim(String data) {
+        editor.putString("nim", data);
+        editor.apply();
+    }
+
+    public String getNim() {
+        return preferences.getString("nim", "");
+    }
+
+    public void setPassword(String data) {
+        editor.putString("password", data);
+        editor.apply();
+    }
+
+    public String getPassword() {
+        return preferences.getString("password", "");
+    }
+
+    public void setMahasiswa(String data) {
         editor.putString("mahasiswa", data);
         editor.apply();
     }
 
-    public String getMahasiswa()
-    {
+    public String getMahasiswa() {
         return preferences.getString("mahasiswa", "");
     }
 
-    public void setLogin(Boolean data){
+    public void setLogin(Boolean data) {
         editor.putBoolean("login", data);
         editor.apply();
     }
 
-    public Boolean isLogin(){return preferences.getBoolean("login", false);}
+    public Boolean isLogin() {
+        return preferences.getBoolean("login", false);
+    }
 
 
 }

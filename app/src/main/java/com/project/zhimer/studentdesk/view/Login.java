@@ -17,6 +17,7 @@ import com.project.zhimer.studentdesk.SessionManager;
 
 public class Login extends AppCompatActivity {
 
+    String nim, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,27 +32,40 @@ public class Login extends AppCompatActivity {
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button blogin = findViewById(R.id.bLogin);
 
-        etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                boolean handled = false;
-                if (i == EditorInfo.IME_ACTION_GO) ;
-                {
-                    Intent login = new Intent(Login.this, MainActivity.class);
-                    Login.this.startActivity(login);
-                    finish();
-                }
-                return handled;
-            }
-        });
-
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent login = new Intent(Login.this, MainActivity.class);
-                Login.this.startActivity(login);
-                sessionManager.setLogin(true);
-                finish();
+
+                boolean checkNim = false, checkPassword = false;
+
+                nim = etNim.getText().toString();
+                password = etPassword.getText().toString();
+
+                //set condition if user do not input data
+                if (nim.isEmpty()) {
+                    etNim.setError("Nim tidak boleh kosong");
+                } else {
+                    checkNim = true;
+                }
+
+                if (password.isEmpty()) {
+                    etPassword.setError("Password tidak boleh kosong");
+                } else {
+                    checkPassword = true;
+                }
+
+                if (checkNim && checkPassword) {
+
+                    //save data nim dan passowrd di session
+                    sessionManager.setNim(nim);
+                    sessionManager.setPassword(password);
+                    sessionManager.setLogin(true);
+
+                    Intent login = new Intent(Login.this, MainActivity.class);
+                    Login.this.startActivity(login);
+
+                    finish();
+                }
             }
         });
     }

@@ -3,6 +3,7 @@ package com.project.zhimer.studentdesk.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.project.zhimer.studentdesk.MainActivity;
 import com.project.zhimer.studentdesk.R;
@@ -37,5 +38,7 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
+
+        Log.d("Datas", sessionManager.getNim());
     }
 }
