@@ -29,4 +29,13 @@ public class SessionManager {
     {
         return preferences.getString("mahasiswa", "");
     }
+
+    public void setLogin(Boolean data){
+        editor.putBoolean("login", data);
+        editor.apply();
+    }
+
+    public Boolean isLogin(){return preferences.getBoolean("login", false);}
+
+
 }

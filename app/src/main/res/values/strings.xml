@@ -110,4 +110,5 @@
     <string name="kolom_bobot">Bobot</string>
 
     <string name="text">TextView</string>
+    <string name="login">Login</string>
 </resources>

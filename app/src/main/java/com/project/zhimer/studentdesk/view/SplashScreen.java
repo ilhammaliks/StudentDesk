@@ -18,27 +18,18 @@ public class SplashScreen extends AppCompatActivity {
         getSupportActionBar().hide();
 
         final SessionManager sessionManager = new SessionManager(this);
-        Thread thread = new Thread()
-        {
-            public void run()
-            {
-                try
-                {
+        Thread thread = new Thread() {
+            public void run() {
+                try {
                     sleep(2000);
-                }
-                catch (InterruptedException e)
-                {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
-                finally {
+                } finally {
 
-                    if (sessionManager.getMahasiswa().length() == 0)
-                    {
+                    if (!sessionManager.isLogin()) {
                         startActivity(new Intent(SplashScreen.this, Login.class));
                         finish();
-                    }
-                    else
-                    {
+                    } else {
                         startActivity(new Intent(SplashScreen.this, MainActivity.class));
                         finish();
                     }
