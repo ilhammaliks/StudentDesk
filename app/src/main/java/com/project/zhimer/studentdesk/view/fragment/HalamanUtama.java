@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.project.zhimer.studentdesk.R;
+import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.BeritaAdapter;
 import com.project.zhimer.studentdesk.model.Berita;
 
@@ -39,10 +40,7 @@ public class HalamanUtama extends Fragment {
     // adapter
     private RecyclerView.Adapter adapter;
     private ArrayList<Berita> beritaList;
-
-    //class
-
-
+    SessionManager sessionManager;
 
     public HalamanUtama() {
         // Required empty public constructor
@@ -66,6 +64,8 @@ public class HalamanUtama extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        sessionManager = new SessionManager(getContext());
+
         DataHalamanUtama();
 
         return view;
@@ -73,9 +73,12 @@ public class HalamanUtama extends Fragment {
 
     private void DataHalamanUtama()
     {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/0102513010/format/json";
+        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/"+ sessionManager.getNim() +"/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
+
+        Log.d("datass", url + "");
+
         client.get(url, new JsonHttpResponseHandler()
         {
             @Override
