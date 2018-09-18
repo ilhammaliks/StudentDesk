@@ -41,6 +41,7 @@
     <string name="nav_perkuliahan_sp">Semester Pendek</string>
     <string name="nav_daftar_sidang">Daftar Sidang</string>
     <string name="nav_daftar_wisuda">Daftar Wisuda</string>
+    <string name="nav_log_out">Log Out</string>
 
     <string name="sub_nav_halaman_utama">Selamat Datang di Student Desk</string>
     <string name="subtitle_quran_informasi">Informasi</string>

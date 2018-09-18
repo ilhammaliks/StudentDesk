@@ -102,4 +102,14 @@
             android:title="@string/menu_daftar_wisuda"
             android:icon="@drawable/icon_daftar_wisuda"/>
     </group>
+
+    <group
+        android:id="@+id/menu_logout"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/logout"
+            android:title="@string/nav_log_out"
+            android:icon="@drawable/icon_logout" />
+    </group>
 </menu>
