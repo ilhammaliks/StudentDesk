@@ -111,4 +111,5 @@
 
     <string name="text">TextView</string>
     <string name="login">Login</string>
+    <string name="error_toast">can\'t send data</string>
 </resources>
