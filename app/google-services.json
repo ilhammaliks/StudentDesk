@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "723191631437",
+    "firebase_url": "https://studentdesk-uai.firebaseio.com",
+    "project_id": "studentdesk-uai",
+    "storage_bucket": "studentdesk-uai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723191631437:android:a96b5bddc33b7e57",
+        "android_client_info": {
+          "package_name": "com.project.zhimer.studentdesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723191631437-pn9elftrt4cqcbd400nik2a2do8mpcgh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.zhimer.studentdesk",
+            "certificate_hash": "d0456e90141ec678ca3064983be3bdfde1ef828f"
+          }
+        },
+        {
+          "client_id": "723191631437-7pdoad9t0i19v8l5fqe41i06rsrndpj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4066dJDkkeHogKFXr5_Ap7GzvNYepJ5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723191631437-7pdoad9t0i19v8l5fqe41i06rsrndpj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
