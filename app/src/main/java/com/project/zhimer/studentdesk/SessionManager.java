@@ -53,6 +53,4 @@ public class SessionManager {
     public Boolean isLogin() {
         return preferences.getBoolean("login", false);
     }
-
-
 }

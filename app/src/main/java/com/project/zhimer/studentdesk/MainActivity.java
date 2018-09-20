@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     SessionManager sessionManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +72,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sessionManager = new SessionManager(this);
-
-
 
         //header sidebar
         View header = navigationView.getHeaderView(0);
@@ -104,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         prodi.setText("Teknik Informatika");
         tahun.setText("2013");
 
-
         //fragment variable
         halamanUtama = new HalamanUtama();
         biodata = new Biodata();
@@ -117,12 +113,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         isiKrs = new IsiKrs();
         perkuliahan = new Perkuliahan();
         nilai = new Nilai();
-
         semesterPendek = new SemesterPendek();
 
 
+        if (savedInstanceState == null)
+        {
+            setFragment(halamanUtama);
+        }
+        else
+        {
+            onResumeFragments();
+        }
+
         //setup fragment
-        setFragment(halamanUtama);
+//        setFragment(halamanUtama);
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -190,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
                 startActivity(logout);
+                finish();
 
             default:
                 return true;
