@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -76,17 +76,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //header sidebar
         View header = navigationView.getHeaderView(0);
 
-        ImageView foto = (ImageView)header.findViewById(R.id.mahasiswa_foto);
+        ImageView foto = (ImageView) header.findViewById(R.id.mahasiswa_foto);
 
-        TextView sks = (TextView)header.findViewById(R.id.mahasiswa_sks);
-        TextView ipk = (TextView)header.findViewById(R.id.mahasiswa_ipk);
-        TextView uet = (TextView)header.findViewById(R.id.mahasiswa_uet);
-        TextView tilawah = (TextView)header.findViewById(R.id.mahasiswa_tilawah);
+        TextView sks = (TextView) header.findViewById(R.id.mahasiswa_sks);
+        TextView ipk = (TextView) header.findViewById(R.id.mahasiswa_ipk);
+        TextView uet = (TextView) header.findViewById(R.id.mahasiswa_uet);
+        TextView tilawah = (TextView) header.findViewById(R.id.mahasiswa_tilawah);
 
-        TextView nama = (TextView)header.findViewById(R.id.mahasiswa_nama);
-        TextView nim = (TextView)header.findViewById(R.id.mahasiswa_nim);
-        TextView prodi = (TextView)header.findViewById(R.id.mahasiswa_prodi);
-        TextView tahun = (TextView)header.findViewById(R.id.mahasiswa_tahun);
+        TextView nama = (TextView) header.findViewById(R.id.mahasiswa_nama);
+        TextView nim = (TextView) header.findViewById(R.id.mahasiswa_nim);
+        TextView prodi = (TextView) header.findViewById(R.id.mahasiswa_prodi);
+        TextView tahun = (TextView) header.findViewById(R.id.mahasiswa_tahun);
 
         //Hardcode
         Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
@@ -116,12 +116,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         semesterPendek = new SemesterPendek();
 
 
-        if (savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             setFragment(halamanUtama);
-        }
-        else
-        {
+        } else {
             onResumeFragments();
         }
 
@@ -133,8 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item))
-        {
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -142,8 +138,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.biodata:
                 setFragment(biodata);
                 return true;
@@ -202,8 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void setFragment (Fragment fragment)
-    {
+    private void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.content, fragment);
@@ -217,8 +211,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             int fragments = getSupportFragmentManager().getBackStackEntryCount();
             if (fragments == 1) {
                 if (doubleBackToExitPressedOnce) {

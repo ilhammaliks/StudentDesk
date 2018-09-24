@@ -21,8 +21,6 @@ public class SuratMahasiswa extends Fragment {
     View view;
 
 
-
-
     public SuratMahasiswa() {
         // Required empty public constructor
     }
@@ -35,10 +33,8 @@ public class SuratMahasiswa extends Fragment {
         view = inflater.inflate(R.layout.tab_surat_mahasiswa, container, false);
 
 
-
         return view;
     }
-
 
 
 }

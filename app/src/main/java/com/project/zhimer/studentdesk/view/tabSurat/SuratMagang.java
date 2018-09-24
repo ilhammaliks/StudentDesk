@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 
 import com.project.zhimer.studentdesk.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SuratMagang extends Fragment {
+    View view;
 
 
     public SuratMagang() {
@@ -24,7 +22,10 @@ public class SuratMagang extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tab_surat_magang, container, false);
+        view = inflater.inflate(R.layout.tab_surat_magang, container, false);
+
+
+        return view;
     }
 
 }

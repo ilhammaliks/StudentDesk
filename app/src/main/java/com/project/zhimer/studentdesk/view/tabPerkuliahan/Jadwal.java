@@ -35,7 +35,6 @@ public class Jadwal extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.tab_perkuliahan_jadwal, container, false);
 
-
         adapter = new JadwalKuliahAdapter(kuliahList);
 
         recyclerView = view.findViewById(R.id.recyclerViewJadwalKuliah);
@@ -47,8 +46,7 @@ public class Jadwal extends Fragment {
         return view;
     }
 
-    private void DataJadwalKuliah()
-    {
+    private void DataJadwalKuliah() {
         Kuliah jadwal = new Kuliah("IF15A", "Tugas Akhir", "6", "Senin, 07:00 - 12:00", "RIRI SAFITRI", "516");
         kuliahList.add(jadwal);
 

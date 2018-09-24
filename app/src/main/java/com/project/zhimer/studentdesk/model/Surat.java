@@ -160,10 +160,9 @@ public class Surat {
         this.tanggalLulus = tanggalLulus;
     }
 
-    public Surat(String tanggalBuat, String jenis, String tanggalJadi)
-    {
+    public Surat(String tanggalBuat, String jenis, String tanggalJadi) {
         this.tanggalBuat = tanggalBuat;
         this.jenis = jenis;
-        this.tanggalJadi= tanggalJadi;
+        this.tanggalJadi = tanggalJadi;
     }
 }

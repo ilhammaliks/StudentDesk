@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,76 +14,76 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
             android:layout_margin="1dp"
+            android:layout_weight="2"
             android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
             android:text="@string/kolom_matakuliah"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:textSize="12sp"
-            android:textAlignment="center"
-            android:gravity="center_vertical"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
             android:layout_margin="1dp"
+            android:layout_weight="2"
             android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
             android:text="@string/kolom_dosen"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:textSize="12sp"
-            android:textAlignment="center"
-            android:gravity="center_vertical"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
             android:layout_margin="1dp"
+            android:layout_weight="2"
             android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
             android:text="@string/kolom_berhalangan"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:textSize="12sp"
-            android:textAlignment="center"
-            android:gravity="center_vertical"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="1dp"
             android:layout_weight="2"
-            android:layout_margin="1dp"
             android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
             android:text="@string/kolom_pengganti"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:textSize="12sp"
-            android:textAlignment="center"
-            android:gravity="center_vertical"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="1dp"
+            android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
             android:text="@string/kolom_ruang"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:textSize="12sp"
-            android:textAlignment="center"
-            android:gravity="center_vertical"/>
+            android:textStyle="bold" />
     </TableRow>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvKuliahPengganti"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 </TableLayout>

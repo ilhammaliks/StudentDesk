@@ -39,5 +39,6 @@ public class Berita {
         this.isinotif = isinotif;
     }
 
-    public Berita() {}
+    public Berita() {
+    }
 }

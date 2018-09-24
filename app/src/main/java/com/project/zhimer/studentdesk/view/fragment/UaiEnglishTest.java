@@ -34,7 +34,6 @@ public class UaiEnglishTest extends Fragment {
     private ArrayList<UET> uetList;
 
 
-
     public UaiEnglishTest() {
         // Required empty public constructor
     }
@@ -65,13 +64,11 @@ public class UaiEnglishTest extends Fragment {
         return view;
     }
 
-    private void gettingUET()
-    {
+    private void gettingUET() {
         String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/0102512008/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
-        client.get(url, new JsonHttpResponseHandler()
-        {
+        client.get(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -80,14 +77,12 @@ public class UaiEnglishTest extends Fragment {
                     JSONObject object = new JSONObject(response.toString());
                     JSONArray jsonArray = object.getJSONArray("data");
 
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         UET uet = new UET();
 
                         String nilai = jsonObject.getString("nilai");
-                        if (nilai.equals("UAI"))
-                        {
+                        if (nilai.equals("UAI")) {
                             String tanggal = jsonObject.getString("TanggalBuat");
                             String pengirim = jsonObject.getString("pengirim");
 
@@ -98,7 +93,7 @@ public class UaiEnglishTest extends Fragment {
                             adapter.notifyDataSetChanged();
                         }
                     }
-                }catch (JSONException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }

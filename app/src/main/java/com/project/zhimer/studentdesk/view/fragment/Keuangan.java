@@ -58,13 +58,11 @@ public class Keuangan extends Fragment {
         return view;
     }
 
-    private void dataKeuangan()
-    {
+    private void dataKeuangan() {
         String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/0102513010/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
-        client.get(url, new JsonHttpResponseHandler()
-        {
+        client.get(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -73,16 +71,14 @@ public class Keuangan extends Fragment {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                    for (int i = jsonArray.length() -1; i >= 0; i--)
-                    {
+                    for (int i = jsonArray.length() - 1; i >= 0; i--) {
                         JSONObject object = jsonArray.getJSONObject(i);
 
                         Tagihan tagihan = new Tagihan();
 
                         String nilai = object.getString("nilai");
                         Log.d("urutan", object.get("pengirim") + "");
-                        if (nilai.equals("UAI"))
-                        {
+                        if (nilai.equals("UAI")) {
                             String semester = object.getString("pengirim");
                             String biaya = object.getString("pengirim");
                             String potongan = object.getString("pengirim");

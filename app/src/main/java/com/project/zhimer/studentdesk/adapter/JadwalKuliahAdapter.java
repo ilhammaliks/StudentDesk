@@ -49,8 +49,7 @@ public class JadwalKuliahAdapter extends RecyclerView.Adapter<JadwalKuliahAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView kode, mataKuliah, sks, waktu, dosen, ruang;
 
-        ViewHolder(View itemView)
-        {
+        ViewHolder(View itemView) {
             super(itemView);
 
             kode = itemView.findViewById(R.id.tvKelas);

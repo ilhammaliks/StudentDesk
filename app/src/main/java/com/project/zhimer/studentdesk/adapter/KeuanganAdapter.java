@@ -19,8 +19,7 @@ public class KeuanganAdapter extends RecyclerView.Adapter<KeuanganAdapter.ViewHo
     private List<Tagihan> tagihanList;
     private LayoutInflater inflater;
 
-    public KeuanganAdapter(List<Tagihan> tagihanList, Context context)
-    {
+    public KeuanganAdapter(List<Tagihan> tagihanList, Context context) {
         this.tagihanList = tagihanList;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -54,8 +53,7 @@ public class KeuanganAdapter extends RecyclerView.Adapter<KeuanganAdapter.ViewHo
 
         TextView semester, biaya, potongan, bayar, status;
 
-        public ViewHolder(View itemView)
-        {
+        public ViewHolder(View itemView) {
             super(itemView);
 
             semester = itemView.findViewById(R.id.tvSemester);

@@ -28,7 +28,7 @@ public class SuratLulus extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.tab_surat_lulus, container, false);
 
-        tanggalLulus = (TextView)view.findViewById(R.id.tvTanggalLulus);
+        tanggalLulus = (TextView) view.findViewById(R.id.tvTanggalLulus);
 
         tanggalLulus.setText("12 Oktober 2018");
 

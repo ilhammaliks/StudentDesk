@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="10dp"
     android:paddingEnd="10dp"
+    android:paddingStart="10dp"
     tools:context=".view.fragment.RingkasanAkademik">
 
     <LinearLayout
@@ -16,8 +15,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:text="@string/nav_ringkasan_akademik"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -151,8 +150,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="@string/field_jalur_masuk"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -161,8 +160,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -180,8 +179,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="@string/field_status_akademik"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -190,8 +189,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black" />
             </LinearLayout>
         </LinearLayout>
@@ -219,8 +218,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="@string/kolom_sks_lulus"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -229,8 +228,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -248,8 +247,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="@string/field_ipk"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -258,23 +257,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black" />
             </LinearLayout>
         </LinearLayout>
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:text="@string/subtitle_gradeNilai"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/black"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Subhead"/>
+            android:textStyle="bold" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -323,9 +322,9 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
+                    android:text="@string/a"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:text="@string/a"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:id="@+id/jumlahA"
@@ -349,9 +348,9 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
+                    android:text="@string/b"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:text="@string/b"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:id="@+id/jumlahB"
@@ -375,9 +374,9 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
+                    android:text="@string/c"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:text="@string/c"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:id="@+id/jumlahC"
@@ -401,9 +400,9 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
+                    android:text="@string/d"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:text="@string/d"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:id="@+id/jumlahD"
@@ -427,9 +426,9 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
+                    android:text="@string/e"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:text="@string/e"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:id="@+id/jumlahE"
@@ -444,6 +443,7 @@
         </TableLayout>
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -451,14 +451,13 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/black"
-            android:textStyle="bold"
-            style="@style/TextAppearance.AppCompat.Subhead"/>
+            android:textStyle="bold" />
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="50dp"
+            android:layout_marginTop="10dp"
             android:background="@android:color/white">
 
             <TableRow

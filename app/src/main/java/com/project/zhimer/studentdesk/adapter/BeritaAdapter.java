@@ -20,8 +20,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
     private List<Berita> beritaList;
     private LayoutInflater inflater = null;
 
-    public BeritaAdapter(List<Berita> beritaList, Context context)
-    {
+    public BeritaAdapter(List<Berita> beritaList, Context context) {
         this.beritaList = beritaList;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -50,18 +49,16 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
         return beritaList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView judul, pengirim, tanggal, isinotif;
 
-        ViewHolder(View itemView)
-        {
+        ViewHolder(View itemView) {
             super(itemView);
 
-            judul       = itemView.findViewById(R.id.berita_judul);
-            pengirim    = itemView.findViewById(R.id.berita_pengirim);
-            tanggal     = itemView.findViewById(R.id.berita_tanggal);
-            isinotif    = itemView.findViewById(R.id.berita_isi);
+            judul = itemView.findViewById(R.id.berita_judul);
+            pengirim = itemView.findViewById(R.id.berita_pengirim);
+            tanggal = itemView.findViewById(R.id.berita_tanggal);
+            isinotif = itemView.findViewById(R.id.berita_isi);
 
         }
     }

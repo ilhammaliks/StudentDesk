@@ -18,8 +18,7 @@ public class UetAdapter extends RecyclerView.Adapter<UetAdapter.ViewHolder> {
     private List<UET> uetList;
     private LayoutInflater inflater;
 
-    public UetAdapter(List<UET> uetList, Context context)
-    {
+    public UetAdapter(List<UET> uetList, Context context) {
         this.uetList = uetList;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -49,12 +48,10 @@ public class UetAdapter extends RecyclerView.Adapter<UetAdapter.ViewHolder> {
         return uetList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tanggal, score;
 
-        public ViewHolder(View itemview)
-        {
+        public ViewHolder(View itemview) {
             super(itemview);
 
             tanggal = itemview.findViewById(R.id.tvTanggalTest);

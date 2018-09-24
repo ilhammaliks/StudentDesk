@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedListener{
+public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedListener {
     View view;
 
     TextView nim, prodi, nama, ttl, phone, email, alamat;
@@ -48,13 +48,13 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_permintaan_surat, container, false);
 
-        nim = (TextView)view.findViewById(R.id.mahasiswa_nim);
-        prodi = (TextView)view.findViewById(R.id.mahasiswa_prodi);
-        nama = (TextView)view.findViewById(R.id.mahasiswa_nama);
-        ttl = (TextView)view.findViewById(R.id.mahasiswa_ttl);
-        phone = (TextView)view.findViewById(R.id.mahasiswa_phone);
-        email = (TextView)view.findViewById(R.id.mahasiswa_email);
-        alamat = (TextView)view.findViewById(R.id.mahasiswa_alamat);
+        nim = (TextView) view.findViewById(R.id.mahasiswa_nim);
+        prodi = (TextView) view.findViewById(R.id.mahasiswa_prodi);
+        nama = (TextView) view.findViewById(R.id.mahasiswa_nama);
+        ttl = (TextView) view.findViewById(R.id.mahasiswa_ttl);
+        phone = (TextView) view.findViewById(R.id.mahasiswa_phone);
+        email = (TextView) view.findViewById(R.id.mahasiswa_email);
+        alamat = (TextView) view.findViewById(R.id.mahasiswa_alamat);
 
         nim.setText("0102513010");
         prodi.setText("Teknik Informatika");
@@ -72,7 +72,7 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         setupViewPager(viewPager);
 
         //spinner
-        spinner = (Spinner)view.findViewById(R.id.bahasa);
+        spinner = (Spinner) view.findViewById(R.id.bahasa);
 
         List<String> Bahasa = new ArrayList<String>();
         Bahasa.add("Bahasa Indonesia");
@@ -86,8 +86,7 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager)
-    {
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
         adapter.addFragment(new SuratMahasiswa(), "Mahasiswa");
@@ -103,11 +102,11 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         private List<Fragment> Fragment = new ArrayList<>();
         private List<String> PageTitle = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager){
+        public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
-        private void addFragment(Fragment fragment, String title){
+        private void addFragment(Fragment fragment, String title) {
             Fragment.add(fragment);
             PageTitle.add(title);
         }

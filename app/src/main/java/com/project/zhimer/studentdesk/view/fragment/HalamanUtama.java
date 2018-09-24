@@ -71,16 +71,14 @@ public class HalamanUtama extends Fragment {
         return view;
     }
 
-    private void DataHalamanUtama()
-    {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/"+ sessionManager.getNim() +"/format/json";
+    private void DataHalamanUtama() {
+        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/" + sessionManager.getNim() + "/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
 
         Log.d("datass", url + "");
 
-        client.get(url, new JsonHttpResponseHandler()
-        {
+        client.get(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -89,47 +87,41 @@ public class HalamanUtama extends Fragment {
                     JSONObject object = new JSONObject(response.toString());
                     JSONArray jsonArray = object.getJSONArray("data");
 
-                    Log.d("dataAPI", jsonArray.length()+"");
+                    Log.d("dataAPI", jsonArray.length() + "");
 
 //                    for (int i = 0; i < jsonArray.length(); i++)
-                    for (int i = jsonArray.length() -1; i >= 0; i--)
-                    {
+                    for (int i = jsonArray.length() - 1; i >= 0; i--) {
                         JSONObject exploreObject = jsonArray.getJSONObject(i);
                         Berita berita = new Berita();
 
                         String nilai = exploreObject.getString("nilai");
 
+                        String judul = exploreObject.getString("JudulNotifikasi");
+                        String pengirim = exploreObject.getString("pengirim");
+                        String tanggal = exploreObject.getString("TanggalBuat");
+                        String isi = exploreObject.getString("IsiNotifikasi");
 
+                        String isinotif = Html.fromHtml(isi).toString();
 
-                        if (nilai.equals("UAI"))
-                        {
-                            String judul = exploreObject.getString("JudulNotifikasi");
-                            String pengirim = exploreObject.getString("pengirim");
-                            String tanggal = exploreObject.getString("TanggalBuat");
-                            String isi = exploreObject.getString("IsiNotifikasi");
-
-                            String isinotif = Html.fromHtml(isi).toString();
-
-                            SimpleDateFormat plainDate = new SimpleDateFormat("yyyy-M-d HH:mm:ss");
-                            Date date = null;
-                            try {
-                                date = plainDate.parse(tanggal);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss");
-                            String waktu = dateFormat.format(date);
-
-                            berita.setJudul(judul);
-                            berita.setPengirim(pengirim);
-                            berita.setTanggal(waktu);
-                            berita.setIsinotif(isinotif);
-
-                            beritaList.add(berita);
-
-                            //tambah method notifyDataSetChanged() tujuannya setiap data di add adapternya bakal berubah
-                            adapter.notifyDataSetChanged();
+                        SimpleDateFormat plainDate = new SimpleDateFormat("yyyy-M-d HH:mm:ss");
+                        Date date = null;
+                        try {
+                            date = plainDate.parse(tanggal);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss");
+                        String waktu = dateFormat.format(date);
+
+                        berita.setJudul(judul);
+                        berita.setPengirim(pengirim);
+                        berita.setTanggal(waktu);
+                        berita.setIsinotif(isinotif);
+
+                        beritaList.add(berita);
+
+                        //tambah method notifyDataSetChanged() tujuannya setiap data di add adapternya bakal berubah
+                        adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -32,7 +32,7 @@ public class SuratPenelitian extends Fragment {
         view = inflater.inflate(R.layout.tab_surat_penelitian, container, false);
 
         //spinner
-        spinner = (Spinner)view.findViewById(R.id.keperluan);
+        spinner = (Spinner) view.findViewById(R.id.keperluan);
 
         List<String> keperluan = new ArrayList<String>();
         keperluan.add("Penelitian Keperluan Skripsi");

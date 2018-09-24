@@ -21,12 +21,11 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-     sendMyNotification(remoteMessage.getNotification().getBody());
+        sendMyNotification(remoteMessage.getNotification().getBody());
 //        super.onMessageReceived(remoteMessage);
     }
 
-    private void sendMyNotification(String message)
-    {
+    private void sendMyNotification(String message) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -48,7 +47,7 @@ public class MessagingService extends FirebaseMessagingService {
 //                .setCustomBigContentView(bigNotif)
                 .setContentIntent(pendingIntent);
 
-        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, notificationBuilder.build());
     }
 }

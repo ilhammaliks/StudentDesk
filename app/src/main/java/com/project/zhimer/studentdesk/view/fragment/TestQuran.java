@@ -48,8 +48,7 @@ public class TestQuran extends Fragment {
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager)
-    {
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
         adapter.addFragment(new Informasi(), "Informasi");
@@ -62,11 +61,11 @@ public class TestQuran extends Fragment {
         private List<Fragment> Fragment = new ArrayList<>();
         private List<String> PageTitle = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager){
+        public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
-        private void addFragment(Fragment fragment, String title){
+        private void addFragment(Fragment fragment, String title) {
             Fragment.add(fragment);
             PageTitle.add(title);
         }
