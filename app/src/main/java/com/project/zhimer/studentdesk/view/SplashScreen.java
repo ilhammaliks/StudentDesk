@@ -1,15 +1,19 @@
 package com.project.zhimer.studentdesk.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.project.zhimer.studentdesk.ForceUpdateChecker;
 import com.project.zhimer.studentdesk.MainActivity;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity implements ForceUpdateChecker.OnUpdateNeededListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,5 +44,30 @@ public class SplashScreen extends AppCompatActivity {
         thread.start();
 
         Log.d("Datas", sessionManager.getNim());
+        ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
+    }
+
+    @Override
+    public void onUpdateNeeded(final String updateUrl) {
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("New version available")
+                .setMessage("Please, update app to new version to continue.")
+                .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        redirectStore(updateUrl);
+                    }
+                }).setNegativeButton("No, Thanks", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                }).create();
+    }
+
+    private void redirectStore(String updateUrl) {
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

@@ -73,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sessionManager = new SessionManager(this);
 
+        //firebase instance
+
+
         //header sidebar
         View header = navigationView.getHeaderView(0);
 
