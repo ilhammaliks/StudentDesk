@@ -42,7 +42,6 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
-
         Log.d("Datas", sessionManager.getNim());
     }
 }

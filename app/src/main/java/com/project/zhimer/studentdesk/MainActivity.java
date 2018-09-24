@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sessionManager = new SessionManager(this);
 
         //firebase instance
-
         ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
+
         //header sidebar
         View header = navigationView.getHeaderView(0);
 

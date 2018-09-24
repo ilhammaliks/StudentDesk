@@ -20,7 +20,7 @@ public class App extends Application {
 
         Map<String, Object> remoteConfigDefaults = new HashMap<>();
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_REQUIRED, false);
-        remoteConfigDefaults.put(ForceUpdateChecker.KEY_CURRENT_VERSION, "1.0.0");
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_CURRENT_VERSION, "1.0.2");
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_URL, "https://www.google.com/");
 
         remoteConfig.setDefaults(remoteConfigDefaults);
