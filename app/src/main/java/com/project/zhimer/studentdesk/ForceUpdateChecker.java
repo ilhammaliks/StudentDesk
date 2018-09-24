@@ -16,34 +16,28 @@ public class ForceUpdateChecker {
     private OnUpdateNeededListener onUpdateNeededListener;
     private Context context;
 
-    public interface OnUpdateNeededListener
-    {
+    public interface OnUpdateNeededListener {
         void onUpdateNeeded(String updateUrl);
     }
 
-    public static Builder with(@NonNull Context context)
-    {
+    public static Builder with(@NonNull Context context) {
         return new Builder(context);
     }
 
-    public ForceUpdateChecker(@NonNull Context context, OnUpdateNeededListener onUpdateNeededListener)
-    {
+    public ForceUpdateChecker(@NonNull Context context, OnUpdateNeededListener onUpdateNeededListener) {
         this.context = context;
         this.onUpdateNeededListener = onUpdateNeededListener;
     }
 
-    public void Check()
-    {
+    public void Check() {
         final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
 
-        if (remoteConfig.getBoolean(KEY_UPDATE_REQUIRED))
-        {
+        if (remoteConfig.getBoolean(KEY_UPDATE_REQUIRED)) {
             String currentViersion = remoteConfig.getString(KEY_CURRENT_VERSION);
             String appVersion = getAppVersion(context);
             String updateUrl = remoteConfig.getString(KEY_UPDATE_URL);
 
-            if (!TextUtils.equals(currentViersion, appVersion) && onUpdateNeededListener != null)
-            {
+            if (!TextUtils.equals(currentViersion, appVersion) && onUpdateNeededListener != null) {
                 onUpdateNeededListener.onUpdateNeeded(updateUrl);
             }
         }
@@ -52,7 +46,7 @@ public class ForceUpdateChecker {
     private String getAppVersion(Context context) {
         String result = "";
 
-        try{
+        try {
             result = context.getPackageManager()
                     .getPackageInfo(context.getPackageName(), 0)
                     .versionName;
@@ -64,29 +58,24 @@ public class ForceUpdateChecker {
         return result;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private Context context;
         private OnUpdateNeededListener onUpdateNeededListener;
 
-        public Builder(Context context)
-        {
+        public Builder(Context context) {
             this.context = context;
         }
 
-        public Builder onUpdateNeeded(OnUpdateNeededListener onUpdateNeededListener)
-        {
+        public Builder onUpdateNeeded(OnUpdateNeededListener onUpdateNeededListener) {
             this.onUpdateNeededListener = onUpdateNeededListener;
             return this;
         }
 
-        public ForceUpdateChecker build()
-        {
+        public ForceUpdateChecker build() {
             return new ForceUpdateChecker(context, onUpdateNeededListener);
         }
 
-        public ForceUpdateChecker check()
-        {
+        public ForceUpdateChecker check() {
             ForceUpdateChecker forceUpdateChecker = build();
             forceUpdateChecker.Check();
 

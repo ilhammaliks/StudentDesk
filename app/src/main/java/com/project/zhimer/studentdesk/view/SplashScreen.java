@@ -13,7 +13,7 @@ import com.project.zhimer.studentdesk.MainActivity;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 
-public class SplashScreen extends AppCompatActivity implements ForceUpdateChecker.OnUpdateNeededListener {
+public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,30 +44,5 @@ public class SplashScreen extends AppCompatActivity implements ForceUpdateChecke
         thread.start();
 
         Log.d("Datas", sessionManager.getNim());
-        ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
-    }
-
-    @Override
-    public void onUpdateNeeded(final String updateUrl) {
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("New version available")
-                .setMessage("Please, update app to new version to continue.")
-                .setPositiveButton("Update", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        redirectStore(updateUrl);
-                    }
-                }).setNegativeButton("No, Thanks", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                }).create();
-    }
-
-    private void redirectStore(String updateUrl) {
-        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 }
