@@ -22,9 +22,10 @@ public class App extends Application {
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_REQUIRED, false);
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_CURRENT_VERSION, "1.0.0");
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_URL, "https://www.google.com/");
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_KRS, false);
 
         remoteConfig.setDefaults(remoteConfigDefaults);
-        remoteConfig.fetch(120)
+        remoteConfig.fetch(60)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
