@@ -28,8 +28,6 @@ public class Kehadiran extends Fragment {
         view = inflater.inflate(R.layout.tab_perkuliahan_kehadiran, container, false);
 
 
-
-
         return view;
     }
 

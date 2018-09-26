@@ -1,10 +1,14 @@
 package com.project.zhimer.studentdesk.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.project.zhimer.studentdesk.ForceUpdateChecker;
 import com.project.zhimer.studentdesk.MainActivity;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
@@ -38,7 +42,6 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
-
         Log.d("Datas", sessionManager.getNim());
     }
 }

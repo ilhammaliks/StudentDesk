@@ -17,8 +17,7 @@ public class HistoriSuratAdapter extends RecyclerView.Adapter<HistoriSuratAdapte
 
     private List<Surat> suratList;
 
-    public HistoriSuratAdapter(List<Surat> suratList)
-    {
+    public HistoriSuratAdapter(List<Surat> suratList) {
         this.suratList = suratList;
     }
 
@@ -45,7 +44,7 @@ public class HistoriSuratAdapter extends RecyclerView.Adapter<HistoriSuratAdapte
         return suratList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tanggalBuat, jenis, tanggalJadi;
 

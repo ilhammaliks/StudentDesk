@@ -5,8 +5,7 @@ public class UET {
     private String tanggal;
     private String pengirim;
 
-    public UET()
-    {
+    public UET() {
         // Required empty public constructor
     }
 

@@ -48,8 +48,7 @@ public class Tagihan {
         this.status = status;
     }
 
-    public Tagihan()
-    {
+    public Tagihan() {
 
     }
 }

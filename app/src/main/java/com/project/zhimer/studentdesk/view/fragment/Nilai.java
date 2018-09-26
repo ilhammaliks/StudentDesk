@@ -26,7 +26,6 @@ public class Nilai extends Fragment {
     private ViewPager pager;
 
 
-
     public Nilai() {
         // Required empty public constructor
     }
@@ -47,8 +46,7 @@ public class Nilai extends Fragment {
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager)
-    {
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
         adapter.addFragment(new NilaiAktif(), "Aktif");
@@ -61,11 +59,11 @@ public class Nilai extends Fragment {
         private List<Fragment> Fragment = new ArrayList<>();
         private List<String> PageTitle = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager){
+        public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
-        private void addFragment(Fragment fragment, String title){
+        private void addFragment(Fragment fragment, String title) {
             Fragment.add(fragment);
             PageTitle.add(title);
         }

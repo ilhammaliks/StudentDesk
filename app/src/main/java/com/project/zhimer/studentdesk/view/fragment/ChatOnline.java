@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 
 import com.project.zhimer.studentdesk.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class ChatOnline extends Fragment {
 
 

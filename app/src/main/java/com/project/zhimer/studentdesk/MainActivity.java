@@ -1,6 +1,8 @@
 package com.project.zhimer.studentdesk;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -33,7 +36,7 @@ import com.project.zhimer.studentdesk.view.fragment.TestQuran;
 import com.project.zhimer.studentdesk.view.fragment.UaiEnglishTest;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ForceUpdateChecker.OnUpdateNeededListener {
     //instance layout variable
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -67,26 +70,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sessionManager = new SessionManager(this);
 
+        //firebase instance
+        ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
+
         //header sidebar
         View header = navigationView.getHeaderView(0);
 
-        ImageView foto = (ImageView)header.findViewById(R.id.mahasiswa_foto);
+        ImageView foto = (ImageView) header.findViewById(R.id.mahasiswa_foto);
 
-        TextView sks = (TextView)header.findViewById(R.id.mahasiswa_sks);
-        TextView ipk = (TextView)header.findViewById(R.id.mahasiswa_ipk);
-        TextView uet = (TextView)header.findViewById(R.id.mahasiswa_uet);
-        TextView tilawah = (TextView)header.findViewById(R.id.mahasiswa_tilawah);
+        TextView sks = (TextView) header.findViewById(R.id.mahasiswa_sks);
+        TextView ipk = (TextView) header.findViewById(R.id.mahasiswa_ipk);
+        TextView uet = (TextView) header.findViewById(R.id.mahasiswa_uet);
+        TextView tilawah = (TextView) header.findViewById(R.id.mahasiswa_tilawah);
 
-        TextView nama = (TextView)header.findViewById(R.id.mahasiswa_nama);
-        TextView nim = (TextView)header.findViewById(R.id.mahasiswa_nim);
-        TextView prodi = (TextView)header.findViewById(R.id.mahasiswa_prodi);
-        TextView tahun = (TextView)header.findViewById(R.id.mahasiswa_tahun);
+        TextView nama = (TextView) header.findViewById(R.id.mahasiswa_nama);
+        TextView nim = (TextView) header.findViewById(R.id.mahasiswa_nim);
+        TextView prodi = (TextView) header.findViewById(R.id.mahasiswa_prodi);
+        TextView tahun = (TextView) header.findViewById(R.id.mahasiswa_tahun);
 
         //Hardcode
         Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
@@ -116,12 +122,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         semesterPendek = new SemesterPendek();
 
 
-        if (savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             setFragment(halamanUtama);
-        }
-        else
-        {
+        } else {
             onResumeFragments();
         }
 
@@ -133,8 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item))
-        {
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -142,8 +144,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.biodata:
                 setFragment(biodata);
                 return true;
@@ -202,8 +203,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void setFragment (Fragment fragment)
-    {
+    private void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.content, fragment);
@@ -217,8 +217,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             int fragments = getSupportFragmentManager().getBackStackEntryCount();
             if (fragments == 1) {
                 if (doubleBackToExitPressedOnce) {
@@ -247,5 +246,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         }
+    }
+
+    @Override
+    public void onUpdateNeeded(final String updateUrl) {
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("New version available")
+                .setMessage("Please, update app to new version to continue.")
+                .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        redirectStore(updateUrl);
+                    }
+                }).setNegativeButton("No, Thanks", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                }).create();
+        dialog.show();
+    }
+
+    private void redirectStore(String updateUrl) {
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

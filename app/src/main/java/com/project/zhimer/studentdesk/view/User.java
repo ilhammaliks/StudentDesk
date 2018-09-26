@@ -16,14 +16,14 @@ public class User extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.header);
 
-        sks = (TextView)findViewById(R.id.mahasiswa_sks);
-        ipk = (TextView)findViewById(R.id.mahasiswa_ipk);
-        uet = (TextView)findViewById(R.id.mahasiswa_uet);
-        tilawah = (TextView)findViewById(R.id.mahasiswa_tilawah);
-        namaLengkap = (TextView)findViewById(R.id.mahasiswa_nama);
-        nim = (TextView)findViewById(R.id.mahasiswa_nim);
-        prodi = (TextView)findViewById(R.id.mahasiswa_prodi);
-        tahun = (TextView)findViewById(R.id.mahasiswa_tahun);
+        sks = (TextView) findViewById(R.id.mahasiswa_sks);
+        ipk = (TextView) findViewById(R.id.mahasiswa_ipk);
+        uet = (TextView) findViewById(R.id.mahasiswa_uet);
+        tilawah = (TextView) findViewById(R.id.mahasiswa_tilawah);
+        namaLengkap = (TextView) findViewById(R.id.mahasiswa_nama);
+        nim = (TextView) findViewById(R.id.mahasiswa_nim);
+        prodi = (TextView) findViewById(R.id.mahasiswa_prodi);
+        tahun = (TextView) findViewById(R.id.mahasiswa_tahun);
 
         sks.setText("139");
         ipk.setText("3.75");

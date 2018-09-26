@@ -26,12 +26,12 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
                 android:text="@string/kolom_tanggal"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:gravity="center_vertical"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -40,12 +40,12 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
                 android:text="@string/kolom_jenis_permintaan"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:gravity="center_vertical"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -54,12 +54,12 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
                 android:text="@string/kolom_siap_diambil"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:gravity="center_vertical"/>
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 

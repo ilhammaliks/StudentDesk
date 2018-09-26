@@ -43,7 +43,6 @@ public class HistorySurat extends Fragment {
         view = inflater.inflate(R.layout.tab_surat_histori, container, false);
 
 
-
 //        belom ada arraylist dari json
 //        listSurat = new ArrayList<>();
 //        adapter = new HistoriSuratAdapter(listSurat, getActivity());
@@ -61,8 +60,7 @@ public class HistorySurat extends Fragment {
         return view;
     }
 
-    private void DataListSurat()
-    {
+    private void DataListSurat() {
         Surat surat = new Surat("1 Desember 2018", "Magang\n(Bahasa Indonesia)", "8 Desember 2018");
         suratList.add(surat);
 
