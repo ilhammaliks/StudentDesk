@@ -258,7 +258,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onUpdateNeeded(final String updateUrl) {
+    public void onUpdateNeeded(final String updateUrl)
+    {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("New version available")
                 .setMessage("Please, update app to new version to continue.")
@@ -277,12 +278,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onSetMenuKrs() {
+    public void onSetMenuKrs()
+    {
         Menu nav_menu = navigationView.getMenu();
         nav_menu.findItem(R.id.krs).setVisible(false);
     }
 
-    private void redirectStore(String updateUrl) {
+    private void redirectStore(String updateUrl)
+    {
         final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

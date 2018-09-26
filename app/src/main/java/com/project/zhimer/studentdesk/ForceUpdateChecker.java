@@ -27,7 +27,7 @@ public class ForceUpdateChecker {
         return new Builder(context);
     }
 
-    public ForceUpdateChecker(@NonNull Context context, OnRemoteConfigListener onRemoteConfigListener) {
+    ForceUpdateChecker(@NonNull Context context, OnRemoteConfigListener onRemoteConfigListener) {
         this.context = context;
         this.onRemoteConfigListener = onRemoteConfigListener;
     }
@@ -45,7 +45,7 @@ public class ForceUpdateChecker {
             }
         }
 
-        if (remoteConfig.getBoolean(KEY_MENU_KRS)) {
+        if (!remoteConfig.getBoolean(KEY_MENU_KRS)) {
             onRemoteConfigListener.onSetMenuKrs();
         }
     }
@@ -58,7 +58,7 @@ public class ForceUpdateChecker {
                     .getPackageInfo(context.getPackageName(), 0)
                     .versionName;
 
-            result = result.replaceAll("[a - z A - Z]|-", "");
+            result = result.replaceAll("[a-z A-Z]|-", "");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class ForceUpdateChecker {
         private Context context;
         private OnRemoteConfigListener onRemoteConfigListener;
 
-        public Builder(Context context) {
+        Builder(Context context) {
             this.context = context;
         }
 
@@ -78,7 +78,7 @@ public class ForceUpdateChecker {
             return this;
         }
 
-        public ForceUpdateChecker build() {
+        ForceUpdateChecker build() {
             return new ForceUpdateChecker(context, onRemoteConfigListener);
         }
 
