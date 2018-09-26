@@ -7,35 +7,34 @@
 
         <item
             android:id="@+id/halamanUtama"
-            android:title="@string/menu_halaman_utama"
-            android:icon="@drawable/icon_dashboard"/>
+            android:icon="@drawable/icon_dashboard"
+            android:title="@string/menu_halaman_utama" />
 
         <item
             android:id="@+id/biodata"
-            android:title="@string/menu_biodata"
-            android:icon="@drawable/icon_biodata"/>
+            android:icon="@drawable/icon_biodata"
+            android:title="@string/menu_biodata" />
 
         <item
             android:id="@+id/surat"
-            android:title="@string/menu_permintaan_surat"
-            android:icon="@drawable/icon_surat"/>
-
+            android:icon="@drawable/icon_surat"
+            android:title="@string/menu_permintaan_surat" />
 
 
         <item
             android:id="@+id/chat"
-            android:title="@string/menu_chat_online"
-            android:icon="@drawable/icon_chat"/>
+            android:icon="@drawable/icon_chat"
+            android:title="@string/menu_chat_online" />
 
         <item
             android:id="@+id/quran"
-            android:title="@string/menu_test_qur_an"
-            android:icon="@drawable/icon_test"/>
+            android:icon="@drawable/icon_test"
+            android:title="@string/menu_test_qur_an" />
 
         <item
             android:id="@+id/uet"
-            android:title="@string/menu_uai_english_test"
-            android:icon="@drawable/icon_test"/>
+            android:icon="@drawable/icon_test"
+            android:title="@string/menu_uai_english_test" />
     </group>
 
     <group
@@ -44,28 +43,28 @@
 
         <item
             android:id="@+id/akademik"
-            android:title="@string/menu_ringkasan_akademik"
-            android:icon="@drawable/icon_akademik"/>
+            android:icon="@drawable/icon_akademik"
+            android:title="@string/menu_ringkasan_akademik" />
 
         <item
             android:id="@+id/keuangan"
-            android:title="@string/menu_keuangan"
-            android:icon="@drawable/icon_keuangan"/>
+            android:icon="@drawable/icon_keuangan"
+            android:title="@string/menu_keuangan" />
 
         <item
             android:id="@+id/krs"
-            android:title="@string/menu_isi_krs"
-            android:icon="@drawable/icon_input"/>
+            android:icon="@drawable/icon_input"
+            android:title="@string/menu_isi_krs" />
 
         <item
             android:id="@+id/perkuliahan"
-            android:title="@string/menu_perkuliahan"
-            android:icon="@drawable/icon_perkuliahan"/>
+            android:icon="@drawable/icon_perkuliahan"
+            android:title="@string/menu_perkuliahan" />
 
         <item
             android:id="@+id/nilai"
-            android:title="@string/menu_nilai"
-            android:icon="@drawable/icon_nilai"/>
+            android:icon="@drawable/icon_nilai"
+            android:title="@string/menu_nilai" />
     </group>
 
     <group
@@ -74,18 +73,13 @@
 
         <item
             android:id="@+id/sp_krs"
-            android:title="@string/menu_krs_semester_pendek"
-            android:icon="@drawable/icon_input"/>
+            android:icon="@drawable/icon_input"
+            android:title="@string/menu_krs_semester_pendek" />
 
         <item
             android:id="@+id/sp_perkuliahan"
-            android:title="@string/menu_perkuliahan_sp"
-            android:icon="@drawable/icon_perkuliahan"/>
-
-        <item
-            android:id="@+id/sp_nilai"
-            android:title="@string/menu_nilai_sp"
-            android:icon="@drawable/icon_nilai"/>
+            android:icon="@drawable/icon_perkuliahan"
+            android:title="@string/menu_perkuliahan_sp" />
     </group>
 
     <group
@@ -94,13 +88,13 @@
 
         <item
             android:id="@+id/daftar_sidang"
-            android:title="@string/menu_daftar_sidang"
-            android:icon="@drawable/icon_daftar_sidang"/>
+            android:icon="@drawable/icon_daftar_sidang"
+            android:title="@string/menu_daftar_sidang" />
 
         <item
             android:id="@+id/daftar_wisuda"
-            android:title="@string/menu_daftar_wisuda"
-            android:icon="@drawable/icon_daftar_wisuda"/>
+            android:icon="@drawable/icon_daftar_wisuda"
+            android:title="@string/menu_daftar_wisuda" />
     </group>
 
     <group
@@ -109,7 +103,7 @@
 
         <item
             android:id="@+id/logout"
-            android:title="@string/nav_log_out"
-            android:icon="@drawable/icon_logout" />
+            android:icon="@drawable/icon_logout"
+            android:title="@string/nav_log_out" />
     </group>
 </menu>

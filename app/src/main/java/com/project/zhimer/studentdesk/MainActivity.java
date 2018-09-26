@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,13 +37,13 @@ import com.project.zhimer.studentdesk.view.fragment.TestQuran;
 import com.project.zhimer.studentdesk.view.fragment.UaiEnglishTest;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ForceUpdateChecker.OnUpdateNeededListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ForceUpdateChecker.OnRemoteConfigListener {
     //instance layout variable
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private boolean doubleBackToExitPressedOnce = false;
 
-
+    NavigationView navigationView;
     //firebase instance
 
     //fragment instance
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -145,40 +146,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.biodata:
-                setFragment(biodata);
-                return true;
 
-            case R.id.chat:
-                setFragment(chatOnline);
-                return true;
-
+            //general
             case R.id.halamanUtama:
                 setFragment(halamanUtama);
                 return true;
 
-            case R.id.krs:
-                setFragment(isiKrs);
-                return true;
-
-            case R.id.keuangan:
-                setFragment(keuangan);
-                return true;
-
-            case R.id.nilai:
-                setFragment(nilai);
-                return true;
-
-            case R.id.perkuliahan:
-                setFragment(perkuliahan);
+            case R.id.biodata:
+                setFragment(biodata);
                 return true;
 
             case R.id.surat:
                 setFragment(permintaanSurat);
                 return true;
 
-            case R.id.akademik:
-                setFragment(ringkasanAkademik);
+            case R.id.chat:
+                setFragment(chatOnline);
                 return true;
 
             case R.id.quran:
@@ -189,9 +172,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 setFragment(uaiEnglishTest);
                 return true;
 
+            //perkuliahan
+            case R.id.akademik:
+                setFragment(ringkasanAkademik);
+                return true;
+
+            case R.id.keuangan:
+                setFragment(keuangan);
+                return true;
+
+            case R.id.krs:
+                setFragment(isiKrs);
+                return true;
+
+            case R.id.perkuliahan:
+                setFragment(perkuliahan);
+                return true;
+
+            case R.id.nilai:
+                setFragment(nilai);
+                return true;
+
+            //semester pendek
             case R.id.sp_perkuliahan:
                 setFragment(semesterPendek);
 
+                //daftar sidang & wisuda
+
+
+                //logout
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
@@ -265,6 +274,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }).create();
         dialog.show();
+    }
+
+    @Override
+    public void onSetMenuKrs() {
+        Menu nav_menu = navigationView.getMenu();
+        nav_menu.findItem(R.id.krs).setVisible(false);
     }
 
     private void redirectStore(String updateUrl) {
