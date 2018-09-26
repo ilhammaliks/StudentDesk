@@ -22,7 +22,7 @@ public class App extends Application {
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_REQUIRED, false);
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_CURRENT_VERSION, "1.0.0");
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_URL, "https://www.google.com/");
-        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_KRS, false);
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_KRS, true);
 
         remoteConfig.setDefaults(remoteConfigDefaults);
         remoteConfig.fetch(60)
