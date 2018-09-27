@@ -94,8 +94,6 @@ public class HalamanUtama extends Fragment {
                         JSONObject exploreObject = jsonArray.getJSONObject(i);
                         Berita berita = new Berita();
 
-                        String nilai = exploreObject.getString("nilai");
-
                         String judul = exploreObject.getString("JudulNotifikasi");
                         String pengirim = exploreObject.getString("pengirim");
                         String tanggal = exploreObject.getString("TanggalBuat");
