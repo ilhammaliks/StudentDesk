@@ -27,7 +27,7 @@ public class ForceUpdateChecker {
         return new Builder(context);
     }
 
-    ForceUpdateChecker(@NonNull Context context, OnRemoteConfigListener onRemoteConfigListener) {
+    public ForceUpdateChecker(@NonNull Context context, OnRemoteConfigListener onRemoteConfigListener) {
         this.context = context;
         this.onRemoteConfigListener = onRemoteConfigListener;
     }

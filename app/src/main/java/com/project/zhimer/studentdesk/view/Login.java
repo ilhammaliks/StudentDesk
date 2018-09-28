@@ -4,15 +4,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -42,7 +38,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         sessionManager = new SessionManager(this);
 
@@ -82,17 +81,13 @@ public class Login extends AppCompatActivity {
                 }
 
                 if (checkNim && checkPassword) {
-
-                    //save data nim dan passowrd di session
                     sessionManager.setNim(nim);
                     sessionManager.setPassword(password);
-//                    sessionManager.setLogin(true);
+
+                    //TODO Push data login
                     LoggingIn();
 
-                    Intent login = new Intent(Login.this, MainActivity.class);
-                    Login.this.startActivity(login);
-
-                    finish();
+                    //finish();
                 } else {
                     toastFail.setAlpha(1);
                     toastFail.startAnimation(fadein);
@@ -102,8 +97,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void LoggingIn()
-    {
+    private void LoggingIn() {
         String url = "https://studentdesk.uai.ac.id/api/index.php/login/validasi/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -111,8 +105,7 @@ public class Login extends AppCompatActivity {
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
-        client.post(url, params, new JsonHttpResponseHandler()
-        {
+        client.post(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -121,11 +114,13 @@ public class Login extends AppCompatActivity {
                     JSONObject object = new JSONObject(response.toString());
                     String logIn = object.getString("status");
 
-                    if (logIn.equals("TRUE"))
-                    {
+                    if (logIn.equals("TRUE")) {
+                        //jika true pindah activity
+                        Intent login = new Intent(Login.this, MainActivity.class);
+                        Login.this.startActivity(login);
                         sessionManager.setLogin(true);
-                    }
-                    else{
+                    } else {
+                        showMsgError();
                         sessionManager.setLogin(false);
                     }
 
@@ -139,6 +134,14 @@ public class Login extends AppCompatActivity {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
+    }
+
+    private void showMsgError() {
+        toastFail.setAlpha(1);
+        toastFail.startAnimation(fadein);
+        etNim.setError("");
+        etPassword.setError("");
+        new BackgroundTask().execute();//ini untuk timer biar animasinya hilang
     }
 
     //asynchronus condition
