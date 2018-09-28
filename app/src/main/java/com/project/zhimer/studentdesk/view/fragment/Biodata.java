@@ -2,7 +2,11 @@ package com.project.zhimer.studentdesk.view.fragment;
 
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +38,9 @@ public class Biodata extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_biodata, container, false);
+        view = inflater.inflate(R.layout.fragment_biodata_new, container, false);
 
-        foto = (ImageView)view.findViewById(R.id.mahasiswa_foto);
+        foto = view.findViewById(R.id.mahasiswa_foto);
 
         mahasiswa_nama = (TextView)view.findViewById(R.id.mahasiswa_nama);
         mahasiswa_nim = (TextView)view.findViewById(R.id.mahasiswa_nim);
@@ -65,6 +69,15 @@ public class Biodata extends Fragment {
         mahasiswa_phone.setText("083895671999");
         mahasiswa_email.setText("ilhammalikmuhammad@gmail.com");
 
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("Biodata");
+
+        if (getContext() != null) {
+            collapsingToolbarLayout.setCollapsedTitleTextColor(
+                    ContextCompat.getColor(getContext(), R.color.white));
+            collapsingToolbarLayout.setExpandedTitleColor(
+                    ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        }
         return view;
     }
 
