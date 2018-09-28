@@ -14,9 +14,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.MainActivity;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Login extends AppCompatActivity {
 
@@ -27,6 +35,8 @@ public class Login extends AppCompatActivity {
 
     Animation fadein, fadeout;
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +44,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-        final SessionManager sessionManager = new SessionManager(this);
+        sessionManager = new SessionManager(this);
 
         etNim = findViewById(R.id.etNim);
         etPassword = findViewById(R.id.etPassword);
@@ -76,7 +86,8 @@ public class Login extends AppCompatActivity {
                     //save data nim dan passowrd di session
                     sessionManager.setNim(nim);
                     sessionManager.setPassword(password);
-                    sessionManager.setLogin(true);
+//                    sessionManager.setLogin(true);
+                    LoggingIn();
 
                     Intent login = new Intent(Login.this, MainActivity.class);
                     Login.this.startActivity(login);
@@ -87,6 +98,45 @@ public class Login extends AppCompatActivity {
                     toastFail.startAnimation(fadein);
                     new BackgroundTask().execute();
                 }
+            }
+        });
+    }
+
+    private void LoggingIn()
+    {
+        String url = "https://studentdesk.uai.ac.id/api/index.php/login/validasi/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject object = new JSONObject(response.toString());
+                    String logIn = object.getString("status");
+
+                    if (logIn.equals("TRUE"))
+                    {
+                        sessionManager.setLogin(true);
+                    }
+                    else{
+                        sessionManager.setLogin(false);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
     }
