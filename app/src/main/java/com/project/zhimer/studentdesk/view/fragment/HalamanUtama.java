@@ -76,7 +76,7 @@ public class HalamanUtama extends Fragment {
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
 
-        Log.d("datass", url + "");
+//        Log.d("datass", url + "");
 
         client.get(url, new JsonHttpResponseHandler() {
             @Override

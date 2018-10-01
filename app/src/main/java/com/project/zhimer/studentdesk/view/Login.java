@@ -141,7 +141,7 @@ public class Login extends AppCompatActivity {
         toastFail.startAnimation(fadein);
         etNim.setError("");
         etPassword.setError("");
-        new BackgroundTask().execute();//ini untuk timer biar animasinya hilang
+        new BackgroundTask().execute();//timer biar animasinya hilang
     }
 
     //asynchronus condition

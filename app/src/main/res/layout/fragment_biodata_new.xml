@@ -38,10 +38,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_collapseMode="parallax"
                 tools:srcCompat="@tools:sample/avatars" />
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
-
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -166,8 +163,8 @@
                 android:id="@+id/ketMahasiswa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal">
 
@@ -175,8 +172,8 @@
                     android:id="@+id/jalur"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
+                    android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
                     android:orientation="vertical"
@@ -287,8 +284,8 @@
                 android:id="@+id/kontak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal">
 
@@ -296,8 +293,8 @@
                     android:id="@+id/telp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
+                    android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:background="@android:color/white"
                     android:orientation="vertical"

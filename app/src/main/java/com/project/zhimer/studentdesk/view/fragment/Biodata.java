@@ -28,7 +28,6 @@ public class Biodata extends Fragment {
             mahasiswa_email;
 
 
-
     public Biodata() {
         // Required empty public constructor
     }
@@ -42,17 +41,17 @@ public class Biodata extends Fragment {
 
         foto = view.findViewById(R.id.mahasiswa_foto);
 
-        mahasiswa_nama = (TextView)view.findViewById(R.id.mahasiswa_nama);
-        mahasiswa_nim = (TextView)view.findViewById(R.id.mahasiswa_nim);
-        mahasiswa_prodi = (TextView)view.findViewById(R.id.mahasiswa_prodi);
-        mahasiswa_dosen = (TextView)view.findViewById(R.id.mahasiswa_dosen);
-        mahasiswa_jalur = (TextView)view.findViewById(R.id.mahasiswa_jalur);
-        mahasiswa_status = (TextView)view.findViewById(R.id.mahasiswa_status);
-        mahasiswa_alamat = (TextView)view.findViewById(R.id.mahasiswa_alamat);
-        mahasiswa_kota = (TextView)view.findViewById(R.id.mahasiswa_kota);
-        mahasiswa_telp = (TextView)view.findViewById(R.id.mahasiswa_telp);
-        mahasiswa_phone = (TextView)view.findViewById(R.id.mahasiswa_phone);
-        mahasiswa_email = (TextView)view.findViewById(R.id.mahasiswa_email);
+        mahasiswa_nama = (TextView) view.findViewById(R.id.mahasiswa_nama);
+        mahasiswa_nim = (TextView) view.findViewById(R.id.mahasiswa_nim);
+        mahasiswa_prodi = (TextView) view.findViewById(R.id.mahasiswa_prodi);
+        mahasiswa_dosen = (TextView) view.findViewById(R.id.mahasiswa_dosen);
+        mahasiswa_jalur = (TextView) view.findViewById(R.id.mahasiswa_jalur);
+        mahasiswa_status = (TextView) view.findViewById(R.id.mahasiswa_status);
+        mahasiswa_alamat = (TextView) view.findViewById(R.id.mahasiswa_alamat);
+        mahasiswa_kota = (TextView) view.findViewById(R.id.mahasiswa_kota);
+        mahasiswa_telp = (TextView) view.findViewById(R.id.mahasiswa_telp);
+        mahasiswa_phone = (TextView) view.findViewById(R.id.mahasiswa_phone);
+        mahasiswa_email = (TextView) view.findViewById(R.id.mahasiswa_email);
 
         //hardcode
         Picasso.with(getContext()).load(R.drawable.photo).into(foto);
