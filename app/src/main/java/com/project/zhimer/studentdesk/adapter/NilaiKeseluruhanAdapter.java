@@ -38,12 +38,13 @@ public class NilaiKeseluruhanAdapter extends RecyclerView.Adapter<NilaiKeseluruh
 
         final Nilai nilai = listSeluruhNilai.get(position);
 
+        holder.nomor.setText(String.valueOf(position + 1));
         holder.kodeMK.setText(nilai.getKodeMK());
         holder.namaMK.setText(nilai.getNamaMK());
         holder.hurufMK.setText(nilai.getHuruf());
-        holder.angkaMK.setText(nilai.getAngka());
-        holder.sksMK.setText(nilai.getSks());
-        holder.bobotMK.setText(nilai.getBobot());
+        holder.angkaMK.setText(nilai.getAngka().toString());
+        holder.sksMK.setText(nilai.getSks().toString());
+        holder.bobotMK.setText(nilai.getBobot().toString());
     }
 
     @Override
@@ -52,7 +53,9 @@ public class NilaiKeseluruhanAdapter extends RecyclerView.Adapter<NilaiKeseluruh
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView nomor, kodeMK, namaMK, sksMK, hurufMK, angkaMK, bobotMK;
+
         public ViewHolder(View itemView) {
             super(itemView);
 

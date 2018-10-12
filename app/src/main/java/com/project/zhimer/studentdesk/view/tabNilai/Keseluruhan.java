@@ -2,7 +2,9 @@ package com.project.zhimer.studentdesk.view.tabNilai;
 
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,6 +38,7 @@ public class Keseluruhan extends Fragment {
     private RecyclerView.Adapter adapter;
     private ArrayList<Nilai> listSeluruhNilai;
     SessionManager sessionManager;
+    Nilai nilai;
 
     TextView ipk, totalSks, sksLulus, sksUlang, nilaiUet;
 
@@ -52,22 +55,21 @@ public class Keseluruhan extends Fragment {
         view = inflater.inflate(R.layout.tab_nilai_keseluruhan, container, false);
 
         listSeluruhNilai = new ArrayList<>();
-        adapter = new NilaiKeseluruhanAdapter(listSeluruhNilai, getContext());
+        adapter = new NilaiKeseluruhanAdapter(listSeluruhNilai, getActivity());
 
         recyclerView = view.findViewById(R.id.recyclerViewSeluruhNilai);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        sessionManager = new SessionManager(getContext());
+        NilaiKeseluruhan();
 
         ipk = view.findViewById(R.id.tvIpk);
-        totalSks = view.findViewById(R.id.tvTotalSks);
         sksLulus = view.findViewById(R.id.tvSksLulus);
         sksUlang = view.findViewById(R.id.tvSksUlang);
         nilaiUet = view.findViewById(R.id.tvNilaiUet);
 
-        sessionManager = new SessionManager(getContext());
-        NilaiKeseluruhan();
 
         return view;
     }
@@ -91,9 +93,11 @@ public class Keseluruhan extends Fragment {
 
                     Log.d("jumlah", jsonArray.length() + "");
 
+                    int jumlahSks = 0;
+
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject objek = jsonArray.getJSONObject(i);
-                        Nilai nilai = new Nilai();
+                        nilai = new Nilai();
 
                         String kodeMK = objek.getString("mtkl_kd");
                         String namaMK = objek.getString("mtkl_nm");
@@ -107,11 +111,17 @@ public class Keseluruhan extends Fragment {
                         nilai.setHuruf(huruf);
                         nilai.setAngka(angka);
                         nilai.setBobot(sks * angka);
+                        nilai.setSksTotal(jumlahSks += sks);
 
                         listSeluruhNilai.add(nilai);
 
                         adapter.notifyDataSetChanged();
                     }
+
+                    totalSks = view.findViewById(R.id.tvTotalSks);
+                    totalSks.setText(jumlahSks);
+
+                    Log.d("jumlahsks", jumlahSks+"");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

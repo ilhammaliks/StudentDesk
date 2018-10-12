@@ -1,66 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".view.tabSurat.SuratMahasiswa">
 
-
-    <RelativeLayout
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etKeterangan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="keterangan"
+        android:inputType="textLongMessage|textMultiLine"
+        android:maxLines="5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textCursorDrawable="@drawable/cursor_text"
+        app:met_baseColor="@android:color/black"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@android:color/black"
+        app:met_textColorHint="@android:color/black"
+        app:met_underlineColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/keterangan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Keterangan"
-            android:textAlignment="textStart"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/etKeterangan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/keterangan"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@android:color/black" />
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/bSave"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/etKeterangan"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@android:color/darker_gray"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="10dp"
-            tools:style="@style/CardView">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Save"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </RelativeLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/bSave"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button_input"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/button_save"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+</LinearLayout>

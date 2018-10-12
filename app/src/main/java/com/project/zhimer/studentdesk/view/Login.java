@@ -119,6 +119,7 @@ public class Login extends AppCompatActivity {
                         Intent login = new Intent(Login.this, MainActivity.class);
                         Login.this.startActivity(login);
                         sessionManager.setLogin(true);
+                        finish();
                     } else {
                         showMsgError();
                         sessionManager.setLogin(false);

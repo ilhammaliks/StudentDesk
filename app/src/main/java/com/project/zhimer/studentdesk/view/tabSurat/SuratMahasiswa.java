@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,12 +20,12 @@ import java.util.List;
 public class SuratMahasiswa extends Fragment {
 
     View view;
+    private EditText etKeterangan;
 
 
     public SuratMahasiswa() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,8 +34,7 @@ public class SuratMahasiswa extends Fragment {
         view = inflater.inflate(R.layout.tab_surat_mahasiswa, container, false);
 
 
+
         return view;
     }
-
-
 }

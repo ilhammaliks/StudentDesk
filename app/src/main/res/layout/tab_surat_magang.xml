@@ -4,142 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".view.tabSurat.SuratMagang">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
 
-        <LinearLayout
-            android:id="@+id/keterangan"
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etKeterangan"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/keperluan"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:hint="keterangan"
+            android:inputType="textLongMessage|textMultiLine"
+            android:maxLines="5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_textColorHint="@android:color/black"
+            app:met_underlineColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Keterangan"
-                android:textAlignment="textStart"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="16sp" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPerusahaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Perusahaan / Instansi"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_textColorHint="@android:color/black"
+            app:met_underlineColor="@android:color/black" />
 
-            <EditText
-                android:id="@+id/etKeterangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/black" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etUntuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ditujukan Kepada"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_textColorHint="@android:color/black"
+            app:met_underlineColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Nama Perusahaan / Instansi"
-                android:textColor="@android:color/black" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etJabatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jabatan"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_textColorHint="@android:color/black"
+            app:met_underlineColor="@android:color/black" />
 
-            <EditText
-                android:id="@+id/etPerusahaan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:ems="10"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/black" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etDivisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Divisi / Bagian"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_text"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_textColorHint="@android:color/black"
+            app:met_underlineColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Ditujukan Kepada"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/etUntuk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:ems="10"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Jabatan"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/etJabatan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:ems="10"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Divisi / Bagian"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/etDivisi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:ems="10"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/black" />
-
-        </LinearLayout>
-
-        <android.support.v7.widget.CardView
+        <Button
             android:id="@+id/bSave"
-            android:layout_width="match_parent"
+            android:layout_width="260dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/keterangan"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@android:color/darker_gray"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="10dp"
-            tools:style="@style/CardView">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Save"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </RelativeLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_button_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/button_save"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 </ScrollView>

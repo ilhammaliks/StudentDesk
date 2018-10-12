@@ -9,6 +9,13 @@ public class Nilai {
     private String huruf;
     private Integer bobot;
 
+    private String ipk;
+    private String ips;
+    private Integer sksTotal;
+    private Integer sksLulus;
+    private Integer sksUlang;
+
+
     public String getKodeMK() {
         return kodeMK;
     }
@@ -55,5 +62,45 @@ public class Nilai {
 
     public void setBobot(Integer bobot) {
         this.bobot = bobot;
+    }
+
+    public String getIpk() {
+        return ipk;
+    }
+
+    public void setIpk(String ipk) {
+        this.ipk = ipk;
+    }
+
+    public String getIps() {
+        return ips;
+    }
+
+    public void setIps(String ips) {
+        this.ips = ips;
+    }
+
+    public Integer getSksTotal() {
+        return sksTotal;
+    }
+
+    public void setSksTotal(Integer sksTotal) {
+        this.sksTotal = sksTotal;
+    }
+
+    public Integer getSksLulus() {
+        return sksLulus;
+    }
+
+    public void setSksLulus(Integer sksLulus) {
+        this.sksLulus = sksLulus;
+    }
+
+    public Integer getSksUlang() {
+        return sksUlang;
+    }
+
+    public void setSksUlang(Integer sksUlang) {
+        this.sksUlang = sksUlang;
     }
 }

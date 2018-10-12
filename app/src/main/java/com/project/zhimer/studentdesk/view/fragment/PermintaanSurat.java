@@ -2,6 +2,7 @@ package com.project.zhimer.studentdesk.view.fragment;
 
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,8 +31,6 @@ import java.util.List;
 public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedListener {
     View view;
 
-    TextView nim, prodi, nama, ttl, phone, email, alamat;
-
     Spinner spinner;
 
     private TabLayout tabLayout;
@@ -48,22 +47,6 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_permintaan_surat, container, false);
 
-        nim = (TextView) view.findViewById(R.id.mahasiswa_nim);
-        prodi = (TextView) view.findViewById(R.id.mahasiswa_prodi);
-        nama = (TextView) view.findViewById(R.id.mahasiswa_nama);
-        ttl = (TextView) view.findViewById(R.id.mahasiswa_ttl);
-        phone = (TextView) view.findViewById(R.id.mahasiswa_phone);
-        email = (TextView) view.findViewById(R.id.mahasiswa_email);
-        alamat = (TextView) view.findViewById(R.id.mahasiswa_alamat);
-
-        nim.setText("0102513010");
-        prodi.setText("Teknik Informatika");
-        nama.setText("Ilham Malik Muhammad");
-        ttl.setText("Jakarta, 06 Oktober 1994");
-        phone.setText("083895671999");
-        email.setText("ilhammalikmuhammad@if.uai.ac.id");
-        alamat.setText("Jl. Kepodang VIII K1/24 Rt/Rw 001/006 Rengas, Ciputat Timur, Tangerang Selatan");
-
 
         tabLayout = view.findViewById(R.id.tabs);
         viewPager = view.findViewById(R.id.viewpager);
@@ -72,7 +55,7 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         setupViewPager(viewPager);
 
         //spinner
-        spinner = (Spinner) view.findViewById(R.id.bahasa);
+        spinner = view.findViewById(R.id.bahasa);
 
         List<String> Bahasa = new ArrayList<String>();
         Bahasa.add("Bahasa Indonesia");

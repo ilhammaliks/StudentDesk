@@ -17,7 +17,7 @@ import java.util.List;
 public class SuratPenelitian extends Fragment {
 
     View view;
-    Spinner spinner;
+    private Spinner spinner;
 
 
     public SuratPenelitian() {
@@ -32,7 +32,7 @@ public class SuratPenelitian extends Fragment {
         view = inflater.inflate(R.layout.tab_surat_penelitian, container, false);
 
         //spinner
-        spinner = (Spinner) view.findViewById(R.id.keperluan);
+        spinner = view.findViewById(R.id.penelitian);
 
         List<String> keperluan = new ArrayList<String>();
         keperluan.add("Penelitian Keperluan Skripsi");
