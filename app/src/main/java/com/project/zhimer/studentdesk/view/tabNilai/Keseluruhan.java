@@ -63,13 +63,14 @@ public class Keseluruhan extends Fragment {
         recyclerView.setAdapter(adapter);
 
         sessionManager = new SessionManager(getContext());
-        NilaiKeseluruhan();
 
         ipk = view.findViewById(R.id.tvIpk);
         sksLulus = view.findViewById(R.id.tvSksLulus);
         sksUlang = view.findViewById(R.id.tvSksUlang);
         nilaiUet = view.findViewById(R.id.tvNilaiUet);
+        totalSks = view.findViewById(R.id.tvTotalSks);
 
+        NilaiKeseluruhan();
 
         return view;
     }
@@ -94,6 +95,7 @@ public class Keseluruhan extends Fragment {
                     Log.d("jumlah", jsonArray.length() + "");
 
                     int jumlahSks = 0;
+                    String total = "";
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject objek = jsonArray.getJSONObject(i);
@@ -111,17 +113,17 @@ public class Keseluruhan extends Fragment {
                         nilai.setHuruf(huruf);
                         nilai.setAngka(angka);
                         nilai.setBobot(sks * angka);
-                        nilai.setSksTotal(jumlahSks += sks);
+
+                        //nilai.setSksTotal(jumlahSks += sks);
+                        jumlahSks += sks;
+                        total = String.valueOf(jumlahSks);
 
                         listSeluruhNilai.add(nilai);
 
                         adapter.notifyDataSetChanged();
                     }
-
-                    totalSks = view.findViewById(R.id.tvTotalSks);
-                    totalSks.setText(jumlahSks);
-
-                    Log.d("jumlahsks", jumlahSks+"");
+                    //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
+                    totalSks.setText(total);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
