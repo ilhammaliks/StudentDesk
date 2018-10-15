@@ -97,6 +97,18 @@ public class Keseluruhan extends Fragment {
                     int jumlahSks = 0;
                     String total = "";
 
+                    int jumlahBobot = 0;
+                    String totalBobot = "";
+
+                    double penjumlahanIPK = 0.00;
+                    String hasilIPK = "";
+
+                    int sksABC = 0;
+                    String totalLulus = "";
+
+                    int sksDE = 0;
+                    String totalUlang = "";
+
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject objek = jsonArray.getJSONObject(i);
                         nilai = new Nilai();
@@ -118,12 +130,41 @@ public class Keseluruhan extends Fragment {
                         jumlahSks += sks;
                         total = String.valueOf(jumlahSks);
 
+                        jumlahBobot += (sks * angka);
+                        totalBobot = String.valueOf(jumlahBobot);
+
+                        penjumlahanIPK = jumlahBobot / jumlahSks;
+                        hasilIPK = String.valueOf(penjumlahanIPK);
+
+
+                        if (huruf.equals("A") || huruf.equals("B") || huruf.equals("C")) {
+                            sksABC += sks;
+                            totalLulus = String.valueOf(sksABC);
+                        } else {
+                            if (huruf.equals("D") || huruf.equals("E"))
+                            {
+                                sksDE += sks;
+                                totalUlang = String.valueOf(sksDE);
+                            }
+                        }
+
+
                         listSeluruhNilai.add(nilai);
 
                         adapter.notifyDataSetChanged();
                     }
                     //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
+                    ipk.setText(totalBobot);
                     totalSks.setText(total);
+                    sksLulus.setText(totalLulus);
+                    if (sksDE == 0)
+                    {
+                        sksUlang.setText("0");
+                    }
+                    else{
+                        sksUlang.setText(totalUlang);
+                    }
+                    nilaiUet.setText(hasilIPK);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
