@@ -306,7 +306,8 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:gravity="center_horizontal"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

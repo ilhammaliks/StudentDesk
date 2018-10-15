@@ -25,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
@@ -97,11 +98,13 @@ public class Keseluruhan extends Fragment {
                     int jumlahSks = 0;
                     String total = "";
 
-                    int jumlahBobot = 0;
-                    String totalBobot = "";
+                    //inisialisasi penjumlahan IPk
+                    double jumlahBobot = 0;
+                    double penjumlahSKS = 0;
+                    double penjumlahanIPK;
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-                    double penjumlahanIPK = 0.00;
-                    String hasilIPK = "";
+                    //end inisialisasi penjumlahan IPK
 
                     int sksABC = 0;
                     String totalLulus = "";
@@ -126,16 +129,11 @@ public class Keseluruhan extends Fragment {
                         nilai.setAngka(angka);
                         nilai.setBobot(sks * angka);
 
-                        //nilai.setSksTotal(jumlahSks += sks);
                         jumlahSks += sks;
+                        penjumlahSKS += sks;
                         total = String.valueOf(jumlahSks);
 
                         jumlahBobot += (sks * angka);
-                        totalBobot = String.valueOf(jumlahBobot);
-
-                        penjumlahanIPK = jumlahBobot / jumlahSks;
-                        hasilIPK = String.valueOf(penjumlahanIPK);
-
 
                         if (huruf.equals("A") || huruf.equals("B") || huruf.equals("C")) {
                             sksABC += sks;
@@ -148,15 +146,20 @@ public class Keseluruhan extends Fragment {
                             }
                         }
 
-
                         listSeluruhNilai.add(nilai);
 
                         adapter.notifyDataSetChanged();
                     }
                     //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
-                    ipk.setText(totalBobot);
+
+                    //operasi penjumlahan ipk
+                    penjumlahanIPK = jumlahBobot / penjumlahSKS;
+                    ipk.setText(decimalFormat.format(penjumlahanIPK));
+
                     totalSks.setText(total);
+
                     sksLulus.setText(totalLulus);
+
                     if (sksDE == 0)
                     {
                         sksUlang.setText("0");
@@ -164,7 +167,8 @@ public class Keseluruhan extends Fragment {
                     else{
                         sksUlang.setText(totalUlang);
                     }
-                    nilaiUet.setText(hasilIPK);
+
+                    nilaiUet.setText("490");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
