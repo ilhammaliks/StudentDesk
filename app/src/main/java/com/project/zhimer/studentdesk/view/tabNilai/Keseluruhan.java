@@ -147,7 +147,6 @@ public class Keseluruhan extends Fragment {
                         }
 
                         listSeluruhNilai.add(nilai);
-
                         adapter.notifyDataSetChanged();
                     }
                     //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
