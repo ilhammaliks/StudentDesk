@@ -22,7 +22,14 @@ public class App extends Application {
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_REQUIRED, false);
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_CURRENT_VERSION, "1.0.0");
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_UPDATE_URL, "https://www.google.com/");
+
         remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_KRS, true);
+
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_KRS_SP, true);
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_PERKULIAHAN_SP, true);
+
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_DAFTAR_SIDANG, true);
+        remoteConfigDefaults.put(ForceUpdateChecker.KEY_MENU_DAFTAR_WISUDA, true);
 
         remoteConfig.setDefaults(remoteConfigDefaults);
         remoteConfig.fetch(60)

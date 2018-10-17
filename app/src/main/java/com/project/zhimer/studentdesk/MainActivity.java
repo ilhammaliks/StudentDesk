@@ -129,9 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             onResumeFragments();
         }
 
-        //setup fragment
-//        setFragment(halamanUtama);
-
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -197,10 +194,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.sp_perkuliahan:
                 setFragment(semesterPendek);
 
-                //daftar sidang & wisuda
+            //daftar sidang & wisuda
 
 
-                //logout
+            //logout
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
@@ -282,6 +279,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     {
         Menu nav_menu = navigationView.getMenu();
         nav_menu.findItem(R.id.krs).setVisible(false);
+    }
+
+    @Override
+    public void onSetMenuKrsSP() {
+        Menu nav_menu = navigationView.getMenu();
+        nav_menu.findItem(R.id.sp_krs).setVisible(false);
+    }
+
+    @Override
+    public void onSetMenuPerkuliahanSp() {
+        Menu nav_menu = navigationView.getMenu();
+        nav_menu.findItem(R.id.sp_perkuliahan).setVisible(false);
+    }
+
+    @Override
+    public void onSetMenuDaftarSidang() {
+        Menu nav_menu = navigationView.getMenu();
+        nav_menu.findItem(R.id.daftar_sidang).setVisible(false);
+    }
+
+    @Override
+    public void onSetMenuDaftarWisuda() {
+        Menu nav_menu = navigationView.getMenu();
+        nav_menu.findItem(R.id.daftar_wisuda).setVisible(false);
     }
 
     private void redirectStore(String updateUrl)

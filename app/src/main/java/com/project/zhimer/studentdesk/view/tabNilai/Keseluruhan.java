@@ -93,8 +93,6 @@ public class Keseluruhan extends Fragment {
                     JSONObject object = new JSONObject(response.toString());
                     JSONArray jsonArray = object.getJSONArray("data");
 
-                    Log.d("jumlah", jsonArray.length() + "");
-
                     int jumlahSks = 0;
                     String total = "";
 

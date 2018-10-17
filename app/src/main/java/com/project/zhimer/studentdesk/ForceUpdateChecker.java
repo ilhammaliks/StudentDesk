@@ -14,6 +14,12 @@ public class ForceUpdateChecker {
     public static final String KEY_UPDATE_URL = "force_update_store_url";
     public static final String KEY_MENU_KRS = "isiKRS";
 
+    public static final String KEY_MENU_KRS_SP = "showKrsSP";
+    public static final String KEY_MENU_PERKULIAHAN_SP = "showPerkuliahanSP";
+
+    public static final String KEY_MENU_DAFTAR_SIDANG = "showDaftarSidang";
+    public static final String KEY_MENU_DAFTAR_WISUDA = "showDaftarWisuda";
+
     private OnRemoteConfigListener onRemoteConfigListener;
     private Context context;
 
@@ -21,6 +27,12 @@ public class ForceUpdateChecker {
         void onUpdateNeeded(String updateUrl);
 
         void onSetMenuKrs();
+
+        void onSetMenuKrsSP();
+        void onSetMenuPerkuliahanSp();
+
+        void onSetMenuDaftarSidang();
+        void onSetMenuDaftarWisuda();
     }
 
     public static Builder with(@NonNull Context context) {
@@ -47,6 +59,22 @@ public class ForceUpdateChecker {
 
         if (!remoteConfig.getBoolean(KEY_MENU_KRS)) {
             onRemoteConfigListener.onSetMenuKrs();
+        }
+
+        if (!remoteConfig.getBoolean(KEY_MENU_KRS_SP)){
+            onRemoteConfigListener.onSetMenuKrsSP();
+        }
+
+        if (!remoteConfig.getBoolean(KEY_MENU_PERKULIAHAN_SP)){
+            onRemoteConfigListener.onSetMenuPerkuliahanSp();
+        }
+
+        if (!remoteConfig.getBoolean(KEY_MENU_DAFTAR_SIDANG)){
+            onRemoteConfigListener.onSetMenuDaftarSidang();
+        }
+
+        if (!remoteConfig.getBoolean(KEY_MENU_DAFTAR_WISUDA)){
+            onRemoteConfigListener.onSetMenuDaftarWisuda();
         }
     }
 
