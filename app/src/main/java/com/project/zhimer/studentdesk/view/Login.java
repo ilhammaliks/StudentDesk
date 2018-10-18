@@ -1,15 +1,22 @@
 package com.project.zhimer.studentdesk.view;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -86,6 +93,18 @@ public class Login extends AppCompatActivity {
 
                     //TODO Push data login
                     LoggingIn();
+
+                    //Get Token
+                    FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                            String token = task.getResult().getToken();
+                            String msg = getString(R.string.msg_token, token);
+
+                            Log.d("token1", msg);
+                        }
+                    });
 
                     //finish();
                 } else {

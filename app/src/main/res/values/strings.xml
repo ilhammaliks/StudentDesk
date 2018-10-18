@@ -116,4 +116,6 @@
     <string name="error_toast">Data yang anda masukan salah</string>
     <string name="button_save">Save</string>
     <string name="field_keperluan">Keperluan</string>
+
+    <string name="msg_token" translatable="false">InstanceID Token: %s</string>
 </resources>
