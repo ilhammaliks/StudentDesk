@@ -12,17 +12,21 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.MainActivity;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +40,9 @@ public class Login extends AppCompatActivity {
     EditText etNim, etPassword;
     Button toastFail, blogin;
 
-    Animation fadein, fadeout;
+    Animation fadein;
+    Animation fadeout;
+    ProgressView progress;
 
     SessionManager sessionManager;
 
@@ -65,6 +71,8 @@ public class Login extends AppCompatActivity {
         fadein = AnimationUtils.loadAnimation(this, R.anim.fadein);
         fadeout = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
+        progress = (ProgressView) findViewById(R.id.circular);
+
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,13 +96,14 @@ public class Login extends AppCompatActivity {
                 }
 
                 if (checkNim && checkPassword) {
+                    progress.start();
                     sessionManager.setNim(nim);
                     sessionManager.setPassword(password);
 
                     //TODO Push data login
                     LoggingIn();
 
-                    //Get Token
+                    //Get Token,
                     FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                         @Override
                         public void onComplete(@NonNull Task<InstanceIdResult> task) {
@@ -102,10 +111,13 @@ public class Login extends AppCompatActivity {
                             String token = task.getResult().getToken();
                             String msg = getString(R.string.msg_token, token);
 
+                            sessionManager.setToken(msg);
                             Log.d("token1", msg);
                         }
                     });
 
+                    FirebaseMessaging.getInstance().subscribeToTopic("Akademik");
+                    progress.stop();
                     //finish();
                 } else {
                     toastFail.setAlpha(1);

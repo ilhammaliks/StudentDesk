@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +25,6 @@ import android.widget.Toast;
 
 import com.project.zhimer.studentdesk.view.Login;
 import com.project.zhimer.studentdesk.view.fragment.Biodata;
-import com.project.zhimer.studentdesk.view.fragment.ChatOnline;
 import com.project.zhimer.studentdesk.view.fragment.HalamanUtama;
 import com.project.zhimer.studentdesk.view.fragment.IsiKrs;
 import com.project.zhimer.studentdesk.view.fragment.Keuangan;
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private HalamanUtama halamanUtama;
     private Biodata biodata;
     private PermintaanSurat permintaanSurat;
-    private ChatOnline chatOnline;
     private TestQuran testQuran;
     private UaiEnglishTest uaiEnglishTest;
     private RingkasanAkademik ringkasanAkademik;
@@ -76,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sessionManager = new SessionManager(this);
+        sessionManager.getToken();
+
+        Log.d("token", sessionManager.getToken() + "");
 
         //firebase instance
         ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
@@ -112,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         halamanUtama = new HalamanUtama();
         biodata = new Biodata();
         permintaanSurat = new PermintaanSurat();
-        chatOnline = new ChatOnline();
         testQuran = new TestQuran();
         uaiEnglishTest = new UaiEnglishTest();
         ringkasanAkademik = new RingkasanAkademik();
@@ -155,10 +156,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.surat:
                 setFragment(permintaanSurat);
-                return true;
-
-            case R.id.chat:
-                setFragment(chatOnline);
                 return true;
 
             case R.id.quran:

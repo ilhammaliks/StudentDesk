@@ -17,6 +17,7 @@ import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.BeritaAdapter;
 import com.project.zhimer.studentdesk.model.Berita;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +35,7 @@ import cz.msebera.android.httpclient.Header;
 public class HalamanUtama extends Fragment {
 
     View view;
+    ProgressView progress;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
 
@@ -53,6 +55,8 @@ public class HalamanUtama extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_halaman_utama, container, false);
 
+        progress = view.findViewById(R.id.circular);
+        progress.start();
         // adapter
         beritaList = new ArrayList<>();
 
@@ -66,8 +70,9 @@ public class HalamanUtama extends Fragment {
 
         sessionManager = new SessionManager(getContext());
 
-        DataHalamanUtama();
 
+        DataHalamanUtama();
+        progress.stop();
         return view;
     }
 

@@ -53,4 +53,13 @@ public class SessionManager {
     public Boolean isLogin() {
         return preferences.getBoolean("login", false);
     }
+
+    public void setToken(String data){
+        editor.putString("token", data);
+        editor.apply();
+    }
+
+    public String getToken(){
+        return preferences.getString("token", "");
+    }
 }
