@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean doubleBackToExitPressedOnce = false;
 
     NavigationView navigationView;
-    //firebase instance
+//    model instance
+    Mahasiswa mahasiswa;
 
     //fragment instance
     private HalamanUtama halamanUtama;
@@ -71,13 +72,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Nilai nilai;
     private SemesterPendek semesterPendek;
 
-    //model instance
-    Mahasiswa mahasiswa;
-
     SessionManager sessionManager;
 
-    private ImageView foto;
-    public TextView sks, ipk, uet, tilawah, nama, nim, prodi, tahun;
+    private TextView sks, ipk, uet, tilawah, nama, nim, prodi, tahun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,21 +100,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //header sidebar
         View header = navigationView.getHeaderView(0);
 
-        DataMahasiswa();
-        DataGradeSksIpk();
+        ImageView foto = (ImageView) header.findViewById(R.id.mahasiswa_foto);
 
-        foto = (ImageView) header.findViewById(R.id.mahasiswa_foto);
+         sks = (TextView) header.findViewById(R.id.mahasiswa_sks);
+         ipk = (TextView) header.findViewById(R.id.mahasiswa_ipk);
+         uet = (TextView) header.findViewById(R.id.mahasiswa_uet);
+         tilawah = (TextView) header.findViewById(R.id.mahasiswa_tilawah);
 
-        sks = header.findViewById(R.id.mahasiswa_sks);
-        ipk = header.findViewById(R.id.mahasiswa_ipk);
-        uet = header.findViewById(R.id.mahasiswa_uet);
-        tilawah = header.findViewById(R.id.mahasiswa_tilawah);
+         nama = (TextView) header.findViewById(R.id.mahasiswa_nama);
+         nim = (TextView) header.findViewById(R.id.mahasiswa_nim);
+         prodi = (TextView) header.findViewById(R.id.mahasiswa_prodi);
+         tahun = (TextView) header.findViewById(R.id.mahasiswa_tahun);
 
-        nama = header.findViewById(R.id.mahasiswa_nama);
-        nim = header.findViewById(R.id.mahasiswa_nim);
-        prodi = header.findViewById(R.id.mahasiswa_prodi);
-        tahun = header.findViewById(R.id.mahasiswa_tahun);
-
+         DataMahasiswa();
+         DataGradeSksIpk();
 
         //Hardcode
         Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
@@ -213,10 +209,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.sp_perkuliahan:
                 setFragment(semesterPendek);
 
-                //daftar sidang & wisuda
+            //daftar sidang & wisuda
 
 
-                //logout
+            //logout
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
@@ -274,7 +270,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onUpdateNeeded(final String updateUrl) {
+    public void onUpdateNeeded(final String updateUrl)
+    {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("New version available")
                 .setMessage("Please, update app to new version to continue.")
@@ -293,7 +290,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onSetMenuKrs() {
+    public void onSetMenuKrs()
+    {
         Menu nav_menu = navigationView.getMenu();
         nav_menu.findItem(R.id.krs).setVisible(false);
     }
@@ -322,7 +320,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_menu.findItem(R.id.daftar_wisuda).setVisible(false);
     }
 
-    private void redirectStore(String updateUrl) {
+    private void redirectStore(String updateUrl)
+    {
         final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

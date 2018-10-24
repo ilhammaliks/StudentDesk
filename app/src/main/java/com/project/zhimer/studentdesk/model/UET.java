@@ -24,4 +24,12 @@ public class UET {
     public void setPengirim(String pengirim) {
         this.pengirim = pengirim;
     }
+
+    public Integer getMax() {
+        return max;
+    }
+
+    public void setMax(Integer max) {
+        this.max = max;
+    }
 }
