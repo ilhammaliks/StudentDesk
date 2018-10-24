@@ -1,6 +1,8 @@
 package com.project.zhimer.studentdesk.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +17,13 @@ import java.util.List;
 public class JadwalKuliahAdapter extends RecyclerView.Adapter<JadwalKuliahAdapter.ViewHolder> {
 
     private List<Kuliah> jadwalKuliahList;
+    private Context context;
+    private LayoutInflater inflater = null;
 
-    public JadwalKuliahAdapter(List<Kuliah> jadwalKuliahList) {
+    public JadwalKuliahAdapter(List<Kuliah> jadwalKuliahList, Context context) {
         this.jadwalKuliahList = jadwalKuliahList;
+        this.context = context;
+        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
@@ -31,13 +37,13 @@ public class JadwalKuliahAdapter extends RecyclerView.Adapter<JadwalKuliahAdapte
     @Override
     public void onBindViewHolder(@NonNull JadwalKuliahAdapter.ViewHolder holder, int position) {
 
-        Kuliah jadwalKuliah = jadwalKuliahList.get(position);
+        final Kuliah jadwalKuliah = jadwalKuliahList.get(position);
 
         holder.kode.setText(jadwalKuliah.getKelas());
         holder.mataKuliah.setText(jadwalKuliah.getMataKuliah());
-        holder.sks.setText(jadwalKuliah.getSks());
-        holder.waktu.setText(jadwalKuliah.getWaktu());
-        holder.dosen.setText(jadwalKuliah.getDosen());
+        holder.sks.setText(String.valueOf(jadwalKuliah.getSks()));
+        holder.waktu.setText(jadwalKuliah.getHari());
+//        holder.dosen.setText(jadwalKuliah.getDosen());
         holder.ruang.setText(jadwalKuliah.getRuang());
     }
 

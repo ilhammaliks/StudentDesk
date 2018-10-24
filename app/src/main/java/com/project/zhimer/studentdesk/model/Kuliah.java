@@ -4,20 +4,14 @@ public class Kuliah {
 
     private String kelas;
     private String mataKuliah;
-    private String sks;
-    private String waktu;
+    private Integer sks;
+    private String hari;
+    private String mulai;
+    private String kelar;
     private String dosen;
     private String ruang;
+    private Integer jumlahSKS;
 
-
-    public Kuliah(String kelas, String mataKuliah, String sks, String waktu, String dosen, String ruang) {
-        this.kelas = kelas;
-        this.mataKuliah = mataKuliah;
-        this.sks = sks;
-        this.waktu = waktu;
-        this.dosen = dosen;
-        this.ruang = ruang;
-    }
 
     public String getKelas() {
         return kelas;
@@ -35,20 +29,36 @@ public class Kuliah {
         this.mataKuliah = mataKuliah;
     }
 
-    public String getSks() {
+    public Integer getSks() {
         return sks;
     }
 
-    public void setSks(String sks) {
+    public void setSks(Integer sks) {
         this.sks = sks;
     }
 
-    public String getWaktu() {
-        return waktu;
+    public String getHari() {
+        return hari;
     }
 
-    public void setWaktu(String waktu) {
-        this.waktu = waktu;
+    public void setHari(String hari) {
+        this.hari = hari;
+    }
+
+    public String getMulai() {
+        return mulai;
+    }
+
+    public void setMulai(String mulai) {
+        this.mulai = mulai;
+    }
+
+    public String getKelar() {
+        return kelar;
+    }
+
+    public void setKelar(String kelar) {
+        this.kelar = kelar;
     }
 
     public String getDosen() {
@@ -65,5 +75,13 @@ public class Kuliah {
 
     public void setRuang(String ruang) {
         this.ruang = ruang;
+    }
+
+    public Integer getJumlahSKS() {
+        return jumlahSKS;
+    }
+
+    public void setJumlahSKS(Integer jumlahSKS) {
+        this.jumlahSKS = jumlahSKS;
     }
 }

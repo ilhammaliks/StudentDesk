@@ -56,7 +56,6 @@ public class HalamanUtama extends Fragment {
         view = inflater.inflate(R.layout.fragment_halaman_utama, container, false);
 
         progress = view.findViewById(R.id.circular);
-        progress.setVisibility(View.VISIBLE);
         progress.start();
         // adapter
         beritaList = new ArrayList<>();
@@ -71,10 +70,8 @@ public class HalamanUtama extends Fragment {
 
         sessionManager = new SessionManager(getContext());
 
-
         DataHalamanUtama();
         progress.stop();
-        progress.setVisibility(View.GONE);
         return view;
     }
 

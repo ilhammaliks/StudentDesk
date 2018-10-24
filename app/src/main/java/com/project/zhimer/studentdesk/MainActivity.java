@@ -27,6 +27,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.model.Mahasiswa;
+import com.project.zhimer.studentdesk.model.UET;
 import com.project.zhimer.studentdesk.view.Login;
 import com.project.zhimer.studentdesk.view.fragment.Biodata;
 import com.project.zhimer.studentdesk.view.fragment.HalamanUtama;
@@ -46,6 +47,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean doubleBackToExitPressedOnce = false;
 
     NavigationView navigationView;
-//    model instance
+    //    model instance
     Mahasiswa mahasiswa;
 
     //fragment instance
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Nilai nilai;
     private SemesterPendek semesterPendek;
 
+    //    session instance
     SessionManager sessionManager;
 
     private TextView sks, ipk, uet, tilawah, nama, nim, prodi, tahun;
@@ -102,18 +107,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ImageView foto = (ImageView) header.findViewById(R.id.mahasiswa_foto);
 
-         sks = (TextView) header.findViewById(R.id.mahasiswa_sks);
-         ipk = (TextView) header.findViewById(R.id.mahasiswa_ipk);
-         uet = (TextView) header.findViewById(R.id.mahasiswa_uet);
-         tilawah = (TextView) header.findViewById(R.id.mahasiswa_tilawah);
+        sks = header.findViewById(R.id.mahasiswa_sks);
+        ipk = header.findViewById(R.id.mahasiswa_ipk);
+        uet = header.findViewById(R.id.mahasiswa_uet);
+        tilawah = header.findViewById(R.id.mahasiswa_tilawah);
 
-         nama = (TextView) header.findViewById(R.id.mahasiswa_nama);
-         nim = (TextView) header.findViewById(R.id.mahasiswa_nim);
-         prodi = (TextView) header.findViewById(R.id.mahasiswa_prodi);
-         tahun = (TextView) header.findViewById(R.id.mahasiswa_tahun);
+        nama = header.findViewById(R.id.mahasiswa_nama);
+        nim = header.findViewById(R.id.mahasiswa_nim);
+        prodi = header.findViewById(R.id.mahasiswa_prodi);
+        tahun = header.findViewById(R.id.mahasiswa_tahun);
 
-         DataMahasiswa();
-         DataGradeSksIpk();
+        DataMahasiswa();
+        DataGradeSksIpk();
+        DataUet();
 
         //Hardcode
         Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
@@ -171,23 +177,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-                        mahasiswa = new Mahasiswa();
+//                        mahasiswa = new Mahasiswa();
 
                         String nimMahasiswa = object.getString("mhs_nim");
                         String namaMahasiswa = object.getString("mhs_nm");
                         String tahunMahasiswa = object.getString("mhs_ank");
-                        String alamat = object.getString("mhs_alm");
-                        String kota = object.getString("mhs_kota");
-                        String kodePos = object.getString("kodepos");
-                        String telp = object.getString("mhs_telepon");
-                        String phone = object.getString("mhs_hp");
-                        String email = object.getString("mhs_email");
+//                        String alamat = object.getString("mhs_alm");
+//                        String kota = object.getString("mhs_kota");
+//                        String kodePos = object.getString("kodepos");
+//                        String telp = object.getString("mhs_telepon");
+//                        String phone = object.getString("mhs_hp");
+//                        String email = object.getString("mhs_email");
                         String prodiMahasiswa = object.getString("NamaProgdi");
-                        String pembimbing = object.getString("DosenPembimbing");
-                        String jalurMasuk = object.getString("NamaJalurMasuk");
-                        String statusAkademik = object.getString("NamaStatusAkademik");
+//                        String pembimbing = object.getString("DosenPembimbing");
+//                        String jalurMasuk = object.getString("NamaJalurMasuk");
+//                        String statusAkademik = object.getString("NamaStatusAkademik");
 
-                        mahasiswa.setNim(nimMahasiswa);
+                        /*mahasiswa.setNim(nimMahasiswa);
                         mahasiswa.setNama(namaMahasiswa);
                         mahasiswa.setTahun(tahunMahasiswa);
                         mahasiswa.setAlamat(alamat);
@@ -199,13 +205,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         mahasiswa.setProdi(prodiMahasiswa);
                         mahasiswa.setPembimbing(pembimbing);
                         mahasiswa.setJalurMasuk(jalurMasuk);
-                        mahasiswa.setStatusAkademik(statusAkademik);
+                        mahasiswa.setStatusAkademik(statusAkademik);*/
 
-
-                        nama.setText(mahasiswa.getNama());
+                        /*nama.setText(mahasiswa.getNama());
                         nim.setText(mahasiswa.getNim());
                         prodi.setText(mahasiswa.getProdi());
-                        tahun.setText(mahasiswa.getTahun());
+                        tahun.setText(mahasiswa.getTahun());*/
+
+                        nama.setText(namaMahasiswa);
+                        nim.setText(nimMahasiswa);
+                        prodi.setText(prodiMahasiswa);
+                        tahun.setText(tahunMahasiswa);
 
                     }
                 } catch (JSONException e) {
@@ -286,6 +296,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    private void DataUet() {
+        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/UET/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject object = new JSONObject(response.toString());
+                    JSONArray jsonArray = object.getJSONArray("data");
+
+                    Log.d("dataUet", object.length() + "");
+                    
+                    for (int i = jsonArray.length() - 1; i >= 0; i--) {
+                        JSONObject objek = jsonArray.getJSONObject(i);
+
+                        String score = objek.getString("nilai");
+
+                        uet.setText(score);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -345,10 +393,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.sp_perkuliahan:
                 setFragment(semesterPendek);
 
-            //daftar sidang & wisuda
+                //daftar sidang & wisuda
 
 
-            //logout
+                //logout
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
@@ -406,8 +454,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onUpdateNeeded(final String updateUrl)
-    {
+    public void onUpdateNeeded(final String updateUrl) {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("New version available")
                 .setMessage("Please, update app to new version to continue.")
@@ -426,8 +473,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onSetMenuKrs()
-    {
+    public void onSetMenuKrs() {
         Menu nav_menu = navigationView.getMenu();
         nav_menu.findItem(R.id.krs).setVisible(false);
     }
@@ -456,8 +502,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_menu.findItem(R.id.daftar_wisuda).setVisible(false);
     }
 
-    private void redirectStore(String updateUrl)
-    {
+    private void redirectStore(String updateUrl) {
         final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateUrl));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

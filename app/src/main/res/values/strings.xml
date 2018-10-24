@@ -118,4 +118,5 @@
     <string name="field_keperluan">Keperluan</string>
 
     <string name="msg_token" translatable="false">InstanceID Token: %s</string>
+    <string name="total_sks">Total SKS</string>
 </resources>

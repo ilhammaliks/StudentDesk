@@ -63,23 +63,12 @@ public class Biodata extends Fragment {
         mahasiswa_email = view.findViewById(R.id.mahasiswa_email);
 
         sessionManager = new SessionManager(getContext());
+        DataBio();
 
         //hardcode
         Picasso.with(getContext()).load(R.drawable.photo).into(foto);
 
-        mahasiswa_nama.setText("Ilham Malik Muhammad");
-        mahasiswa_nim.setText("0102513010");
-        mahasiswa_prodi.setText("Teknik Informatika");
-        mahasiswa_dosen.setText("Ir. Endang Ripmiatin, M.T");
-        mahasiswa_jalur.setText("Regular");
-        mahasiswa_status.setText("Aktif");
-        mahasiswa_alamat.setText("Jl. Kepodang VIII K1/24, Rt/Rw 001/006, Rengas, Ciputat Timur, Tangerang Selatan");
-        mahasiswa_kota.setText("Tangerang Selatan, 15412");
-        mahasiswa_telp.setText("083895671999");
-        mahasiswa_phone.setText("083895671999");
-        mahasiswa_email.setText("ilhammalikmuhammad@gmail.com");
-
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbarLayout = view.findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Biodata");
 
         if (getContext() != null) {
@@ -91,6 +80,65 @@ public class Biodata extends Fragment {
         return view;
     }
 
+    private void DataBio() {
+        String url = "https://studentdesk.uai.ac.id/api/index.php/biodata/LihatBiodata/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
 
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+//                        mahasiswa = new Mahasiswa();
+
+                        String nim = object.getString("mhs_nim");
+                        String nama = object.getString("mhs_nm");
+                        String tahun = object.getString("mhs_ank");
+                        String alamat = object.getString("mhs_alm");
+                        String kota = object.getString("mhs_kota");
+                        String kodePos = object.getString("kodepos");
+                        String telp = object.getString("mhs_telepon");
+                        String phone = object.getString("mhs_hp");
+                        String email = object.getString("mhs_email");
+                        String prodi = object.getString("NamaProgdi");
+                        String pembimbing = object.getString("DosenPembimbing");
+                        String jalurMasuk = object.getString("NamaJalurMasuk");
+                        String statusAkademik = object.getString("NamaStatusAkademik");
+
+                        mahasiswa_nama.setText(nama);
+                        mahasiswa_nim.setText(nim);
+                        mahasiswa_prodi.setText(prodi);
+                        mahasiswa_dosen.setText(pembimbing);
+                        mahasiswa_jalur.setText(jalurMasuk);
+                        mahasiswa_status.setText(statusAkademik);
+                        mahasiswa_alamat.setText(alamat);
+                        mahasiswa_kota.setText(kota + ", " + kodePos);
+                        mahasiswa_telp.setText(telp);
+                        mahasiswa_phone.setText(phone);
+                        mahasiswa_email.setText(email);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
 
 }
