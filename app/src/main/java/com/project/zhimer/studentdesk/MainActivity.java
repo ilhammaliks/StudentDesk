@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         prodi.setText("Teknik Informatika");
         tahun.setText("2013");*/
 
+
         //fragment variable
         halamanUtama = new HalamanUtama();
         biodata = new Biodata();
@@ -150,6 +151,141 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    private void DataMahasiswa() {
+        String url = "https://studentdesk.uai.ac.id/api/index.php/biodata/LihatBiodata/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        mahasiswa = new Mahasiswa();
+
+                        String nimMahasiswa = object.getString("mhs_nim");
+                        String namaMahasiswa = object.getString("mhs_nm");
+                        String tahunMahasiswa = object.getString("mhs_ank");
+                        String alamat = object.getString("mhs_alm");
+                        String kota = object.getString("mhs_kota");
+                        String kodePos = object.getString("kodepos");
+                        String telp = object.getString("mhs_telepon");
+                        String phone = object.getString("mhs_hp");
+                        String email = object.getString("mhs_email");
+                        String prodiMahasiswa = object.getString("NamaProgdi");
+                        String pembimbing = object.getString("DosenPembimbing");
+                        String jalurMasuk = object.getString("NamaJalurMasuk");
+                        String statusAkademik = object.getString("NamaStatusAkademik");
+
+                        mahasiswa.setNim(nimMahasiswa);
+                        mahasiswa.setNama(namaMahasiswa);
+                        mahasiswa.setTahun(tahunMahasiswa);
+                        mahasiswa.setAlamat(alamat);
+                        mahasiswa.setKota(kota);
+                        mahasiswa.setKodePos(kodePos);
+                        mahasiswa.setTelp(telp);
+                        mahasiswa.setPhone(phone);
+                        mahasiswa.setEmail(email);
+                        mahasiswa.setProdi(prodiMahasiswa);
+                        mahasiswa.setPembimbing(pembimbing);
+                        mahasiswa.setJalurMasuk(jalurMasuk);
+                        mahasiswa.setStatusAkademik(statusAkademik);
+
+
+                        nama.setText(mahasiswa.getNama());
+                        nim.setText(mahasiswa.getNim());
+                        prodi.setText(mahasiswa.getProdi());
+                        tahun.setText(mahasiswa.getTahun());
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
+    private void DataGradeSksIpk() {
+        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaikeseluruhan/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject object = new JSONObject(response.toString());
+                    JSONArray jsonArray = object.getJSONArray("data");
+
+                    int jumlahSks = 0;
+
+                    //inisialisasi penjumlahan IPk
+                    double jumlahBobot = 0;
+                    double penjumlahSKS = 0;
+                    double penjumlahanIPK;
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+                    //end inisialisasi penjumlahan IPK
+
+                    int sksABC = 0;
+                    String totalLulus = "";
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject objek = jsonArray.getJSONObject(i);
+
+                        Integer sks = objek.getInt("mtkl_sks");
+                        String huruf = objek.getString("HM");
+                        Integer angka = objek.getInt("HA");
+
+                        jumlahSks += sks;
+
+                        penjumlahSKS += sks;
+                        jumlahBobot += (sks * angka);
+
+                        if (huruf.equals("A") || huruf.equals("B") || huruf.equals("C")) {
+                            sksABC += sks;
+                            totalLulus = String.valueOf(sksABC);
+                        }
+                    }
+                    //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
+
+                    //operasi penjumlahan ipk
+                    penjumlahanIPK = jumlahBobot / penjumlahSKS;
+                    ipk.setText(decimalFormat.format(penjumlahanIPK));
+
+                    sks.setText(totalLulus);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
