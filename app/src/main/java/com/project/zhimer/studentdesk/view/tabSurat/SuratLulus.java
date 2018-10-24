@@ -30,7 +30,7 @@ public class SuratLulus extends Fragment {
 
         tanggalLulus = (TextView) view.findViewById(R.id.tvTanggalLulus);
 
-        tanggalLulus.setText("12 Oktober 2018");
+        tanggalLulus.setText("---");
 
         return view;
     }

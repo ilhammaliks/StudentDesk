@@ -61,19 +61,10 @@ public class HistorySurat extends Fragment {
     }
 
     private void DataListSurat() {
-        Surat surat = new Surat("1 Desember 2018", "Magang\n(Bahasa Indonesia)", "8 Desember 2018");
+        Surat surat = new Surat("20 July 2017", "Magang\n(Bahasa Indonesia)", "23 July 2017");
         suratList.add(surat);
 
-        surat = new Surat("1 November 2018", "Magang\n(Bahasa Indonesia)", "8 november 2018");
-        suratList.add(surat);
-
-        surat = new Surat("1 Oktober 2018", "Mahasiswa\n(Bahasa Indonesia)", "8 Oktober 2018");
-        suratList.add(surat);
-
-        surat = new Surat("10 September 2018", "Mahasiswa\n(Bahasa Indonesia)", "18 September 2018");
-        suratList.add(surat);
-
-        surat = new Surat("11 September 2018", "Surat PKL / Magang\n(Bahasa Indonesia)", "18 September 2018");
+        surat = new Surat("20 July 2017", "Magang\n(Bahasa Inggris)", "23 July 2017");
         suratList.add(surat);
 
         mAdapter.notifyDataSetChanged();

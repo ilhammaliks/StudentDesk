@@ -49,14 +49,5 @@ public class Jadwal extends Fragment {
     private void DataJadwalKuliah() {
         Kuliah jadwal = new Kuliah("IF15A", "Tugas Akhir", "6", "Senin, 07:00 - 12:00", "RIRI SAFITRI", "516");
         kuliahList.add(jadwal);
-
-        jadwal = new Kuliah("IF15A", "Basis Data", "3", "Selasa, 07:00 - 12:00", "Endang Ripmiatin", "518");
-        kuliahList.add(jadwal);
-
-        jadwal = new Kuliah("IF15A", "Basis Data Lanjut", "3", "Rabu, 07:00 - 12:00", "Endang Ripmiatin", "512");
-        kuliahList.add(jadwal);
-
-        jadwal = new Kuliah("IF15A", "Applied Networking", "3", "Kamis, 07:00 - 12:00", "Pandri", "511A");
-        kuliahList.add(jadwal);
     }
 }

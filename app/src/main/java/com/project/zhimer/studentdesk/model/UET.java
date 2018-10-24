@@ -3,7 +3,8 @@ package com.project.zhimer.studentdesk.model;
 public class UET {
 
     private String tanggal;
-    private String pengirim;
+    private String score;
+    private Integer max;
 
     public UET() {
         // Required empty public constructor
@@ -17,12 +18,12 @@ public class UET {
         this.tanggal = tanggal;
     }
 
-    public String getPengirim() {
-        return pengirim;
+    public String getScore() {
+        return score;
     }
 
-    public void setPengirim(String pengirim) {
-        this.pengirim = pengirim;
+    public void setScore(String score) {
+        this.score = score;
     }
 
     public Integer getMax() {

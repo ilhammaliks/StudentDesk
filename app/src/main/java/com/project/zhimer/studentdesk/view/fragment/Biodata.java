@@ -11,13 +11,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
+import com.project.zhimer.studentdesk.SessionManager;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class Biodata extends Fragment {
 
     View view;
+    SessionManager sessionManager;
 
     ImageView foto;
 
@@ -39,17 +50,19 @@ public class Biodata extends Fragment {
 
         foto = view.findViewById(R.id.mahasiswa_foto);
 
-        mahasiswa_nama = (TextView) view.findViewById(R.id.mahasiswa_nama);
-        mahasiswa_nim = (TextView) view.findViewById(R.id.mahasiswa_nim);
-        mahasiswa_prodi = (TextView) view.findViewById(R.id.mahasiswa_prodi);
-        mahasiswa_dosen = (TextView) view.findViewById(R.id.mahasiswa_dosen);
-        mahasiswa_jalur = (TextView) view.findViewById(R.id.mahasiswa_jalur);
-        mahasiswa_status = (TextView) view.findViewById(R.id.mahasiswa_status);
-        mahasiswa_alamat = (TextView) view.findViewById(R.id.mahasiswa_alamat);
-        mahasiswa_kota = (TextView) view.findViewById(R.id.mahasiswa_kota);
-        mahasiswa_telp = (TextView) view.findViewById(R.id.mahasiswa_telp);
-        mahasiswa_phone = (TextView) view.findViewById(R.id.mahasiswa_phone);
-        mahasiswa_email = (TextView) view.findViewById(R.id.mahasiswa_email);
+        mahasiswa_nama = view.findViewById(R.id.mahasiswa_nama);
+        mahasiswa_nim = view.findViewById(R.id.mahasiswa_nim);
+        mahasiswa_prodi = view.findViewById(R.id.mahasiswa_prodi);
+        mahasiswa_dosen = view.findViewById(R.id.mahasiswa_dosen);
+        mahasiswa_jalur = view.findViewById(R.id.mahasiswa_jalur);
+        mahasiswa_status = view.findViewById(R.id.mahasiswa_status);
+        mahasiswa_alamat = view.findViewById(R.id.mahasiswa_alamat);
+        mahasiswa_kota = view.findViewById(R.id.mahasiswa_kota);
+        mahasiswa_telp = view.findViewById(R.id.mahasiswa_telp);
+        mahasiswa_phone = view.findViewById(R.id.mahasiswa_phone);
+        mahasiswa_email = view.findViewById(R.id.mahasiswa_email);
+
+        sessionManager = new SessionManager(getContext());
 
         //hardcode
         Picasso.with(getContext()).load(R.drawable.photo).into(foto);
@@ -77,5 +90,7 @@ public class Biodata extends Fragment {
         }
         return view;
     }
+
+
 
 }

@@ -39,7 +39,7 @@ public class UetAdapter extends RecyclerView.Adapter<UetAdapter.ViewHolder> {
 
 
         holder.tanggal.setText(uet.getTanggal());
-        holder.score.setText(uet.getPengirim());
+        holder.score.setText(uet.getScore());
 
     }
 

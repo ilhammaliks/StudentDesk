@@ -53,7 +53,7 @@ public class Keuangan extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        dataKeuangan();
+//        dataKeuangan();
 
         return view;
     }
