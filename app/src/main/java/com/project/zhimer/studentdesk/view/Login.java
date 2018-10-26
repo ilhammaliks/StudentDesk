@@ -112,7 +112,7 @@ public class Login extends AppCompatActivity {
                             String msg = getString(R.string.msg_token, token);
 
                             sessionManager.setToken(msg);
-                            Log.d("token1", msg);
+                            Log.d("token", msg);
                         }
                     });
 

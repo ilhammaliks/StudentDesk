@@ -16,6 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
+            android:text="Pilih Bahasa"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/bahasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:text="@string/field_keperluan"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/black"

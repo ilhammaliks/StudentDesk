@@ -54,18 +54,6 @@ public class PermintaanSurat extends Fragment implements Spinner.OnItemSelectedL
         tabLayout.setupWithViewPager(viewPager);
         setupViewPager(viewPager);
 
-        //spinner
-        spinner = view.findViewById(R.id.bahasa);
-
-        List<String> Bahasa = new ArrayList<String>();
-        Bahasa.add("Bahasa Indonesia");
-        Bahasa.add("English");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, Bahasa);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-
-        spinner.setAdapter(adapter);
-
         return view;
     }
 
