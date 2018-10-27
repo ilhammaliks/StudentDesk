@@ -69,25 +69,25 @@ public class SuratMagang extends Fragment {
                 divisi = etDivisi.getText().toString();
 
                 //set condition if user do not input data
-                if (perusahaan.isEmpty()){
+                if (perusahaan.isEmpty()) {
                     etPerusahaan.setError("nama perusahaan tidak boleh kosong");
                 } else {
                     checkPerusahaan = true;
                 }
 
-                if (ditujukan.isEmpty()){
+                if (ditujukan.isEmpty()) {
                     etDitujukan.setError("nama personel tidak boleh kosong");
                 } else {
                     checkDitujakn = true;
                 }
 
-                if (jabatan.isEmpty()){
+                if (jabatan.isEmpty()) {
                     etJabatan.setError("nama perusahaan tidak boleh kosong");
                 } else {
                     checkJabatan = true;
                 }
 
-                if (divisi.isEmpty()){
+                if (divisi.isEmpty()) {
                     etDivisi.setError("nama perusahaan tidak boleh kosong");
                 } else {
                     checkDivisi = true;
@@ -95,7 +95,7 @@ public class SuratMagang extends Fragment {
                 //End Condition
 
 
-                if (checkPerusahaan && checkDitujakn && checkJabatan && checkDivisi){
+                if (checkPerusahaan && checkDitujakn && checkJabatan && checkDivisi) {
 
                 }
             }

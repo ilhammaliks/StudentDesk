@@ -89,6 +89,9 @@ public class Jadwal extends Fragment {
                     int jumlahSks = 0;
                     String total = "";
 
+                    String jamMulai = "";
+                    String jamSelesai = "";
+
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
                         kuliah = new Kuliah();
@@ -97,15 +100,108 @@ public class Jadwal extends Fragment {
                         String kodeKelas = object.getString("nama");
                         String namaMatkul = object.getString("mtkl_nm");
                         String hari = object.getString("NamaHari");
+                        String mulai = object.getString("slot_mulai");
+                        String kelar = object.getString("slot_selesai");
                         String ruangan = object.getString("ruang");
+
+                        //jam mulai perkuliahan
+                        if (mulai.equals("1")) {
+                            jamMulai = "07.00";
+                        }
+                        if (mulai.equals("2")) {
+                            jamMulai = "07.50";
+                        }
+                        if (mulai.equals("3")) {
+                            jamMulai = "08.40";
+                        }
+                        if (mulai.equals("4")) {
+                            jamMulai = "09.30";
+                        }
+                        if (mulai.equals("5")) {
+                            jamMulai = "10.20";
+                        }
+                        if (mulai.equals("6")) {
+                            jamMulai = "11.00";
+                        }
+                        if (mulai.equals("7")) {
+                            jamMulai = "12.50";
+                        }
+                        if (mulai.equals("8")) {
+                            jamMulai = "13.40";
+                        }
+                        if (mulai.equals("9")) {
+                            jamMulai = "14.30";
+                        }
+                        if (mulai.equals("10")) {
+                            jamMulai = "15.30";
+                        }
+                        if (mulai.equals("11")) {
+                            jamMulai = "16.20";
+                        }
+                        if (mulai.equals("12")) {
+                            jamMulai = "17.10";
+                        }
+                        if (mulai.equals("13")) {
+                            jamMulai = "18.30";
+                        }
+                        if (mulai.equals("14")) {
+                            jamMulai = "19.30";
+                        }
+                        if (mulai.equals("15")) {
+                            jamMulai = "20.20";
+                        }
+
+                        //jam selesai perkuliahan
+                        if (kelar.equals("1")) {
+                            jamSelesai = "07.50";
+                        }
+                        if (kelar.equals("2")) {
+                            jamSelesai = "08.40";
+                        }
+                        if (kelar.equals("3")) {
+                            jamSelesai = "09.30";
+                        }
+                        if (kelar.equals("4")) {
+                            jamSelesai = "10.20";
+                        }
+                        if (kelar.equals("5")) {
+                            jamSelesai = "11.10";
+                        }
+                        if (kelar.equals("6")) {
+                            jamSelesai = "12.00";
+                        }
+                        if (kelar.equals("7")) {
+                            jamSelesai = "13.40";
+                        }
+                        if (kelar.equals("8")) {
+                            jamSelesai = "14.30";
+                        }
+                        if (kelar.equals("9")) {
+                            jamSelesai = "15.20";
+                        }
+                        if (kelar.equals("10")) {
+                            jamSelesai = "16.20";
+                        }
+                        if (kelar.equals("11")) {
+                            jamSelesai = "17.10";
+                        }
+                        if (kelar.equals("12")) {
+                            jamSelesai = "18.00";
+                        }
+                        if (kelar.equals("13")) {
+                            jamSelesai = "19.20";
+                        }
+                        if (kelar.equals("14")) {
+                            jamSelesai = "20.20";
+                        }
+                        if (kelar.equals("15")) {
+                            jamSelesai = "21.10";
+                        }
 
                         kuliah.setKelas(kodeKelas);
                         kuliah.setMataKuliah(namaMatkul);
                         kuliah.setSks(sksMatakuliah);
-                        kuliah.setHari(hari);
-//                        kuliah.setDosen();
-//                        kuliah.setMulai();
-//                        kuliah.setKelar();
+                        kuliah.setHari(hari + ", " + jamMulai + "-" + jamSelesai);
                         kuliah.setRuang(ruangan);
 
                         jumlahSks += sksMatakuliah;

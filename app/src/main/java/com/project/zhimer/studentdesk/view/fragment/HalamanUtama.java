@@ -76,7 +76,7 @@ public class HalamanUtama extends Fragment {
     }
 
     private void DataHalamanUtama() {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/" + sessionManager.getNim() + "/format/json";
+        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/mahasiswa_nim/" + sessionManager.getNim() + "/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
 

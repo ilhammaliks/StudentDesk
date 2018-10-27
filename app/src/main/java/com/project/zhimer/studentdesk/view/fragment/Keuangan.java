@@ -59,7 +59,7 @@ public class Keuangan extends Fragment {
     }
 
     private void dataKeuangan() {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/0102513010/format/json";
+        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/mahasiswa_nim/0102513010/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
         client.get(url, new JsonHttpResponseHandler() {
