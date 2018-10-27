@@ -88,7 +88,6 @@ public class RingkasanAkademik extends Fragment {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-//                        mahasiswa = new Mahasiswa();
 
                         String nim = object.getString("mhs_nim");
                         String nama = object.getString("mhs_nm");
