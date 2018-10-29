@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,7 @@ public class Keseluruhan extends Fragment {
         totalSks = view.findViewById(R.id.tvTotalSks);
 
         NilaiKeseluruhan();
+        DataUET();
 
         return view;
     }
@@ -134,8 +136,7 @@ public class Keseluruhan extends Fragment {
                             sksABC += sks;
                             totalLulus = String.valueOf(sksABC);
                         } else {
-                            if (huruf.equals("D") || huruf.equals("E"))
-                            {
+                            if (huruf.equals("D") || huruf.equals("E")) {
                                 sksDE += sks;
                                 totalUlang = String.valueOf(sksDE);
                             }
@@ -154,15 +155,47 @@ public class Keseluruhan extends Fragment {
 
                     sksLulus.setText(totalLulus);
 
-                    if (sksDE == 0)
-                    {
+                    if (sksDE == 0) {
                         sksUlang.setText("0");
-                    }
-                    else{
+                    } else {
                         sksUlang.setText(totalUlang);
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
 
-                    nilaiUet.setText("490");
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
+    private void DataUET() {
+        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/UET/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject object = new JSONObject(response.toString());
+                    JSONArray jsonArray = object.getJSONArray("data");
+
+                    for (int i = jsonArray.length() - 1; i >= 0; i--) {
+                        JSONObject objek = jsonArray.getJSONObject(i);
+
+                        String score = objek.getString("nilai");
+
+                        nilaiUet.setText(score);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

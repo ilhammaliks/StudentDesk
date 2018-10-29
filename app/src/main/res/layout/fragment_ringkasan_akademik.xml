@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:id="@+id/ringkasanAkademik"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ringkasanAkademik"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -198,6 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
                     android:baselineAligned="false"
                     android:orientation="horizontal">
 
@@ -276,8 +277,8 @@
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/subtitle_gradeNilai"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -287,8 +288,8 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="50dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="50dp"
                 android:background="@android:color/white">
 
@@ -313,8 +314,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/kolom_jumlah"
@@ -362,8 +363,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@android:color/white"
                         android:text="@string/b"
@@ -391,8 +392,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@android:color/white"
                         android:text="@string/c"
@@ -420,8 +421,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@android:color/white"
                         android:text="@string/d"
@@ -449,8 +450,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@android:color/white"
                         android:text="@string/e"
@@ -484,8 +485,8 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
                 android:background="@android:color/white">
 
                 <TableRow
@@ -508,7 +509,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginEnd="1dp"
                         android:layout_weight="2"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/kolom_matakuliah"
@@ -520,7 +523,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginEnd="1dp"
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/field_sks"
@@ -532,7 +537,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginEnd="1dp"
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/kolom_nilai"

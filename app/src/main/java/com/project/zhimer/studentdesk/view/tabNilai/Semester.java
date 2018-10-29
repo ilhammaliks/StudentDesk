@@ -62,10 +62,15 @@ public class Semester extends Fragment {
                 super.onSuccess(statusCode, headers, response);
 
                 try {
-                    JSONObject object = new JSONObject(response.toString());
-                    JSONObject objectData = object.getJSONObject("data");
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                    Log.d("jumlah", objectData.length() + "");
+                    for (int i = 0; i<jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+
+
+                    }
+
 
 
 

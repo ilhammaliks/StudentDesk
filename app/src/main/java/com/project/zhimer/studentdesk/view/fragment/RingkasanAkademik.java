@@ -3,6 +3,7 @@ package com.project.zhimer.studentdesk.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,22 +15,31 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
+import com.project.zhimer.studentdesk.adapter.MatakuliahUlangAdapter;
+import com.project.zhimer.studentdesk.model.Nilai;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
 public class RingkasanAkademik extends Fragment {
 
     View view;
-    SessionManager sessionManager;
     TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi, mahasiswa_dosen, mahasiswa_jalur, mahasiswa_status,
-            jumlahSks, ipk, a, b, c, d, e;
+    jumlahSks, ipk, a, b, c, d, e;
+
     private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private LinearLayoutManager manager;
+    private ArrayList<Nilai> listMatkulUlang;
+    SessionManager sessionManager;
+    Nilai nilai;
+
 
 
     public RingkasanAkademik() {
@@ -42,6 +52,9 @@ public class RingkasanAkademik extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_ringkasan_akademik, container, false);
+
+        listMatkulUlang = new ArrayList<>();
+        adapter = new MatakuliahUlangAdapter(listMatkulUlang, getActivity());
 
         mahasiswa_nama = view.findViewById(R.id.mahasiswa_nama);
         mahasiswa_nim = view.findViewById(R.id.mahasiswa_nim);
@@ -59,6 +72,9 @@ public class RingkasanAkademik extends Fragment {
         e = view.findViewById(R.id.jumlahE);
 
         recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
 
         sessionManager = new SessionManager(getContext());
 
@@ -159,6 +175,18 @@ public class RingkasanAkademik extends Fragment {
                         if (huruf.equals("A") || huruf.equals("B") || huruf.equals("C")) {
                             jumlahSksLulus += sks;
                             totalLulus = String.valueOf(jumlahSksLulus);
+                        }
+
+                        if (huruf.equals("D") || huruf.equals("E")) {
+                            nilai = new Nilai();
+
+                            nilai.setKodeMK(kodeMK);
+                            nilai.setNamaMK(namaMK);
+                            nilai.setSks(sks);
+                            nilai.setHuruf(huruf);
+
+                            listMatkulUlang.add(nilai);
+                            adapter.notifyDataSetChanged();
                         }
 
                         if (huruf.equals("A")) {
