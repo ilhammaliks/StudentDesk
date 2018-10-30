@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import cz.msebera.android.httpclient.Header;
 
 
@@ -27,7 +29,7 @@ public class Semester extends Fragment {
 
     Nilai nilai;
     SessionManager sessionManager;
-
+    ArrayList<String> dataTahun;
 
     public Semester() {
         // Required empty public constructor
@@ -42,6 +44,7 @@ public class Semester extends Fragment {
 
         sessionManager = new SessionManager(getContext());
 
+        dataTahun = new ArrayList<>();
         NilaiPersemester();
 
         return view;
@@ -65,14 +68,16 @@ public class Semester extends Fragment {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                    for (int i = 0; i<jsonArray.length(); i++) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
+                        String tahunAjaran = object.getString("tahun_ajaran2");
 
-
+                        if (!dataTahun.contains(tahunAjaran)) {
+                            dataTahun.add(tahunAjaran);
+                        }
                     }
 
-
-
+                    getDataTahunAjaran(jsonArray); //get data tahun ajaran
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -86,4 +91,23 @@ public class Semester extends Fragment {
         });
     }
 
+    private void getDataTahunAjaran(JSONArray jsonArray) {
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            try {
+                JSONObject object = jsonArray.getJSONObject(i);
+                String tahunAjaran = object.getString("tahun_ajaran2");
+                String dataMatkul = object.getString("NamaMK");
+
+                if (tahunAjaran.equals(dataTahun.get(0))){
+                    Log.d("matkul", dataMatkul);
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
