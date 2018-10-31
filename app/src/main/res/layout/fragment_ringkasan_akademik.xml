@@ -25,6 +25,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="@string/nav_ringkasan_akademik"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:background="@color/white"/>
+
                 <LinearLayout
                     android:id="@+id/nama"
                     android:layout_width="match_parent"
@@ -510,8 +521,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="2"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/kolom_matakuliah"
@@ -524,8 +535,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/field_sks"
@@ -538,8 +549,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:background="@color/colorPrimaryDark"
                         android:text="@string/kolom_nilai"

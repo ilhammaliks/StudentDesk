@@ -18,7 +18,7 @@
     <string name="menu_krs_semester_pendek">KRS Semester Pendek</string>
     <string name="menu_perkuliahan_sp">Perkuliahan SP</string>
     <string name="menu_nilai_sp">Nilai SP</string>
-    <string name="menu_daftar_sidang">Daftar SIdang</string>
+    <string name="menu_daftar_sidang">Daftar Sidang</string>
     <string name="menu_daftar_wisuda">Daftar Wisuda</string>
 
     <string name="hint_nim">NIM</string>

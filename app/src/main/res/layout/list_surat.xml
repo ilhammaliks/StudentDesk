@@ -9,13 +9,12 @@
         android:id="@+id/surat_tanggal_buat"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="1dp"
-        android:layout_marginEnd="1dp"
         android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         android:layout_weight="1"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:text="TextView"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -23,13 +22,11 @@
         android:id="@+id/surat_jenis"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginBottom="1dp"
         android:layout_weight="1"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:text="TextView"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -37,15 +34,11 @@
         android:id="@+id/surat_jadi"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginBottom="1dp"
         android:layout_weight="1"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:text="TextView"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-
 </TableRow>

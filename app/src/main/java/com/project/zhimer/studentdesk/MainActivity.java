@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         prodi = header.findViewById(R.id.mahasiswa_prodi);
         tahun = header.findViewById(R.id.mahasiswa_tahun);
 
+        MenuRequirements();
         DataMahasiswa();
         DataGradeSksIpk();
         DataUet();
@@ -124,15 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Hardcode
         Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
 
-        /*sks.setText("139");
-        ipk.setText("3.75");
-        uet.setText("560");
-        tilawah.setText("---");*/
-
-        /*nama.setText("Ilham Malik Muhammad");
-        nim.setText("0102513010");
-        prodi.setText("Teknik Informatika");
-        tahun.setText("2013");*/
+        tilawah.setText("---");
 
 
         //fragment variable
@@ -177,40 +170,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-//                        mahasiswa = new Mahasiswa();
 
                         String nimMahasiswa = object.getString("mhs_nim");
                         String namaMahasiswa = object.getString("mhs_nm");
                         String tahunMahasiswa = object.getString("mhs_ank");
-//                        String alamat = object.getString("mhs_alm");
-//                        String kota = object.getString("mhs_kota");
-//                        String kodePos = object.getString("kodepos");
-//                        String telp = object.getString("mhs_telepon");
-//                        String phone = object.getString("mhs_hp");
-//                        String email = object.getString("mhs_email");
                         String prodiMahasiswa = object.getString("NamaProgdi");
-//                        String pembimbing = object.getString("DosenPembimbing");
-//                        String jalurMasuk = object.getString("NamaJalurMasuk");
-//                        String statusAkademik = object.getString("NamaStatusAkademik");
-
-                        /*mahasiswa.setNim(nimMahasiswa);
-                        mahasiswa.setNama(namaMahasiswa);
-                        mahasiswa.setTahun(tahunMahasiswa);
-                        mahasiswa.setAlamat(alamat);
-                        mahasiswa.setKota(kota);
-                        mahasiswa.setKodePos(kodePos);
-                        mahasiswa.setTelp(telp);
-                        mahasiswa.setPhone(phone);
-                        mahasiswa.setEmail(email);
-                        mahasiswa.setProdi(prodiMahasiswa);
-                        mahasiswa.setPembimbing(pembimbing);
-                        mahasiswa.setJalurMasuk(jalurMasuk);
-                        mahasiswa.setStatusAkademik(statusAkademik);*/
-
-                        /*nama.setText(mahasiswa.getNama());
-                        nim.setText(mahasiswa.getNim());
-                        prodi.setText(mahasiswa.getProdi());
-                        tahun.setText(mahasiswa.getTahun());*/
 
                         nama.setText(namaMahasiswa);
                         nim.setText(nimMahasiswa);
@@ -314,13 +278,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     JSONArray jsonArray = object.getJSONArray("data");
 
                     Log.d("dataUet", object.length() + "");
-                    
+
                     for (int i = jsonArray.length() - 1; i >= 0; i--) {
                         JSONObject objek = jsonArray.getJSONObject(i);
 
                         String score = objek.getString("nilai");
 
                         uet.setText(score);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
+    private void MenuRequirements() {
+
+        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaipersemester/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+
+                        String namaMK = object.getString("mtkl_nm");
+                        String nilai = object.getString("HA");
+
+                        if (namaMK.equals("Tugas Akhir") || namaMK.equals("Skripsi")) {
+                            Menu nav_menu = navigationView.getMenu();
+                            nav_menu.findItem(R.id.daftar_sidang).setVisible(true);
+                        } else {
+                            Menu nav_menu = navigationView.getMenu();
+                            nav_menu.findItem(R.id.daftar_sidang).setVisible(false);
+                        }
+
+                        if (namaMK.equals("Tugas Akhir") || namaMK.equals("Skripsi")) {
+                            Menu nav_menu = navigationView.getMenu();
+                            nav_menu.findItem(R.id.daftar_wisuda).setVisible(true);
+                        } else {
+                            Menu nav_menu = navigationView.getMenu();
+                            nav_menu.findItem(R.id.daftar_wisuda).setVisible(false);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

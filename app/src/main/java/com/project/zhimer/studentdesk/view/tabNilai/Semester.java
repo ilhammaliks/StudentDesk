@@ -132,7 +132,7 @@ public class Semester extends Fragment {
 
     private void getDataTahunAjaran1(JSONArray jsonArray) throws JSONException {
 
-             Integer x = 0;
+        Integer x = 0;
 
         for (int j = 0; j < jsonArray.length(); j++) {
             JSONObject object = jsonArray.getJSONObject(j);
@@ -174,7 +174,6 @@ public class Semester extends Fragment {
 
                 }
 
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -182,3 +181,5 @@ public class Semester extends Fragment {
         Log.d("semester1", Arrays.toString(semester1));
     }
 }
+
+
