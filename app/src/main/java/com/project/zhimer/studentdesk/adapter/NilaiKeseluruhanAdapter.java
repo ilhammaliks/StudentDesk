@@ -1,6 +1,7 @@
 package com.project.zhimer.studentdesk.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,7 +42,14 @@ public class NilaiKeseluruhanAdapter extends RecyclerView.Adapter<NilaiKeseluruh
         holder.nomor.setText(String.valueOf(position + 1));
         holder.kodeMK.setText(nilai.getKodeMK());
         holder.namaMK.setText(nilai.getNamaMK());
-        holder.hurufMK.setText(nilai.getHuruf());
+
+        if (nilai.getHuruf().equals("D") || nilai.getHuruf().equals("E")) {
+            holder.hurufMK.setText(nilai.getHuruf());
+            holder.hurufMK.setTextColor(Color.RED);
+        } else {
+            holder.hurufMK.setText(nilai.getHuruf());
+        }
+
         holder.angkaMK.setText(nilai.getAngka().toString());
         holder.sksMK.setText(nilai.getSks().toString());
         holder.bobotMK.setText(nilai.getBobot().toString());

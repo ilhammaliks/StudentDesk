@@ -19,7 +19,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -77,6 +79,11 @@ public class Semester extends Fragment {
                         }
                     }
 
+                    for (int j = 0; j < dataTahun.size(); j++) {
+
+                        Log.d("DataTahunAjaran", dataTahun.get(j));
+                    }
+
                     getDataTahunAjaran(jsonArray); //get data tahun ajaran
 
                 } catch (JSONException e) {
@@ -94,14 +101,26 @@ public class Semester extends Fragment {
     private void getDataTahunAjaran(JSONArray jsonArray) {
 
         for (int i = 0; i < jsonArray.length(); i++) {
-
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
                 String tahunAjaran = object.getString("tahun_ajaran2");
+                Integer semester = object.getInt("semester2");
                 String dataMatkul = object.getString("NamaMK");
 
-                if (tahunAjaran.equals(dataTahun.get(0))){
-                    Log.d("matkul", dataMatkul);
+                Integer k = 0;
+                if (tahunAjaran.equals(dataTahun.get(k))) {
+                    if (semester == 1) {
+                        Log.d("matkul", semester + ", " + dataMatkul);
+                    }
+
+                    if (semester == 2) {
+                        Log.d("matkul", semester + ", " + dataMatkul);
+                    }
+
+                    if (semester == 3) {
+                        Log.d("matkul", semester + ", " + dataMatkul);
+                    }
+                    k++;
                 }
 
 
@@ -109,5 +128,57 @@ public class Semester extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void getDataTahunAjaran1(JSONArray jsonArray) throws JSONException {
+
+             Integer x = 0;
+
+        for (int j = 0; j < jsonArray.length(); j++) {
+            JSONObject object = jsonArray.getJSONObject(j);
+            Integer semester = object.getInt("semester2");
+            String tahunAjaran = object.getString("tahun_ajaran2");
+            if (tahunAjaran.equals(dataTahun.get(0))) {
+                if (semester == 1) {
+                    x++;
+                }
+            }
+        }
+
+        String[] semester1 = new String[x];
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            try {
+
+                int bobot = 0;
+
+                JSONObject object = jsonArray.getJSONObject(i);
+                String tahunAjaran = object.getString("tahun_ajaran2");
+
+                Integer semester = object.getInt("semester2");
+                String dataMatkul = object.getString("NamaMK");
+                Integer sks = object.getInt("mtkl_sks");
+                String nilaiHuruf = object.getString("HM");
+                Integer nilaiAngka = object.getInt("HA");
+
+                bobot = sks * nilaiAngka;
+
+                Log.d("DataTahun", tahunAjaran);
+
+
+                if (tahunAjaran.equals(dataTahun.get(0))) {
+                    if (semester == 1) {
+                        semester1[i] = dataMatkul;
+                    }
+
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        Log.d("semester1", Arrays.toString(semester1));
     }
 }

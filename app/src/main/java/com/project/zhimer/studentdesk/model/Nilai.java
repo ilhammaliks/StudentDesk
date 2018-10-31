@@ -15,6 +15,8 @@ public class Nilai {
     private Integer sksLulus;
     private Integer sksUlang;
 
+    private String semester;
+
 
     public String getKodeMK() {
         return kodeMK;
@@ -102,5 +104,13 @@ public class Nilai {
 
     public void setSksUlang(Integer sksUlang) {
         this.sksUlang = sksUlang;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
 }
