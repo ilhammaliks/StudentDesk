@@ -18,6 +18,7 @@ import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.NilaiKeseluruhanAdapter;
 import com.project.zhimer.studentdesk.model.Nilai;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +41,8 @@ public class Keseluruhan extends Fragment {
     Nilai nilai;
 
     TextView ipk, totalSks, sksLulus, sksUlang, nilaiUet;
+
+    ProgressView progressView;
 
 
     public Keseluruhan() {
@@ -68,6 +71,10 @@ public class Keseluruhan extends Fragment {
         sksUlang = view.findViewById(R.id.tvSksUlang);
         nilaiUet = view.findViewById(R.id.tvNilaiUet);
         totalSks = view.findViewById(R.id.tvTotalSks);
+        progressView = view.findViewById(R.id.circular);
+
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
 
         NilaiKeseluruhan();
         DataUET();
@@ -144,8 +151,10 @@ public class Keseluruhan extends Fragment {
 
                         listSeluruhNilai.add(nilai);
                         adapter.notifyDataSetChanged();
+
+                        progressView.stop();
+                        progressView.setVisibility(View.GONE);
                     }
-                    //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
 
                     //operasi penjumlahan ipk
                     penjumlahanIPK = jumlahBobot / penjumlahSKS;
@@ -160,6 +169,8 @@ public class Keseluruhan extends Fragment {
                     } else {
                         sksUlang.setText(totalUlang);
                     }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

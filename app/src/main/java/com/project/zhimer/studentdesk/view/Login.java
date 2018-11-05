@@ -117,7 +117,7 @@ public class Login extends AppCompatActivity {
                     });
 
                     FirebaseMessaging.getInstance().subscribeToTopic("Akademik");
-                    progress.stop();
+
                     //finish();
                 } else {
                     toastFail.setAlpha(1);
@@ -150,6 +150,7 @@ public class Login extends AppCompatActivity {
                         Intent login = new Intent(Login.this, MainActivity.class);
                         Login.this.startActivity(login);
                         sessionManager.setLogin(true);
+                        progress.stop();
                         finish();
                     } else {
                         showMsgError();

@@ -71,12 +71,12 @@ public class HalamanUtama extends Fragment {
         sessionManager = new SessionManager(getContext());
 
         DataHalamanUtama();
-        progress.stop();
+
         return view;
     }
 
     private void DataHalamanUtama() {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/mahasiswa_nim/" + sessionManager.getNim() + "/format/json";
+        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/" + sessionManager.getNim() + "/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth("admin", "1234");
 
@@ -124,6 +124,7 @@ public class HalamanUtama extends Fragment {
 
                         //tambah method notifyDataSetChanged() tujuannya setiap data di add adapternya bakal berubah
                         adapter.notifyDataSetChanged();
+                        progress.stop();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

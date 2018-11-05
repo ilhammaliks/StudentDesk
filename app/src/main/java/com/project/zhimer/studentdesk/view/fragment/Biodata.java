@@ -16,6 +16,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
+import com.rey.material.widget.ProgressView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -36,6 +37,8 @@ public class Biodata extends Fragment {
             mahasiswa_status, mahasiswa_alamat, mahasiswa_kota, mahasiswa_telp, mahasiswa_phone,
             mahasiswa_email;
 
+    ProgressView progressView;
+
 
     public Biodata() {
         // Required empty public constructor
@@ -47,6 +50,8 @@ public class Biodata extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_biodata, container, false);
+
+        progressView = view.findViewById(R.id.circular);
 
         foto = view.findViewById(R.id.mahasiswa_foto);
 
@@ -63,6 +68,9 @@ public class Biodata extends Fragment {
         mahasiswa_email = view.findViewById(R.id.mahasiswa_email);
 
         sessionManager = new SessionManager(getContext());
+
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
         DataBio();
 
         //hardcode
@@ -128,6 +136,8 @@ public class Biodata extends Fragment {
                         mahasiswa_phone.setText(phone);
                         mahasiswa_email.setText(email);
 
+                        progressView.stop();
+                        progressView.setVisibility(View.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

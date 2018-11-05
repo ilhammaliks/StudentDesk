@@ -3,6 +3,10 @@
     package="com.project.zhimer.studentdesk">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".App"
@@ -15,21 +19,21 @@
         <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity" />
-
         <activity
             android:name=".view.Login"
             android:screenOrientation="portrait" />
-
 
         <service android:name=".firebase.MessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
     </application>
+
 </manifest>
