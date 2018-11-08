@@ -89,7 +89,7 @@ public class Biodata extends Fragment {
     }
 
     private void DataBio() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/biodata/LihatBiodata/format/json";
+        String url = sessionManager.getUrl() + "/biodata/LihatBiodata/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 

@@ -83,7 +83,7 @@ public class Keseluruhan extends Fragment {
     }
 
     private void NilaiKeseluruhan() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaikeseluruhan/format/json";
+        String url = sessionManager.getUrl() + "/akademik/daftarnilaikeseluruhan/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         client.setBasicAuth("admin", "1234");
@@ -184,7 +184,7 @@ public class Keseluruhan extends Fragment {
     }
 
     private void DataUET() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/UET/format/json";
+        String url = sessionManager.getUrl() + "/akademik/UET/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         client.setBasicAuth("admin", "1234");

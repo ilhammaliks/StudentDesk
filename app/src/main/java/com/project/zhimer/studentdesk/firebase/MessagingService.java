@@ -40,7 +40,7 @@ public class MessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo_uai)
                 .setLargeIcon(BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.logo_uai))
-                .setContentTitle("Student Desk Notifocation")
+                .setContentTitle("Student Desk Notification")
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(soundUri)

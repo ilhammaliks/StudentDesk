@@ -3,10 +3,13 @@ package com.project.zhimer.studentdesk.view.tabNilai;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -14,6 +17,8 @@ import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.model.Nilai;
+import com.project.zhimer.studentdesk.model.SemesterChild;
+import com.project.zhimer.studentdesk.model.SemesterGroup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,14 +27,19 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
 
 public class Semester extends Fragment {
     View view;
+    private RecyclerView listSemester;
+    private LinearLayoutManager linearLayoutManager;
 
-    Nilai nilai;
+    List<SemesterGroup> semesterGroupList;
+    List<SemesterChild> semesterChildList;
+
     SessionManager sessionManager;
     ArrayList<String> dataTahun;
 
@@ -43,17 +53,23 @@ public class Semester extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.tab_nilai_semester, container, false);
+        listSemester = view.findViewById(R.id.listSemester);
 
         sessionManager = new SessionManager(getContext());
 
-        dataTahun = new ArrayList<>();
-        NilaiPersemester();
+        semesterGroupList = new ArrayList<>();
+
+        //get data
+        GetNilaiSemester();
+
+//        dataTahun = new ArrayList<>();
+//        NilaiPersemester();
 
         return view;
     }
 
-    private void NilaiPersemester() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaipersemester/format/json";
+    private void GetNilaiSemester() {
+        String url = sessionManager.getUrl() + "/akademik/daftarnilaipersemester/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
@@ -72,6 +88,51 @@ public class Semester extends Fragment {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
+                        String semester = object.getString("semester2");
+
+                        String kodeMk = object.getString("KodeMK");
+                        String namaMk = object.getString("mtkl_nm");
+                        Integer sks = object.getInt("mtkl_sks");
+                        String nilaiHuruf = object.getString("HM");
+
+                        SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk,nilaiHuruf, sks);
+                        semesterChildList.add(semesterChild);
+                        semesterGroupList.add(new SemesterGroup(semester,semesterChildList));
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
+    private void NilaiPersemester() {
+        String url = sessionManager.getUrl() + "/akademik/daftarnilaipersemester/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        client.setBasicAuth("admin", "1234");
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+/*
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
                         String tahunAjaran = object.getString("tahun_ajaran2");
 
                         if (!dataTahun.contains(tahunAjaran)) {
@@ -85,6 +146,7 @@ public class Semester extends Fragment {
                     }
 
                     getDataTahunAjaran(jsonArray); //get data tahun ajaran
+*/
 
                 } catch (JSONException e) {
                     e.printStackTrace();

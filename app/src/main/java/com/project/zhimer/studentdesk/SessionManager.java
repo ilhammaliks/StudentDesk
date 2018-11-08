@@ -54,12 +54,21 @@ public class SessionManager {
         return preferences.getBoolean("login", false);
     }
 
-    public void setToken(String data){
+    public void setToken(String data) {
         editor.putString("token", data);
         editor.apply();
     }
 
-    public String getToken(){
+    public String getToken() {
         return preferences.getString("token", "");
+    }
+
+    public void setUrl(String data) {
+        editor.putString("url", data);
+        editor.apply();
+    }
+
+    public String getUrl() {
+        return preferences.getString("url", "https://studentdesk.uai.ac.id/api/index.php");
     }
 }
