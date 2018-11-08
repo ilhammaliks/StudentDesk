@@ -73,7 +73,7 @@ public class Semester extends Fragment {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
@@ -90,6 +90,8 @@ public class Semester extends Fragment {
                         JSONObject object = jsonArray.getJSONObject(i);
                         String semester = object.getString("semester2");
 
+                        semesterChildList = new ArrayList<>();
+
                         String kodeMk = object.getString("KodeMK");
                         String namaMk = object.getString("mtkl_nm");
                         Integer sks = object.getInt("mtkl_sks");
@@ -99,6 +101,8 @@ public class Semester extends Fragment {
                         semesterChildList.add(semesterChild);
                         semesterGroupList.add(new SemesterGroup(semester,semesterChildList));
                     }
+
+                    Log.d("resultArray", semesterChildList.size()+" "+semesterGroupList.size());
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -117,7 +121,7 @@ public class Semester extends Fragment {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 

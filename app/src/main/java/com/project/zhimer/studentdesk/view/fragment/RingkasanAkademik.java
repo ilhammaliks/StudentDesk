@@ -85,11 +85,11 @@ public class RingkasanAkademik extends Fragment {
 
 
     private void DataBio() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/biodata/LihatBiodata/format/json";
+        String url = sessionManager.getUrl() + "/biodata/LihatBiodata/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
@@ -132,10 +132,10 @@ public class RingkasanAkademik extends Fragment {
     }
 
     private void DataRingkasAkademik() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaikeseluruhan/format/json";
+        String url = sessionManager.getUrl() + "/akademik/daftarnilaikeseluruhan/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 

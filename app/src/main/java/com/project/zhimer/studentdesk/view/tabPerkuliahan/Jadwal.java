@@ -69,10 +69,10 @@ public class Jadwal extends Fragment {
     }
 
     private void DataJadwalKuliah() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/jadwal/JadwalKuliah/format/json";
+        String url = sessionManager.getUrl() + "/jadwal/JadwalKuliah/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 

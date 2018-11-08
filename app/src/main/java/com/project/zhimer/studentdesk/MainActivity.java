@@ -152,11 +152,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void DataMahasiswa() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/biodata/LihatBiodata/format/json";
+        String url = sessionManager.getUrl() + "/biodata/LihatBiodata/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
         client.post(url, params, new JsonHttpResponseHandler() {
@@ -195,10 +195,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void DataGradeSksIpk() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaikeseluruhan/format/json";
+        String url = sessionManager.getUrl() + "/akademik/daftarnilaikeseluruhan/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
@@ -261,10 +261,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void DataUet() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/UET/format/json";
+        String url = sessionManager.getUrl() + "/akademik/UET/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
@@ -300,10 +300,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void MenuRequirements() {
 
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaipersemester/format/json";
+        String url = sessionManager.getUrl() + "/akademik/daftarnilaipersemester/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 

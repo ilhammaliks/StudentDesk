@@ -75,10 +75,10 @@ public class UaiEnglishTest extends Fragment {
     }
 
     private void DataUaiEnglishTest() {
-        String url = "https://studentdesk.uai.ac.id/api/index.php/akademik/UET/format/json";
+        String url = sessionManager.getUrl() + "/akademik/UET/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth("admin", "1234");
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
