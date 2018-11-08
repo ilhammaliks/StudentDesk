@@ -42,6 +42,7 @@ public class Semester extends Fragment {
 
     SessionManager sessionManager;
     ArrayList<String> dataTahun;
+    ArrayList<String> dataSemester;
 
     public Semester() {
         // Required empty public constructor
@@ -62,8 +63,9 @@ public class Semester extends Fragment {
         //get data
         GetNilaiSemester();
 
-//        dataTahun = new ArrayList<>();
-//        NilaiPersemester();
+        dataTahun = new ArrayList<>();
+        dataSemester = new ArrayList<>();
+        NilaiPersemester();
 
         return view;
     }
@@ -97,12 +99,12 @@ public class Semester extends Fragment {
                         Integer sks = object.getInt("mtkl_sks");
                         String nilaiHuruf = object.getString("HM");
 
-                        SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk,nilaiHuruf, sks);
+                        SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
                         semesterChildList.add(semesterChild);
-                        semesterGroupList.add(new SemesterGroup(semester,semesterChildList));
+                        semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
                     }
 
-                    Log.d("resultArray", semesterChildList.size()+" "+semesterGroupList.size());
+                    Log.d("resultArray", semesterChildList.size() + " " + semesterGroupList.size());
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -133,14 +135,17 @@ public class Semester extends Fragment {
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
-/*
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
                         String tahunAjaran = object.getString("tahun_ajaran2");
+                        String semester = object.getString("semester2");
 
                         if (!dataTahun.contains(tahunAjaran)) {
                             dataTahun.add(tahunAjaran);
+                        }
+                        if (!dataTahun.contains(semester)) {
+                            dataSemester.add(semester);
                         }
                     }
 
@@ -149,8 +154,11 @@ public class Semester extends Fragment {
                         Log.d("DataTahunAjaran", dataTahun.get(j));
                     }
 
+                    for (int k = 0; k < dataSemester.size(); k++) {
+                        Log.d("DataSemester", dataSemester.get(k));
+                    }
+
                     getDataTahunAjaran(jsonArray); //get data tahun ajaran
-*/
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -167,29 +175,29 @@ public class Semester extends Fragment {
     private void getDataTahunAjaran(JSONArray jsonArray) {
 
         for (int i = 0; i < jsonArray.length(); i++) {
+            Log.d("length", jsonArray.length() + "");
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
                 String tahunAjaran = object.getString("tahun_ajaran2");
                 Integer semester = object.getInt("semester2");
                 String dataMatkul = object.getString("NamaMK");
 
-                Integer k = 0;
-                if (tahunAjaran.equals(dataTahun.get(k))) {
-                    if (semester == 1) {
-                        Log.d("matkul", semester + ", " + dataMatkul);
-                    }
 
-                    if (semester == 2) {
-                        Log.d("matkul", semester + ", " + dataMatkul);
-                    }
+                for (int l = 0; l < dataTahun.size(); l++) {
+                    if (tahunAjaran.equals(dataTahun.get(l))) {
+                        if (semester == 1) {
+                            Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
+                        }
 
-                    if (semester == 3) {
-                        Log.d("matkul", semester + ", " + dataMatkul);
+                        if (semester == 2) {
+                            Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
+                        }
+
+                        if (semester == 3) {
+                            Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
+                        }
                     }
-                    k++;
                 }
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
