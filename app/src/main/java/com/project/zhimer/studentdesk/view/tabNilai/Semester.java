@@ -179,24 +179,59 @@ public class Semester extends Fragment {
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
                 String tahunAjaran = object.getString("tahun_ajaran2");
-                Integer semester = object.getInt("semester2");
+                String semester = object.getString("semester2");
                 String dataMatkul = object.getString("NamaMK");
 
 
                 for (int l = 0; l < dataTahun.size(); l++) {
                     if (tahunAjaran.equals(dataTahun.get(l))) {
-                        if (semester == 1) {
+                        if (semester.equals("1")) {
                             Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
+
+                            semesterChildList = new ArrayList<>();
+
+                            String kodeMk = object.getString("KodeMK");
+                            String namaMk = object.getString("mtkl_nm");
+                            Integer sks = object.getInt("mtkl_sks");
+                            String nilaiHuruf = object.getString("HM");
+
+                            SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
+                            semesterChildList.add(semesterChild);
+                            semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
                         }
 
-                        if (semester == 2) {
+                        if (semester.equals("2")) {
                             Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
+
+                            semesterChildList = new ArrayList<>();
+
+                            String kodeMk = object.getString("KodeMK");
+                            String namaMk = object.getString("mtkl_nm");
+                            Integer sks = object.getInt("mtkl_sks");
+                            String nilaiHuruf = object.getString("HM");
+
+                            SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
+                            semesterChildList.add(semesterChild);
+                            semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
                         }
 
-                        if (semester == 3) {
+                        if (semester.equals("3")) {
                             Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
+
+                            semesterChildList = new ArrayList<>();
+
+                            String kodeMk = object.getString("KodeMK");
+                            String namaMk = object.getString("mtkl_nm");
+                            Integer sks = object.getInt("mtkl_sks");
+                            String nilaiHuruf = object.getString("HM");
+
+                            SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
+                            semesterChildList.add(semesterChild);
+                            semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
                         }
                     }
+
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

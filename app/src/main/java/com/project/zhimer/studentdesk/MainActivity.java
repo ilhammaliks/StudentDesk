@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     SessionManager sessionManager;
 
     private TextView sks, ipk, uet, tilawah, nama, nim, prodi, tahun;
+    private ImageView foto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //header sidebar
         View header = navigationView.getHeaderView(0);
 
-        ImageView foto = (ImageView) header.findViewById(R.id.mahasiswa_foto);
+        foto = header.findViewById(R.id.mahasiswa_foto);
 
         sks = header.findViewById(R.id.mahasiswa_sks);
         ipk = header.findViewById(R.id.mahasiswa_ipk);
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DataUet();
 
         //Hardcode
-        Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
+//        Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
 
         tilawah.setText("---");
 
@@ -175,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         String namaMahasiswa = object.getString("mhs_nm");
                         String tahunMahasiswa = object.getString("mhs_ank");
                         String prodiMahasiswa = object.getString("NamaProgdi");
+                        String thumbnail = object.getString("foto_thumbnail");
+
+                        Picasso.with(getApplicationContext()).load(thumbnail).into(foto);
 
                         nama.setText(namaMahasiswa);
                         nim.setText(nimMahasiswa);

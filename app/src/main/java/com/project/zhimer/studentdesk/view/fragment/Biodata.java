@@ -74,7 +74,7 @@ public class Biodata extends Fragment {
         DataBio();
 
         //hardcode
-        Picasso.with(getContext()).load(R.drawable.photo).into(foto);
+//        Picasso.with(getContext()).load(R.drawable.photo).into(foto);
 
         CollapsingToolbarLayout collapsingToolbarLayout = view.findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Biodata");
@@ -110,6 +110,8 @@ public class Biodata extends Fragment {
                         JSONObject object = jsonArray.getJSONObject(i);
 //                        mahasiswa = new Mahasiswa();
 
+                        String thumbnail = object.getString("foto_thumbnail");
+
                         String nim = object.getString("mhs_nim");
                         String nama = object.getString("mhs_nm");
                         String tahun = object.getString("mhs_ank");
@@ -123,6 +125,8 @@ public class Biodata extends Fragment {
                         String pembimbing = object.getString("DosenPembimbing");
                         String jalurMasuk = object.getString("NamaJalurMasuk");
                         String statusAkademik = object.getString("NamaStatusAkademik");
+
+                        Picasso.with(getContext()).load(thumbnail).into(foto);
 
                         mahasiswa_nama.setText(nama);
                         mahasiswa_nim.setText(nim);
