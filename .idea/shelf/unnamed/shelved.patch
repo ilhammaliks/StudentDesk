@@ -1,0 +1,137 @@
+Index: app/src/main/java/com/project/zhimer/studentdesk/view/tabNilai/Semester.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.project.zhimer.studentdesk.view.tabNilai;\n\n\nimport android.os.Bundle;\nimport android.support.v4.app.Fragment;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport com.loopj.android.http.AsyncHttpClient;\nimport com.loopj.android.http.JsonHttpResponseHandler;\nimport com.loopj.android.http.RequestParams;\nimport com.project.zhimer.studentdesk.R;\nimport com.project.zhimer.studentdesk.SessionManager;\nimport com.project.zhimer.studentdesk.model.Nilai;\n\nimport org.json.JSONArray;\nimport org.json.JSONException;\nimport org.json.JSONObject;\n\nimport java.lang.reflect.Array;\nimport java.util.ArrayList;\nimport java.util.Arrays;\n\nimport cz.msebera.android.httpclient.Header;\n\n\npublic class Semester extends Fragment {\n    View view;\n\n    Nilai nilai;\n    SessionManager sessionManager;\n    ArrayList<String> dataTahun;\n\n    public Semester() {\n        // Required empty public constructor\n    }\n\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\n                             Bundle savedInstanceState) {\n        // Inflate the layout for this fragment\n        view = inflater.inflate(R.layout.tab_nilai_semester, container, false);\n\n        sessionManager = new SessionManager(getContext());\n\n        dataTahun = new ArrayList<>();\n        NilaiPersemester();\n\n        return view;\n    }\n\n    private void NilaiPersemester() {\n        String url = \"https://studentdesk.uai.ac.id/api/index.php/akademik/daftarnilaipersemester/format/json\";\n        AsyncHttpClient client = new AsyncHttpClient();\n        RequestParams params = new RequestParams();\n\n        client.setBasicAuth(\"admin\", \"1234\");\n        params.put(\"uname\", sessionManager.getNim());\n        params.put(\"pwd\", sessionManager.getPassword());\n\n        client.post(url, params, new JsonHttpResponseHandler() {\n            @Override\n            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {\n                super.onSuccess(statusCode, headers, response);\n\n                try {\n                    JSONObject jsonObject = new JSONObject(response.toString());\n                    JSONArray jsonArray = jsonObject.getJSONArray(\"data\");\n\n                    for (int i = 0; i < jsonArray.length(); i++) {\n                        JSONObject object = jsonArray.getJSONObject(i);\n                        String tahunAjaran = object.getString(\"tahun_ajaran2\");\n\n                        if (!dataTahun.contains(tahunAjaran)) {\n                            dataTahun.add(tahunAjaran);\n                        }\n                    }\n\n                    for (int j = 0; j < dataTahun.size(); j++) {\n\n                        Log.d(\"DataTahunAjaran\", dataTahun.get(j));\n                    }\n\n                    getDataTahunAjaran(jsonArray); //get data tahun ajaran\n\n                } catch (JSONException e) {\n                    e.printStackTrace();\n                }\n            }\n\n            @Override\n            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {\n                super.onFailure(statusCode, headers, throwable, errorResponse);\n            }\n        });\n    }\n\n    private void getDataTahunAjaran(JSONArray jsonArray) {\n\n        for (int i = 0; i < jsonArray.length(); i++) {\n            try {\n                JSONObject object = jsonArray.getJSONObject(i);\n                String tahunAjaran = object.getString(\"tahun_ajaran2\");\n                Integer semester = object.getInt(\"semester2\");\n                String dataMatkul = object.getString(\"NamaMK\");\n\n                Integer k = 0;\n                if (tahunAjaran.equals(dataTahun.get(k))) {\n                    if (semester == 1) {\n                        Log.d(\"matkul\", semester + \", \" + dataMatkul);\n                    }\n\n                    if (semester == 2) {\n                        Log.d(\"matkul\", semester + \", \" + dataMatkul);\n                    }\n\n                    if (semester == 3) {\n                        Log.d(\"matkul\", semester + \", \" + dataMatkul);\n                    }\n                    k++;\n                }\n\n\n            } catch (JSONException e) {\n                e.printStackTrace();\n            }\n        }\n    }\n\n    private void getDataTahunAjaran1(JSONArray jsonArray) throws JSONException {\n\n             Integer x = 0;\n\n        for (int j = 0; j < jsonArray.length(); j++) {\n            JSONObject object = jsonArray.getJSONObject(j);\n            Integer semester = object.getInt(\"semester2\");\n            String tahunAjaran = object.getString(\"tahun_ajaran2\");\n            if (tahunAjaran.equals(dataTahun.get(0))) {\n                if (semester == 1) {\n                    x++;\n                }\n            }\n        }\n\n        String[] semester1 = new String[x];\n\n        for (int i = 0; i < jsonArray.length(); i++) {\n\n            try {\n\n                int bobot = 0;\n\n                JSONObject object = jsonArray.getJSONObject(i);\n                String tahunAjaran = object.getString(\"tahun_ajaran2\");\n\n                Integer semester = object.getInt(\"semester2\");\n                String dataMatkul = object.getString(\"NamaMK\");\n                Integer sks = object.getInt(\"mtkl_sks\");\n                String nilaiHuruf = object.getString(\"HM\");\n                Integer nilaiAngka = object.getInt(\"HA\");\n\n                bobot = sks * nilaiAngka;\n\n                Log.d(\"DataTahun\", tahunAjaran);\n\n\n                if (tahunAjaran.equals(dataTahun.get(0))) {\n                    if (semester == 1) {\n                        semester1[i] = dataMatkul;\n                    }\n\n                }\n\n\n            } catch (JSONException e) {\n                e.printStackTrace();\n            }\n        }\n        Log.d(\"semester1\", Arrays.toString(semester1));\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/project/zhimer/studentdesk/view/tabNilai/Semester.java	(revision 733790c1138fe0520daf1ba667b3276979679be9)
++++ app/src/main/java/com/project/zhimer/studentdesk/view/tabNilai/Semester.java	(date 1540967740197)
+@@ -19,9 +19,7 @@
+ import org.json.JSONException;
+ import org.json.JSONObject;
+ 
+-import java.lang.reflect.Array;
+ import java.util.ArrayList;
+-import java.util.Arrays;
+ 
+ import cz.msebera.android.httpclient.Header;
+ 
+@@ -79,11 +77,6 @@
+                         }
+                     }
+ 
+-                    for (int j = 0; j < dataTahun.size(); j++) {
+-
+-                        Log.d("DataTahunAjaran", dataTahun.get(j));
+-                    }
+-
+                     getDataTahunAjaran(jsonArray); //get data tahun ajaran
+ 
+                 } catch (JSONException e) {
+@@ -101,77 +94,14 @@
+     private void getDataTahunAjaran(JSONArray jsonArray) {
+ 
+         for (int i = 0; i < jsonArray.length(); i++) {
++
+             try {
+                 JSONObject object = jsonArray.getJSONObject(i);
+                 String tahunAjaran = object.getString("tahun_ajaran2");
+-                Integer semester = object.getInt("semester2");
+                 String dataMatkul = object.getString("NamaMK");
+ 
+-                Integer k = 0;
+-                if (tahunAjaran.equals(dataTahun.get(k))) {
+-                    if (semester == 1) {
+-                        Log.d("matkul", semester + ", " + dataMatkul);
+-                    }
+-
+-                    if (semester == 2) {
+-                        Log.d("matkul", semester + ", " + dataMatkul);
+-                    }
+-
+-                    if (semester == 3) {
+-                        Log.d("matkul", semester + ", " + dataMatkul);
+-                    }
+-                    k++;
+-                }
+-
+-
+-            } catch (JSONException e) {
+-                e.printStackTrace();
+-            }
+-        }
+-    }
+-
+-    private void getDataTahunAjaran1(JSONArray jsonArray) throws JSONException {
+-
+-             Integer x = 0;
+-
+-        for (int j = 0; j < jsonArray.length(); j++) {
+-            JSONObject object = jsonArray.getJSONObject(j);
+-            Integer semester = object.getInt("semester2");
+-            String tahunAjaran = object.getString("tahun_ajaran2");
+-            if (tahunAjaran.equals(dataTahun.get(0))) {
+-                if (semester == 1) {
+-                    x++;
+-                }
+-            }
+-        }
+-
+-        String[] semester1 = new String[x];
+-
+-        for (int i = 0; i < jsonArray.length(); i++) {
+-
+-            try {
+-
+-                int bobot = 0;
+-
+-                JSONObject object = jsonArray.getJSONObject(i);
+-                String tahunAjaran = object.getString("tahun_ajaran2");
+-
+-                Integer semester = object.getInt("semester2");
+-                String dataMatkul = object.getString("NamaMK");
+-                Integer sks = object.getInt("mtkl_sks");
+-                String nilaiHuruf = object.getString("HM");
+-                Integer nilaiAngka = object.getInt("HA");
+-
+-                bobot = sks * nilaiAngka;
+-
+-                Log.d("DataTahun", tahunAjaran);
+-
+-
+-                if (tahunAjaran.equals(dataTahun.get(0))) {
+-                    if (semester == 1) {
+-                        semester1[i] = dataMatkul;
+-                    }
+-
++                if (tahunAjaran.equals(dataTahun.get(0))){
++                    Log.d("matkul", dataMatkul);
+                 }
+ 
+ 
+@@ -179,6 +109,5 @@
+                 e.printStackTrace();
+             }
+         }
+-        Log.d("semester1", Arrays.toString(semester1));
+     }
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"NullableNotNullManager\">\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\n    <option name=\"myNullables\">\n      <value>\n        <list size=\"7\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.Nullable\" />\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNullable\" />\n        </list>\n      </value>\n    </option>\n    <option name=\"myNotNulls\">\n      <value>\n        <list size=\"6\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.NonNull\" />\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNonNull\" />\n        </list>\n      </value>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 733790c1138fe0520daf1ba667b3276979679be9)
++++ .idea/misc.xml	(date 1540967775577)
+@@ -29,7 +29,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">

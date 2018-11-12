@@ -9,7 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -44,10 +48,12 @@ public class Semester extends Fragment {
     ArrayList<String> dataTahun;
     ArrayList<String> dataSemester;
 
+    Spinner spinnerTahun, spinnerSemester;
+    ArrayAdapter<String> spinnerAdapter, spinnerAdapter2;
+
     public Semester() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,9 +61,10 @@ public class Semester extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.tab_nilai_semester, container, false);
         listSemester = view.findViewById(R.id.listSemester);
+        spinnerTahun = view.findViewById(R.id.spinnerTahun);
+        spinnerSemester = view.findViewById(R.id.spinnerSemester);
 
         sessionManager = new SessionManager(getContext());
-
         semesterGroupList = new ArrayList<>();
 
         //get data
@@ -121,7 +128,7 @@ public class Semester extends Fragment {
     private void NilaiPersemester() {
         String url = sessionManager.getUrl() + "/akademik/daftarnilaipersemester/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
+        final RequestParams params = new RequestParams();
 
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
@@ -134,7 +141,7 @@ public class Semester extends Fragment {
 
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    final JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
@@ -144,21 +151,25 @@ public class Semester extends Fragment {
                         if (!dataTahun.contains(tahunAjaran)) {
                             dataTahun.add(tahunAjaran);
                         }
-                        if (!dataTahun.contains(semester)) {
+                        if (!dataSemester.contains(semester)) {
                             dataSemester.add(semester);
                         }
                     }
 
-                    for (int j = 0; j < dataTahun.size(); j++) {
+                    //todo spinner tahun ajaran
+                    spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataTahun);
+                    spinnerTahun.setAdapter(spinnerAdapter);
+                    spinnerTahun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                            getDataTahunAjaran(jsonArray, position);
+                        }
 
-                        Log.d("DataTahunAjaran", dataTahun.get(j));
-                    }
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
 
-                    for (int k = 0; k < dataSemester.size(); k++) {
-                        Log.d("DataSemester", dataSemester.get(k));
-                    }
-
-                    getDataTahunAjaran(jsonArray); //get data tahun ajaran
+                        }
+                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -172,7 +183,7 @@ public class Semester extends Fragment {
         });
     }
 
-    private void getDataTahunAjaran(JSONArray jsonArray) {
+    private void getDataTahunAjaran(final JSONArray jsonArray, final int position) {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             Log.d("length", jsonArray.length() + "");
@@ -180,114 +191,49 @@ public class Semester extends Fragment {
                 JSONObject object = jsonArray.getJSONObject(i);
                 String tahunAjaran = object.getString("tahun_ajaran2");
                 String semester = object.getString("semester2");
-                String dataMatkul = object.getString("NamaMK");
 
-
-                for (int l = 0; l < dataTahun.size(); l++) {
-                    if (tahunAjaran.equals(dataTahun.get(l))) {
-                        if (semester.equals("1")) {
-                            Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
-
-                            semesterChildList = new ArrayList<>();
-
-                            String kodeMk = object.getString("KodeMK");
-                            String namaMk = object.getString("mtkl_nm");
-                            Integer sks = object.getInt("mtkl_sks");
-                            String nilaiHuruf = object.getString("HM");
-
-                            SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
-                            semesterChildList.add(semesterChild);
-                            semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
-                        }
-
-                        if (semester.equals("2")) {
-                            Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
-
-                            semesterChildList = new ArrayList<>();
-
-                            String kodeMk = object.getString("KodeMK");
-                            String namaMk = object.getString("mtkl_nm");
-                            Integer sks = object.getInt("mtkl_sks");
-                            String nilaiHuruf = object.getString("HM");
-
-                            SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
-                            semesterChildList.add(semesterChild);
-                            semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
-                        }
-
-                        if (semester.equals("3")) {
-                            Log.d("matkul", tahunAjaran + ", " + semester + ", " + dataMatkul);
-
-                            semesterChildList = new ArrayList<>();
-
-                            String kodeMk = object.getString("KodeMK");
-                            String namaMk = object.getString("mtkl_nm");
-                            Integer sks = object.getInt("mtkl_sks");
-                            String nilaiHuruf = object.getString("HM");
-
-                            SemesterChild semesterChild = new SemesterChild(kodeMk, namaMk, nilaiHuruf, sks);
-                            semesterChildList.add(semesterChild);
-                            semesterGroupList.add(new SemesterGroup(semester, semesterChildList));
-                        }
-                    }
-
-
+                if (!dataSemester.contains(semester) && tahunAjaran.equals(dataTahun.get(position))) {
+                    dataSemester.add(semester);
                 }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+        //todo spinner semester
+        spinnerAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataSemester );
+        spinnerSemester.setAdapter(spinnerAdapter2);
+        spinnerSemester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int positionSemester, long id) {
+                getDataSpecific(jsonArray, position, positionSemester );
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
-    private void getDataTahunAjaran1(JSONArray jsonArray) throws JSONException {
-
-        Integer x = 0;
-
-        for (int j = 0; j < jsonArray.length(); j++) {
-            JSONObject object = jsonArray.getJSONObject(j);
-            Integer semester = object.getInt("semester2");
-            String tahunAjaran = object.getString("tahun_ajaran2");
-            if (tahunAjaran.equals(dataTahun.get(0))) {
-                if (semester == 1) {
-                    x++;
-                }
-            }
-        }
-
-        String[] semester1 = new String[x];
-
+    private void getDataSpecific(JSONArray jsonArray, int tahunAjar, int semes){
         for (int i = 0; i < jsonArray.length(); i++) {
-
+            Log.d("length", jsonArray.length() + "");
             try {
-
-                int bobot = 0;
-
                 JSONObject object = jsonArray.getJSONObject(i);
+                String namaMatkul = object.getString("NamaMK");
                 String tahunAjaran = object.getString("tahun_ajaran2");
+                String semester = object.getString("semester2");
 
-                Integer semester = object.getInt("semester2");
-                String dataMatkul = object.getString("NamaMK");
-                Integer sks = object.getInt("mtkl_sks");
-                String nilaiHuruf = object.getString("HM");
-                Integer nilaiAngka = object.getInt("HA");
-
-                bobot = sks * nilaiAngka;
-
-                Log.d("DataTahun", tahunAjaran);
-
-
-                if (tahunAjaran.equals(dataTahun.get(0))) {
-                    if (semester == 1) {
-                        semester1[i] = dataMatkul;
-                    }
-
+                if (tahunAjaran.equals(dataTahun.get(tahunAjar)) && semester.equals(dataSemester.get(semes)) ) {
+                    //todo cek disini lognya untuk hasil final
+                    Log.d("namaMatkul", namaMatkul);
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        Log.d("semester1", Arrays.toString(semester1));
     }
 }
 
