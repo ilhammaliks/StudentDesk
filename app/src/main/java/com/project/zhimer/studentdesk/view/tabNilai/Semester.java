@@ -237,7 +237,7 @@ public class Semester extends Fragment {
             }
         }
 
-        //todo
+        //todosda
         Log.d("datasemes", dataSemester.toString());
         spinnerAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataSemester);
         spinnerSemester.setAdapter(spinnerAdapter2);
