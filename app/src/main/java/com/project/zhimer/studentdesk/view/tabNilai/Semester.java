@@ -162,7 +162,9 @@ public class Semester extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
                         String tahunAjaran = object.getString("tahun_ajaran2");
-                        String semester = object.getString("semester2");
+                        String matkul = object.getString("NamaMK");
+
+                        Log.d("naaa", matkul);
 
                         if (!dataTahun.contains(tahunAjaran)) {
                             dataTahun.add(tahunAjaran);
@@ -208,6 +210,9 @@ public class Semester extends Fragment {
 
                 String tahunAjaran = object.getString("tahun_ajaran2");
                 String semester = object.getString("semester2");
+                String matkul = object.getString("NamaMK");
+
+                Log.d("naaaa", matkul);
 
                 if (!dataSemester.contains(semester) && tahunAjaran.equals(dataTahun.get(position))) {
                     dataSemester.add(semester);
@@ -235,7 +240,6 @@ public class Semester extends Fragment {
     }
 
     private void getDataSpecific(JSONArray jsonArray, int tahunAjar, int semes) {
-        Log.d("Datasemes", tahunAjar+" "+semes);
         listNilaiSemester.clear();
         int jumlahSKS = 0;
         String total = "";
@@ -246,8 +250,10 @@ public class Semester extends Fragment {
         double penjumlahanIPS;
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
+        String nilaiHuruf = null;
+        Integer nilaiAngka = null;
+
         for (int i = 0; i < jsonArray.length(); i++) {
-            Log.d("length", jsonArray.length() + "");
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
                 nilai = new Nilai();
@@ -258,12 +264,23 @@ public class Semester extends Fragment {
                 String kodeMk = object.getString("KodeMK");
                 String namaMk = object.getString("NamaMK");
                 Integer sks = object.getInt("mtkl_sks");
-                String nilaiHuruf = object.getString("HM");
-                Integer nilaiAngka = object.getInt("HA");
 
+                if (!object.getString("HM").equals("null")) {
+                    nilaiHuruf = object.getString("HM");
+                } else {
+                    nilaiHuruf = "null";
+                }
+
+                if (!object.getString("HA").equals("null")) {
+                    nilaiAngka = object.getInt("HA");
+                } else {
+                    nilaiAngka = 0;
+                }
 
                 if (tahunAjaran.equals(dataTahun.get(tahunAjar)) && semester.equals(dataSemester.get(semes))) {
                     //todo disini lognya untuk hasil final
+
+                    Log.d("checkData", namaMk);
 
                     nilai.setKodeMK(kodeMk);
                     nilai.setNamaMK(namaMk);
