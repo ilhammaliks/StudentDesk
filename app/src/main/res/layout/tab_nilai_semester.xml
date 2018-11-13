@@ -164,6 +164,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/sksTotal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
@@ -177,6 +178,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ips"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
