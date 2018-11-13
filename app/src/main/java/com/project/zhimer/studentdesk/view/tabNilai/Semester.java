@@ -167,9 +167,9 @@ public class Semester extends Fragment {
                         if (!dataTahun.contains(tahunAjaran)) {
                             dataTahun.add(tahunAjaran);
                         }
-                        if (!dataSemester.contains(semester)) {
+                       /* if (!dataSemester.contains(semester)) {
                             dataSemester.add(semester);
-                        }
+                        }*/
                     }
 
                     //todo spinner tahun ajaran
@@ -200,7 +200,7 @@ public class Semester extends Fragment {
     }
 
     private void getDataTahunAjaran(final JSONArray jsonArray, final int position) {
-
+        dataSemester.clear();
         for (int i = 0; i < jsonArray.length(); i++) {
             Log.d("length", jsonArray.length() + "");
             try {
@@ -218,6 +218,7 @@ public class Semester extends Fragment {
             }
         }
         //todo spinner semester
+        Log.d("datasemes", dataSemester.toString());
         spinnerAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataSemester);
         spinnerSemester.setAdapter(spinnerAdapter2);
         spinnerSemester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -234,7 +235,8 @@ public class Semester extends Fragment {
     }
 
     private void getDataSpecific(JSONArray jsonArray, int tahunAjar, int semes) {
-
+        Log.d("Datasemes", tahunAjar+" "+semes);
+        listNilaiSemester.clear();
         int jumlahSKS = 0;
         String total = "";
 
