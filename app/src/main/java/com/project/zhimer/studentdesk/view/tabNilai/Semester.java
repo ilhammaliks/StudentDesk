@@ -47,6 +47,7 @@ public class Semester extends Fragment {
     SessionManager sessionManager;
     ArrayList<String> dataTahun;
     ArrayList<String> dataSemester;
+    Nilai nilai;
 
     Spinner spinnerTahun, spinnerSemester;
     ArrayAdapter<String> spinnerAdapter, spinnerAdapter2;
@@ -189,6 +190,7 @@ public class Semester extends Fragment {
             Log.d("length", jsonArray.length() + "");
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
+
                 String tahunAjaran = object.getString("tahun_ajaran2");
                 String semester = object.getString("semester2");
 
@@ -201,12 +203,12 @@ public class Semester extends Fragment {
             }
         }
         //todo spinner semester
-        spinnerAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataSemester );
+        spinnerAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataSemester);
         spinnerSemester.setAdapter(spinnerAdapter2);
         spinnerSemester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int positionSemester, long id) {
-                getDataSpecific(jsonArray, position, positionSemester );
+                getDataSpecific(jsonArray, position, positionSemester);
             }
 
             @Override
@@ -216,18 +218,29 @@ public class Semester extends Fragment {
         });
     }
 
-    private void getDataSpecific(JSONArray jsonArray, int tahunAjar, int semes){
+    private void getDataSpecific(JSONArray jsonArray, int tahunAjar, int semes) {
         for (int i = 0; i < jsonArray.length(); i++) {
             Log.d("length", jsonArray.length() + "");
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
-                String namaMatkul = object.getString("NamaMK");
+                nilai = new Nilai();
+
                 String tahunAjaran = object.getString("tahun_ajaran2");
                 String semester = object.getString("semester2");
 
-                if (tahunAjaran.equals(dataTahun.get(tahunAjar)) && semester.equals(dataSemester.get(semes)) ) {
+                String kodeMk = object.getString("KodeMK");
+                String namaMk = object.getString("NamaMK");
+                Integer sks = object.getInt("mtkl_sks");
+                String nilaiHuruf = object.getString("HM");
+                Integer nilaiAngka = object.getInt("HA");
+
+
+
+
+                if (tahunAjaran.equals(dataTahun.get(tahunAjar)) && semester.equals(dataSemester.get(semes))) {
                     //todo cek disini lognya untuk hasil final
-                    Log.d("namaMatkul", namaMatkul);
+
+                    Log.d("namaMatkul", namaMk);
                 }
 
             } catch (JSONException e) {

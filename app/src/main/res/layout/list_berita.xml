@@ -33,8 +33,8 @@
                 android:id="@+id/berita_pengirim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/berita_judul"
+                android:layout_alignParentStart="true"
                 android:text="(pengirim)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@android:color/black" />
@@ -43,8 +43,8 @@
                 android:id="@+id/berita_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/berita_judul"
+                android:layout_alignParentEnd="true"
                 android:text="(tanggal)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@android:color/black" />
@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/berita_pengirim"
                 android:layout_marginTop="5dp"
+                android:autoLink="web"
                 android:text="(Isi Berita)"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
