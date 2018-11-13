@@ -223,6 +223,20 @@ public class Semester extends Fragment {
             }
         }
         //todo spinner semester
+        if (dataSemester.get(0).equals("3")){
+            dataSemester.set(0, "Konversi");
+            dataSemester.set(1, "Ganjil");
+            dataSemester.set(2, "Genap");
+        }
+        if (dataSemester.get(0).equals("1")){
+            if (dataSemester.size() == 1) {
+                dataSemester.set(0, "Ganjil");
+            } else {
+                dataSemester.set(0, "Ganjil");
+                dataSemester.set(1, "Genap");
+            }
+        }
+
         Log.d("datasemes", dataSemester.toString());
         spinnerAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, dataSemester);
         spinnerSemester.setAdapter(spinnerAdapter2);
