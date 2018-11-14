@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -55,6 +56,7 @@ public class Semester extends Fragment {
     Spinner spinnerTahun, spinnerSemester;
     ArrayAdapter<String> spinnerAdapter, spinnerAdapter2;
     TextView sks, ips;
+    ImageView ipsPending;
 
     public Semester() {
         // Required empty public constructor
@@ -79,6 +81,7 @@ public class Semester extends Fragment {
 
         sks = view.findViewById(R.id.sksTotal);
         ips = view.findViewById(R.id.ips);
+        ipsPending = view.findViewById(R.id.ipsPending);
 
         sessionManager = new SessionManager(getContext());
         semesterGroupList = new ArrayList<>();
@@ -354,14 +357,17 @@ public class Semester extends Fragment {
         //operasi penjumlahan ipk
         penjumlahanIPS = jumlahBobot / penjumlahSKS;
 
-        //TODO kalo belom ada nilai IPS nya jadi nampilin  "---"
+        String dataIPS = Double.toString(penjumlahanIPS);
 
-//        if () {
-//
-//        }
+        //TODO kalo belom ada nilai IPS nya jadi nampilin  "jam"
 
-        ips.setText(decimalFormat.format(penjumlahanIPS));
+        if (dataIPS.equals("null")) {
+            ipsPending.setVisibility(View.VISIBLE);
+            ips.setVisibility(View.GONE);
+        } else {
 
+            ips.setText(dataIPS);
+        }
     }
 }
 
