@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +44,10 @@ public class NilaiSemesterAdapter extends RecyclerView.Adapter<NilaiSemesterAdap
         holder.namaMK.setText(nilai.getNamaMK());
         holder.sksMK.setText(nilai.getSks().toString());
 
+        Log.d("mk", nilai.getHuruf());
+        holder.hurufMK.setText(nilai.getHuruf());
+
         if (nilai.getHuruf().equals("D") || nilai.getHuruf().equals("E")) {
-            holder.hurufMK.setText(nilai.getHuruf());
             holder.hurufMK.setTextColor(Color.RED);
         } else {
             holder.hurufMK.setText(nilai.getHuruf());

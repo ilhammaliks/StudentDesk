@@ -71,13 +71,7 @@ public class Semester extends Fragment {
         spinnerTahun = view.findViewById(R.id.spinnerTahun);
         spinnerSemester = view.findViewById(R.id.spinnerSemester);
 
-        listNilaiSemester = new ArrayList<>();
-        adapter = new NilaiSemesterAdapter(listNilaiSemester, getActivity());
-
         recyclerView = view.findViewById(R.id.listSemester);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
 
         sks = view.findViewById(R.id.sksTotal);
         ips = view.findViewById(R.id.ips);
@@ -91,7 +85,15 @@ public class Semester extends Fragment {
 
         dataTahun = new ArrayList<>();
         dataSemester = new ArrayList<>();
+        listNilaiSemester = new ArrayList<>();
+
         NilaiPersemester();
+
+        adapter = new NilaiSemesterAdapter(listNilaiSemester, getActivity());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+
 
         return view;
     }
@@ -310,7 +312,7 @@ public class Semester extends Fragment {
                 if (!object.getString("HM").equals("null")) {
                     nilaiHuruf = object.getString("HM");
                 } else {
-                    nilaiHuruf = "---";
+                    nilaiHuruf = "-";
                 }
 
                 if (!object.getString("HA").equals("null")) {
@@ -358,15 +360,17 @@ public class Semester extends Fragment {
         penjumlahanIPS = jumlahBobot / penjumlahSKS;
 
         String dataIPS = Double.toString(penjumlahanIPS);
+        Log.d("dataI", dataIPS);
 
         //TODO kalo belom ada nilai IPS nya jadi nampilin  "jam"
 
-        if (dataIPS.equals("null")) {
+        if (dataIPS.equals("NaN")) {
             ipsPending.setVisibility(View.VISIBLE);
             ips.setVisibility(View.GONE);
         } else {
-
-            ips.setText(dataIPS);
+            ips.setText(decimalFormat.format(penjumlahanIPS));
+            ips.setVisibility(View.VISIBLE);
+            ipsPending.setVisibility(View.GONE);
         }
     }
 }

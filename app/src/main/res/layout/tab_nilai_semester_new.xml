@@ -206,8 +206,8 @@
                     android:layout_weight="4"
                     android:background="@android:color/darker_gray"
                     android:gravity="center"
-                    android:src="@drawable/icon_clock2"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_pending" />
 
                 <TextView
                     android:id="@+id/ips"
