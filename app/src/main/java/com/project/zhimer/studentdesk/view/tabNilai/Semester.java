@@ -335,7 +335,7 @@ public class Semester extends Fragment {
 
                     jumlahSKS += sks;
 
-                    if (nilaiAngka.equals(0)) {
+                    if (nilaiAngka.equals(0) && !nilaiHuruf.equals("E")) {
                         penjumlahSKS -= sks;
                     }
 
