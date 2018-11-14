@@ -48,6 +48,7 @@ public class NilaiSemesterAdapter extends RecyclerView.Adapter<NilaiSemesterAdap
             holder.hurufMK.setTextColor(Color.RED);
         } else {
             holder.hurufMK.setText(nilai.getHuruf());
+            holder.hurufMK.setTextColor(Color.BLACK);
         }
 
         holder.bobotMK.setText(nilai.getBobot().toString());

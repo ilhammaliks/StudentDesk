@@ -307,7 +307,7 @@ public class Semester extends Fragment {
                 if (!object.getString("HM").equals("null")) {
                     nilaiHuruf = object.getString("HM");
                 } else {
-                    nilaiHuruf = "null";
+                    nilaiHuruf = "---";
                 }
 
                 if (!object.getString("HA").equals("null")) {
@@ -329,6 +329,11 @@ public class Semester extends Fragment {
                     nilai.setBobot(sks * nilaiAngka);
 
                     jumlahSKS += sks;
+
+                    if (nilaiAngka.equals(0)) {
+                        penjumlahSKS -= sks;
+                    }
+
                     penjumlahSKS += sks;
                     total = String.valueOf(jumlahSKS);
                     jumlahBobot += (sks * nilaiAngka);
@@ -348,6 +353,13 @@ public class Semester extends Fragment {
 
         //operasi penjumlahan ipk
         penjumlahanIPS = jumlahBobot / penjumlahSKS;
+
+        //TODO kalo belom ada nilai IPS nya jadi nampilin  "---"
+
+//        if () {
+//
+//        }
+
         ips.setText(decimalFormat.format(penjumlahanIPS));
 
     }
