@@ -223,12 +223,12 @@ public class Semester extends Fragment {
             }
         }
         //todo spinner semester
-        if (dataSemester.get(0).equals("3")){
+        if (dataSemester.get(0).equals("3")) {
             dataSemester.set(0, "Konversi");
             dataSemester.set(1, "Ganjil");
             dataSemester.set(2, "Genap");
         }
-        if (dataSemester.get(0).equals("1")){
+        if (dataSemester.get(0).equals("1")) {
             if (dataSemester.size() == 1) {
                 dataSemester.set(0, "Ganjil");
             } else {
@@ -268,6 +268,30 @@ public class Semester extends Fragment {
         String nilaiHuruf = null;
         Integer nilaiAngka = null;
 
+        String valueSemester = "1";
+        if (dataSemester.size() == 3) {
+            switch (dataSemester.get(semes)) {
+                case "Ganjil":
+                    valueSemester = "1";
+                    break;
+                case "Genap":
+                    valueSemester = "2";
+                    break;
+                case "Konversi":
+                    valueSemester = "3";
+                    break;
+            }
+        } else {
+            switch (dataSemester.get(semes)) {
+                case "Ganjil":
+                    valueSemester = "1";
+                    break;
+                case "Genap":
+                    valueSemester = "2";
+                    break;
+            }
+        }
+
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject object = jsonArray.getJSONObject(i);
@@ -292,10 +316,11 @@ public class Semester extends Fragment {
                     nilaiAngka = 0;
                 }
 
-                if (tahunAjaran.equals(dataTahun.get(tahunAjar)) && semester.equals(dataSemester.get(semes))) {
+                if (tahunAjaran.equals(dataTahun.get(tahunAjar)) && semester.equals(valueSemester)) {
                     //todo disini lognya untuk hasil final
 
                     Log.d("checkData", namaMk);
+
 
                     nilai.setKodeMK(kodeMk);
                     nilai.setNamaMK(namaMk);

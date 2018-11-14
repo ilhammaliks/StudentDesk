@@ -134,7 +134,6 @@ public class Keseluruhan extends Fragment {
                         nilai.setBobot(sks * angka);
 
                         jumlahSks += sks;
-                        penjumlahSKS += sks;
                         total = String.valueOf(jumlahSks);
 
                         jumlahBobot += (sks * angka);
@@ -157,7 +156,7 @@ public class Keseluruhan extends Fragment {
                     }
 
                     //operasi penjumlahan ipk
-                    penjumlahanIPK = jumlahBobot / penjumlahSKS;
+                    penjumlahanIPK = jumlahBobot / jumlahSks;
                     ipk.setText(decimalFormat.format(penjumlahanIPK));
 
                     totalSks.setText(total);
