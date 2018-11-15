@@ -28,7 +28,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -46,6 +46,7 @@
                 android:id="@+id/mahasiswa_sks"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:text=""
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -54,9 +55,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:orientation="vertical">
 
             <TextView
@@ -68,19 +69,48 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/mahasiswa_ipk"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text=""
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ipkUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/ic_ipk_up" />
+
+                    <ImageView
+                        android:id="@+id/ipkDown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/ic_ipk_down" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/mahasiswa_ipk"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -98,6 +128,7 @@
                 android:id="@+id/mahasiswa_uet"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:text=""
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -106,7 +137,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -124,6 +155,7 @@
                 android:id="@+id/mahasiswa_tilawah"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:text=""
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -136,8 +168,8 @@
         android:id="@+id/mahasiswa_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/mahasiswa_foto"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="10dp"
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -148,8 +180,8 @@
         android:id="@+id/mahasiswa_nim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/mahasiswa_nama"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -160,9 +192,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mahasiswa_nama"
-        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_toEndOf="@+id/mahasiswa_nim"
         android:text="@string/devider"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
