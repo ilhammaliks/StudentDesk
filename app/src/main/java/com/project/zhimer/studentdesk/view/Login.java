@@ -7,12 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -72,6 +74,62 @@ public class Login extends AppCompatActivity {
         fadeout = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
         progress = findViewById(R.id.circular);
+
+        etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
+                boolean checkNim = false, checkPassword = false;
+
+                nim = etNim.getText().toString();
+                password = etPassword.getText().toString();
+
+                //set condition if user do not input data
+                if (nim.isEmpty()) {
+                    etNim.setError("Nim tidak boleh kosong");
+                } else {
+                    checkNim = true;
+                }
+
+                if (password.isEmpty()) {
+                    etPassword.setError("Password tidak boleh kosong");
+                } else {
+                    checkPassword = true;
+                }
+
+                if (checkNim && checkPassword) {
+                    progress.start();
+                    sessionManager.setNim(nim);
+                    sessionManager.setPassword(password);
+
+                    //TODO Push data login
+                    LoggingIn();
+
+                    //Get Token,
+                    FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                            String token = task.getResult().getToken();
+                            String msg = getString(R.string.msg_token, token);
+
+                            sessionManager.setToken(msg);
+                            Log.d("token", msg);
+                        }
+                    });
+
+                    FirebaseMessaging.getInstance().subscribeToTopic("Akademik");
+
+                    //finish();
+                } else {
+                    toastFail.setAlpha(1);
+                    toastFail.startAnimation(fadein);
+                    new BackgroundTask().execute();
+                }
+
+                return false;
+            }
+        });
 
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,7 +30,7 @@
             android:hint="@string/hint_nim"
             android:imeOptions="actionNext"
             android:inputType="number"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColorHint="@android:color/white"
             android:textCursorDrawable="@drawable/cursor_text"
             android:textStyle="bold"
@@ -49,8 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_password"
+            android:imeOptions="actionGo"
             android:inputType="textPassword"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textCursorDrawable="@drawable/cursor_text"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
@@ -95,7 +96,7 @@
         android:layout_centerInParent="true"
         app:pv_autostart="false"
         app:pv_circular="true"
-        app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
-        app:pv_progressMode="indeterminate"/>
+        app:pv_progressMode="indeterminate"
+        app:pv_progressStyle="@style/Material.Drawable.CircularProgress" />
 
 </RelativeLayout>
