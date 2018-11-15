@@ -71,7 +71,7 @@ public class Login extends AppCompatActivity {
         fadein = AnimationUtils.loadAnimation(this, R.anim.fadein);
         fadeout = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
-        progress = (ProgressView) findViewById(R.id.circular);
+        progress = findViewById(R.id.circular);
 
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +155,7 @@ public class Login extends AppCompatActivity {
                     } else {
                         showMsgError();
                         sessionManager.setLogin(false);
+                        progress.stop();
                     }
 
                 } catch (JSONException e) {
