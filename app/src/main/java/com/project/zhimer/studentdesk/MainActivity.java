@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     SessionManager sessionManager;
 
     private TextView sks, ipk, uet, tilawah, nama, nim, prodi, tahun;
-    private ImageView foto;
+    private ImageView foto, ipkUp, ipkDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +113,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ipk = header.findViewById(R.id.mahasiswa_ipk);
         uet = header.findViewById(R.id.mahasiswa_uet);
         tilawah = header.findViewById(R.id.mahasiswa_tilawah);
+
+        ipkUp = header.findViewById(R.id.ipkUp);
+        ipkDown = header.findViewById(R.id.ipkDown);
 
         nama = header.findViewById(R.id.mahasiswa_nama);
         nim = header.findViewById(R.id.mahasiswa_nim);
