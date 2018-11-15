@@ -112,7 +112,7 @@ public class HalamanUtama extends Fragment {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss");
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy"); //HH:mm:ss
                         String waktu = dateFormat.format(date);
 
                         berita.setJudul(judul);
