@@ -18,7 +18,6 @@
         tools:srcCompat="@tools:sample/avatars" />
 
 
-
     <LinearLayout
         android:id="@+id/mahasiswa_grade"
         android:layout_width="match_parent"

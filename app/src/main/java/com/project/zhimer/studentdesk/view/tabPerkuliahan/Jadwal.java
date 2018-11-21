@@ -102,6 +102,7 @@ public class Jadwal extends Fragment {
                         String hari = object.getString("NamaHari");
                         String mulai = object.getString("slot_mulai");
                         String kelar = object.getString("slot_selesai");
+                        String dosen = object.getString("DosenPengajar");
                         String ruangan = object.getString("ruang");
 
                         //jam mulai perkuliahan
@@ -202,6 +203,7 @@ public class Jadwal extends Fragment {
                         kuliah.setMataKuliah(namaMatkul);
                         kuliah.setSks(sksMatakuliah);
                         kuliah.setHari(hari + ", " + jamMulai + "-" + jamSelesai);
+                        kuliah.setDosen(dosen);
                         kuliah.setRuang(ruangan);
 
                         jumlahSks += sksMatakuliah;

@@ -43,7 +43,7 @@ public class JadwalKuliahAdapter extends RecyclerView.Adapter<JadwalKuliahAdapte
         holder.mataKuliah.setText(jadwalKuliah.getMataKuliah());
         holder.sks.setText(String.valueOf(jadwalKuliah.getSks()));
         holder.waktu.setText(jadwalKuliah.getHari());
-//        holder.dosen.setText(jadwalKuliah.getDosen());
+        holder.dosen.setText(jadwalKuliah.getDosen());
         holder.ruang.setText(jadwalKuliah.getRuang());
     }
 
