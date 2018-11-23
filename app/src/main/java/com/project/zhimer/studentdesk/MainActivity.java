@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         tilawah.setText("---");
 
-
         //fragment variable
         halamanUtama = new HalamanUtama();
         biodata = new Biodata();
@@ -415,6 +414,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
+
+                //todo https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_CLEAR_TASK
+                logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(logout);
                 finish();
 
@@ -534,7 +536,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if (id == R.id.notif){
+        if (id == R.id.notif) {
             Toast.makeText(this, "coming soon", Toast.LENGTH_SHORT).show();
         }
 

@@ -3,7 +3,9 @@ package com.project.zhimer.studentdesk.view;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,6 +41,7 @@ import cz.msebera.android.httpclient.Header;
 public class Login extends AppCompatActivity {
 
     String nim, password;
+    Boolean isExit = false;
 
     EditText etNim, etPassword;
     Button toastFail, blogin;
@@ -262,6 +266,16 @@ public class Login extends AppCompatActivity {
             toastFail.setAlpha(0);
             etNim.setError(null);
             etPassword.setError(null);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!isExit){
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            isExit = true;
+        } else {
+            finish();
         }
     }
 }
