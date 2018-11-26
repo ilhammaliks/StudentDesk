@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -21,6 +23,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cz.msebera.android.httpclient.Header;
 
 
@@ -32,7 +37,11 @@ public class DaftarWisuda extends Fragment {
     TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi;
 
     EditText mahasiswa_telp, mahasiswa_phone, mahasiswa_alamat, mahasiswa_kota, mahasiswa_kode_pos,
-            mahasiswa_dosen1, mahasiswa_dosen2, mahasiswa_judul;
+            mahasiswa_dosen1, mahasiswa_dosen2, mahasiswa_judul, saran_mahasiswa;
+
+    Spinner spinner;
+
+    String sTelp, sPhone, sAlamat, sKota, sKode, sDosen1, sJudul;
 
     Button bSave;
 
@@ -65,6 +74,9 @@ public class DaftarWisuda extends Fragment {
         mahasiswa_dosen2 = view.findViewById(R.id.etDosen2);
         mahasiswa_judul = view.findViewById(R.id.etSkripsi);
 
+        spinner = view.findViewById(R.id.ukuranToga);
+        saran_mahasiswa = view.findViewById(R.id.etSaran);
+
         bSave = view.findViewById(R.id.bSave);
 
         sessionManager = new SessionManager(getContext());
@@ -72,7 +84,82 @@ public class DaftarWisuda extends Fragment {
         progressView.setVisibility(View.VISIBLE);
         progressView.start();
 
+        List<String> Ukuran = new ArrayList<String>();
+        Ukuran.add("S");
+        Ukuran.add("L");
+        Ukuran.add("M");
+        Ukuran.add("XL");
+
+        ArrayAdapter<String> adapterUkuran = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, Ukuran);
+        adapterUkuran.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(adapterUkuran);
+
         GetDataMahasiswa();
+
+
+        bSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean checkTelp = false, checkPhone = false, checkAlamat = false,
+                        checkKota = false, checkKode = false, checkDosen1 = false, checkJudul = false;
+
+                sTelp = mahasiswa_telp.getText().toString();
+                sPhone = mahasiswa_phone.getText().toString();
+                sAlamat = mahasiswa_alamat.getText().toString();
+                sKota = mahasiswa_kota.getText().toString();
+                sKode = mahasiswa_kode_pos.getText().toString();
+                sDosen1 = mahasiswa_dosen1.getText().toString();
+                sJudul = mahasiswa_judul.getText().toString();
+
+                //set Required Field
+                if (sTelp.isEmpty()) {
+                    mahasiswa_telp.setError("No.Telp mohon diisi");
+                } else {
+                    checkTelp = true;
+                }
+
+                if (sPhone.isEmpty()) {
+                    mahasiswa_telp.setError("No.Handphone mohon diisi");
+                } else {
+                    checkPhone = true;
+                }
+
+                if (sAlamat.isEmpty()) {
+                    mahasiswa_alamat.setError("Alamat mohon diisi");
+                } else {
+                    checkAlamat = true;
+                }
+
+                if (sKota.isEmpty()) {
+                    mahasiswa_kota.setError("Kota mohon diisi");
+                } else {
+                    checkKota = true;
+                }
+
+                if (sKode.isEmpty()) {
+                    mahasiswa_kode_pos.setError("Kode Pos mohon diisi");
+                } else {
+                    checkKode = true;
+                }
+
+                if (sDosen1.isEmpty()) {
+                    mahasiswa_dosen1.setError("Pembimbing 1 mohon diisi");
+                } else {
+                    checkDosen1 = true;
+                }
+
+                if (sJudul.isEmpty()) {
+                    mahasiswa_judul.setError("Judul Skripsi mohon diisi");
+                } else {
+                    checkJudul = true;
+                }
+
+                if (checkTelp && checkPhone && checkAlamat && checkKota && checkKode && checkDosen1 && checkJudul) {
+
+                    //TODO Push data Daftar Sidang
+                }
+            }
+        });
 
         return view;
     }

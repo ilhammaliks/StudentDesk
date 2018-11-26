@@ -323,7 +323,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="2"
-                    android:text="Ukuran Toga"
+                    android:text="Ukuran Toga \t :"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
@@ -334,7 +334,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="5dp"
-                    android:background="@color/colorGray"
                     android:layout_weight="1" />
             </LinearLayout>
 
