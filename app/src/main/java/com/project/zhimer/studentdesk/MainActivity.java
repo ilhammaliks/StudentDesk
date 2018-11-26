@@ -31,6 +31,8 @@ import com.project.zhimer.studentdesk.model.Mahasiswa;
 import com.project.zhimer.studentdesk.model.UET;
 import com.project.zhimer.studentdesk.view.Login;
 import com.project.zhimer.studentdesk.view.fragment.Biodata;
+import com.project.zhimer.studentdesk.view.fragment.DaftarSidang;
+import com.project.zhimer.studentdesk.view.fragment.DaftarWisuda;
 import com.project.zhimer.studentdesk.view.fragment.HalamanUtama;
 import com.project.zhimer.studentdesk.view.fragment.IsiKrs;
 import com.project.zhimer.studentdesk.view.fragment.Keuangan;
@@ -76,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Perkuliahan perkuliahan;
     private Nilai nilai;
     private SemesterPendek semesterPendek;
+    private DaftarSidang daftarSidang;
+    private DaftarWisuda daftarWisuda;
 
     //    session instance
     SessionManager sessionManager;
@@ -144,6 +148,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         perkuliahan = new Perkuliahan();
         nilai = new Nilai();
         semesterPendek = new SemesterPendek();
+        daftarSidang = new DaftarSidang();
+        daftarWisuda = new DaftarWisuda();
 
 
         if (savedInstanceState == null) {
@@ -406,11 +412,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //semester pendek
             case R.id.sp_perkuliahan:
                 setFragment(semesterPendek);
+                return true;
 
-                //daftar sidang & wisuda
+            //daftar sidang & wisuda
+            case R.id.daftar_sidang:
+                setFragment(daftarSidang);
+                return true;
 
+            case R.id.daftar_wisuda:
+                setFragment(daftarWisuda);
+                return true;
 
-                //logout
+            //logout
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
