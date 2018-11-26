@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:paddingTop="5dp"
-                    android:text="Pendaftaran Wisuda"
+                    android:text="@string/pendaftaran_sidang"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black"
@@ -114,7 +114,7 @@
                             android:id="@+id/mahasiswa_nim"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0102513010"
+                            android:text=""
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                             android:textColor="@android:color/black" />
 
@@ -151,6 +151,17 @@
             android:orientation="vertical"
             android:padding="15dp">
 
+            <com.rey.material.widget.ProgressView
+                android:id="@+id/circular"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                app:pv_autostart="false"
+                app:pv_circular="true"
+                app:pv_progressMode="indeterminate"
+                app:pv_progressStyle="@style/Material.Drawable.CircularProgress" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,6 +174,7 @@
                     android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:hint="No. Telepon"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textCursorDrawable="@drawable/cursor_text"
@@ -179,6 +191,7 @@
                     android:layout_marginStart="2dp"
                     android:layout_weight="1"
                     android:hint="No. Handphone"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textCursorDrawable="@drawable/cursor_text"
@@ -231,7 +244,7 @@
                     app:met_underlineColor="@android:color/black" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/etJabatan"
+                    android:id="@+id/etKodePos"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
@@ -255,7 +268,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pembimbing 1"
-                android:imeOptions="actionDone"
+                android:imeOptions="actionNext"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -272,7 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pembimbing 2"
-                android:imeOptions="actionDone"
+                android:imeOptions="actionNext"
                 android:inputType="text"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -302,6 +315,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -315,12 +329,12 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/bahasa"
+                    android:id="@+id/ukuranToga"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:background="@color/colorGray"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -342,7 +356,7 @@
             <Button
                 android:id="@+id/bSave"
                 android:layout_width="260dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"

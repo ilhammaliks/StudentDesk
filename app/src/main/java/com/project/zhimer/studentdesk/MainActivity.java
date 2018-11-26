@@ -420,7 +420,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.daftar_wisuda:
-                setFragment(daftarWisuda);
+                Toast.makeText(this, "Anda belum dinyatakan lulus", Toast.LENGTH_SHORT).show();
+                //setFragment(daftarWisuda);
                 return true;
 
             //logout
