@@ -55,7 +55,7 @@ public class UetAdapter extends RecyclerView.Adapter<UetAdapter.ViewHolder> {
             super(itemview);
 
             tanggal = itemview.findViewById(R.id.tvTanggalTest);
-            score = itemview.findViewById(R.id.tvScore);
+            score = itemview.findViewById(R.id.tvJumlahPeserta);
         }
     }
 }

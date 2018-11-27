@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
+import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.KeuanganAdapter;
 import com.project.zhimer.studentdesk.model.Tagihan;
 
@@ -31,6 +33,8 @@ public class Keuangan extends Fragment {
     private LinearLayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private ArrayList<Tagihan> listKeuangan;
+
+    SessionManager sessionManager;
 
 
     public Keuangan() {
@@ -53,16 +57,22 @@ public class Keuangan extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        sessionManager = new SessionManager(getContext());
+
 //        dataKeuangan();
 
         return view;
     }
 
     private void dataKeuangan() {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/mahasiswa_nim/0102513010/format/json";
+        String url = sessionManager.getUrl() + "";
         AsyncHttpClient client = new AsyncHttpClient();
-        client.setBasicAuth("admin", "1234");
-        client.get(url, new JsonHttpResponseHandler() {
+        RequestParams params = new RequestParams();
+        client.setBasicAuth(sessionManager.getAuthUsername(),sessionManager.getAuthPassword());
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
