@@ -10,11 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.zhimer.studentdesk.R;
+import com.project.zhimer.studentdesk.SessionManager;
+import com.project.zhimer.studentdesk.adapter.HasilQuranAdapter;
+import com.project.zhimer.studentdesk.model.Quran;
+
+import java.util.ArrayList;
 
 public class Score extends Fragment {
 
     View view;
     private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private ArrayList<Quran> listHasilTest;
+
+    SessionManager sessionManager;
 
 
     public Score() {
@@ -28,10 +37,15 @@ public class Score extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.tab_quran_score, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewScoreQuran);
+        listHasilTest = new ArrayList<>();
+        adapter = new HasilQuranAdapter(listHasilTest, getActivity());
+
+        recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(adapter);
+
+        sessionManager = new SessionManager(getContext());
 
         return view;
     }

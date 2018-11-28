@@ -62,7 +62,7 @@ public class Informasi extends Fragment {
         String url = sessionManager.getUrl() + "";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth(sessionManager.getAuthUsername(),sessionManager.getAuthPassword());
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 

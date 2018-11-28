@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.zhimer.studentdesk.R;
-import com.project.zhimer.studentdesk.adapter.HistoriSuratAdapter;
+import com.project.zhimer.studentdesk.adapter.SuratHistoryAdapter;
 import com.project.zhimer.studentdesk.model.Surat;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class HistorySurat extends Fragment {
 
     View view;
     private RecyclerView recyclerView;
-    private HistoriSuratAdapter mAdapter;
+    private SuratHistoryAdapter mAdapter;
     private List<Surat> suratList = new ArrayList<>();
 
     private LinearLayoutManager linearLayoutManager;
@@ -45,9 +45,9 @@ public class HistorySurat extends Fragment {
 
 //        belom ada arraylist dari json
 //        listSurat = new ArrayList<>();
-//        adapter = new HistoriSuratAdapter(listSurat, getActivity());
+//        adapter = new SuratHistoryAdapter(listSurat, getActivity());
 
-        mAdapter = new HistoriSuratAdapter(suratList);
+        mAdapter = new SuratHistoryAdapter(suratList);
 
         recyclerView = view.findViewById(R.id.listSurat);
         recyclerView.setHasFixedSize(true);

@@ -22,13 +22,13 @@ public class JadwalQuranAdapter extends RecyclerView.Adapter<JadwalQuranAdapter.
     public JadwalQuranAdapter(List<Quran> listJadwalQuran, Context context) {
         this.listJadwalQuran = listJadwalQuran;
         this.context = context;
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_quran_test, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_quran_jadwal, parent, false);
 
         return new ViewHolder(view);
     }

@@ -12,12 +12,12 @@ import com.project.zhimer.studentdesk.model.Surat;
 
 import java.util.List;
 
-public class HistoriSuratAdapter extends RecyclerView.Adapter<HistoriSuratAdapter.ViewHolder> {
+public class SuratHistoryAdapter extends RecyclerView.Adapter<SuratHistoryAdapter.ViewHolder> {
 
 
     private List<Surat> suratList;
 
-    public HistoriSuratAdapter(List<Surat> suratList) {
+    public SuratHistoryAdapter(List<Surat> suratList) {
         this.suratList = suratList;
     }
 
