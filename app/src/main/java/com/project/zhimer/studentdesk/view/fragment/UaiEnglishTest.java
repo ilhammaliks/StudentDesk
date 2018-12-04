@@ -91,8 +91,6 @@ public class UaiEnglishTest extends Fragment {
                     JSONObject object = new JSONObject(response.toString());
                     JSONArray jsonArray = object.getJSONArray("data");
 
-                    Log.d("dataUet", object.length() + "");
-
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject objek = jsonArray.getJSONObject(i);
                         uet = new UET();
