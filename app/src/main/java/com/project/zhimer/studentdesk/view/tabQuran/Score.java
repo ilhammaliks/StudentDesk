@@ -40,7 +40,7 @@ public class Score extends Fragment {
         listHasilTest = new ArrayList<>();
         adapter = new HasilQuranAdapter(listHasilTest, getActivity());
 
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerViewScoreQuran);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);

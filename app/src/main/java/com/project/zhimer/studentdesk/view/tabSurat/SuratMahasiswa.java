@@ -60,6 +60,7 @@ public class SuratMahasiswa extends Fragment {
 
                 keterangan = etKeterangan.getText().toString();
 
+
             }
         });
 

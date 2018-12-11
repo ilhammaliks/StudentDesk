@@ -79,7 +79,7 @@ public class NilaiAktif extends Fragment {
     }
 
     private void NilaiAktif() {
-        String url = "";
+        String url = sessionManager.getUrl() + "/akademik/DaftarNilaiSemesterAktif";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());

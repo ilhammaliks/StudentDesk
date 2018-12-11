@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.zhimer.studentdesk.R;
+import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.SuratHistoryAdapter;
 import com.project.zhimer.studentdesk.model.Surat;
 
@@ -25,6 +26,8 @@ public class HistorySurat extends Fragment {
     private List<Surat> suratList = new ArrayList<>();
 
     private LinearLayoutManager linearLayoutManager;
+
+    SessionManager sessionManager;
 
 //    private RecyclerView.Adapter adapter;
 //    private ArrayList<DaftarSurat> listSurat;
@@ -54,20 +57,22 @@ public class HistorySurat extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter);
 
+        sessionManager = new SessionManager(getContext());
+
         DataListSurat();
+/*
+
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
+*/
 
 
         return view;
     }
 
     private void DataListSurat() {
-        Surat surat = new Surat("20 July 2017", "Magang\n(Bahasa Indonesia)", "23 July 2017");
-        suratList.add(surat);
+        String url = sessionManager.getUrl() + "";
 
-        surat = new Surat("20 July 2017", "Magang\n(Bahasa Inggris)", "23 July 2017");
-        suratList.add(surat);
-
-        mAdapter.notifyDataSetChanged();
     }
 
 }
