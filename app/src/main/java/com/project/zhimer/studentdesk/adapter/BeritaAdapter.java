@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.zhimer.studentdesk.R;
@@ -43,6 +44,13 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
         holder.pengirim.setText(berita.getPengirim());
         holder.tanggal.setText(berita.getTanggal());
         holder.isinotif.setText(berita.getIsinotif());
+
+        if (!berita.getGambar().equals("")) {
+            holder.foto.setVisibility(View.VISIBLE);
+            Picasso.with(context).load(berita.getGambar()).into(holder.foto);
+        } else {
+            holder.foto.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -51,7 +59,8 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView judul, pengirim, tanggal, isinotif, foto;
+        TextView judul, pengirim, tanggal, isinotif;
+        ImageView foto;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -60,7 +69,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
             pengirim = itemView.findViewById(R.id.berita_pengirim);
             tanggal = itemView.findViewById(R.id.berita_tanggal);
             isinotif = itemView.findViewById(R.id.berita_isi);
-//            foto = itemView.findViewById(R.id.berita_foto);
+            foto = itemView.findViewById(R.id.berita_foto);
         }
     }
 }

@@ -76,11 +76,10 @@ public class HalamanUtama extends Fragment {
     }
 
     private void DataHalamanUtama() {
-        String url = "https://studentdesk.uai.ac.id/rest/index.php/api/notifikasi/getNotifikasiByNIM/nim/" + sessionManager.getNim() + "/format/json";
+        String url = "https://studentdesk.uai.ac.id/api/index.php/notifikasi/getNotifikasiByNIM/nim/" + sessionManager.getNim() + "/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
 
-//        Log.d("datass", url + "");
 
         client.get(url, new JsonHttpResponseHandler() {
             @Override
@@ -91,9 +90,6 @@ public class HalamanUtama extends Fragment {
                     JSONObject object = new JSONObject(response.toString());
                     JSONArray jsonArray = object.getJSONArray("data");
 
-                    Log.d("dataAPI", jsonArray.length() + "");
-
-//                    for (int i = 0; i < jsonArray.length(); i++)
                     for (int i = jsonArray.length() - 1; i >= 0; i--) {
                         JSONObject exploreObject = jsonArray.getJSONObject(i);
                         Berita berita = new Berita();
@@ -102,9 +98,7 @@ public class HalamanUtama extends Fragment {
                         String pengirim = exploreObject.getString("pengirim");
                         String tanggal = exploreObject.getString("TanggalBuat");
                         String isi = exploreObject.getString("IsiNotifikasi");
-//                        String foto = exploreObject.getString("gambar");
-
-                        //TODO tambahin parameter gambar
+                        String foto = exploreObject.getString("gambar");
 
                         String isinotif = Html.fromHtml(isi).toString();
 
@@ -122,7 +116,7 @@ public class HalamanUtama extends Fragment {
                         berita.setPengirim(pengirim);
                         berita.setTanggal(waktu);
                         berita.setIsinotif(isinotif);
-//                        berita.setGambar(foto);
+                        berita.setGambar(foto);
 
                         beritaList.add(berita);
 
