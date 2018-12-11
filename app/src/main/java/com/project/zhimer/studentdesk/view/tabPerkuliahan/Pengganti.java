@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
@@ -17,7 +18,13 @@ import com.project.zhimer.studentdesk.adapter.JadwalPenggantiAdapter;
 import com.project.zhimer.studentdesk.model.Kuliah;
 import com.rey.material.widget.ProgressView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
 
 public class Pengganti extends Fragment {
     View view;
@@ -43,7 +50,7 @@ public class Pengganti extends Fragment {
         view = inflater.inflate(R.layout.tab_perkuliahan_pengganti, container, false);
 
         listKuliahPengganti = new ArrayList<>();
-        adapter = new JadwalPenggantiAdapter(listKuliahPengganti, getActivity());
+//        adapter = new JadwalPenggantiAdapter(listKuliahPengganti, getActivity());
 
         recyclerView = view.findViewById(R.id.recyclerViewNilaiAktif);
         recyclerView.setHasFixedSize(true);
@@ -68,6 +75,31 @@ public class Pengganti extends Fragment {
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject object = new JSONObject(response.toString());
+                    JSONArray jsonArray = object.getJSONArray("data");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject objek = jsonArray.getJSONObject(i);
+                        kuliah = new Kuliah();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
     }
 
 }

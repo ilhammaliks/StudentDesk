@@ -118,12 +118,12 @@ public class Login extends AppCompatActivity {
                             String msg = getString(R.string.msg_token, token);
 
                             sessionManager.setToken(msg);
-                            Log.d("token", msg);
+//                            Log.d("token", msg);
                         }
                     });
 
                     FirebaseMessaging.getInstance().subscribeToTopic("Akademik");
-
+                    ShareToken();
                     //finish();
                 } else {
                     toastFail.setAlpha(1);
@@ -174,12 +174,14 @@ public class Login extends AppCompatActivity {
                             String msg = getString(R.string.msg_token, token);
 
                             sessionManager.setToken(msg);
-                            Log.d("token", msg);
+//                            Log.d("token", msg);
                         }
                     });
-
                     FirebaseMessaging.getInstance().subscribeToTopic("Akademik");
 
+                    Log.d("token", sessionManager.getToken() + "");
+
+                    ShareToken();
                     //finish();
                 } else {
                     toastFail.setAlpha(1);
@@ -223,6 +225,28 @@ public class Login extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
+    private void ShareToken() {
+        String url = sessionManager.getUrl() + "/login/setToken/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+        params.put("token", sessionManager.getToken());
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
             }
 
             @Override
