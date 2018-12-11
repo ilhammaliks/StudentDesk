@@ -17,7 +17,7 @@ public class Kuliah {
     private Integer sakit;
     private Integer izin;
     private Integer alpa;
-    private Integer persentase;
+    private String persentase;
 
 
     public String getKelas() {
@@ -124,11 +124,11 @@ public class Kuliah {
         this.alpa = alpa;
     }
 
-    public Integer getPersentase() {
+    public String getPersentase() {
         return persentase;
     }
 
-    public void setPersentase(Integer persentase) {
+    public void setPersentase(String persentase) {
         this.persentase = persentase;
     }
 }

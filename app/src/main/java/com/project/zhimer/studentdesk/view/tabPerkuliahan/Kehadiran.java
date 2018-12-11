@@ -23,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
@@ -86,9 +87,11 @@ public class Kehadiran extends Fragment {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                    int persentase = 0;
-                    int jumlahkehadiran = 0;
-                    int totalpertemuan = 0;
+                    double persentase;
+                    double jumlahkehadiran = 0;
+                    double totalpertemuan = 0;
+                    DecimalFormat decimalFormat = new DecimalFormat("#");
+                    String hasilPersen = "";
 
                     for (int i = 0; i <jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
@@ -117,7 +120,9 @@ public class Kehadiran extends Fragment {
                         persentase = (jumlahkehadiran / totalpertemuan) * 100;
                         //end
 
-                        Log.d("dataPertemuan", persentase + "");
+                        hasilPersen = decimalFormat.format(persentase);
+
+                        Log.d("persentase", hasilPersen);
 
                         kuliah.setMataKuliah(namaMk);
                         kuliah.setSks(sks);
@@ -125,7 +130,7 @@ public class Kehadiran extends Fragment {
                         kuliah.setSakit(sakit);
                         kuliah.setIzin(izin);
                         kuliah.setAlpa(alpa);
-                        kuliah.setPersentase(persentase);
+                        kuliah.setPersentase(hasilPersen);
 
                         listKehadiran.add(kuliah);
                         adapter.notifyDataSetChanged();
