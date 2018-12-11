@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
             android:layout_margin="1dp"
             android:layout_weight="2"
             android:background="@color/colorPrimaryDark"
-            android:text="@string/kolom_waktu"
+            android:text="@string/kolom_sks"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
@@ -102,6 +103,17 @@
             android:textSize="12sp"
             android:textStyle="bold" />
     </TableRow>
+
+    <com.rey.material.widget.ProgressView
+        android:id="@+id/circular"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        app:pv_autostart="false"
+        app:pv_circular="true"
+        app:pv_progressMode="indeterminate"
+        app:pv_progressStyle="@style/Material.Drawable.CircularProgress" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvKehadiranKuliah"

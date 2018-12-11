@@ -2,7 +2,6 @@ package com.project.zhimer.studentdesk.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +28,7 @@ public class JadwalKuliahAdapter extends RecyclerView.Adapter<JadwalKuliahAdapte
     @NonNull
     @Override
     public JadwalKuliahAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_jadwalkuliah, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_jadwal_kuliah, parent, false);
 
         return new ViewHolder(view);
     }

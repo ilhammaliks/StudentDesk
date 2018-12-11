@@ -14,7 +14,6 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
-import com.project.zhimer.studentdesk.adapter.JadwalPenggantiAdapter;
 import com.project.zhimer.studentdesk.model.Kuliah;
 import com.rey.material.widget.ProgressView;
 
@@ -50,9 +49,9 @@ public class Pengganti extends Fragment {
         view = inflater.inflate(R.layout.tab_perkuliahan_pengganti, container, false);
 
         listKuliahPengganti = new ArrayList<>();
-//        adapter = new JadwalPenggantiAdapter(listKuliahPengganti, getActivity());
+//        adapter = new JadwalKehadiranAdapter(listKuliahPengganti, getActivity());
 
-        recyclerView = view.findViewById(R.id.recyclerViewNilaiAktif);
+        recyclerView = view.findViewById(R.id.rvKuliahPengganti);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);

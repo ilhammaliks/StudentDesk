@@ -12,6 +12,13 @@ public class Kuliah {
     private String ruang;
     private Integer jumlahSKS;
 
+    //kehadiran
+    private Integer hadir;
+    private Integer sakit;
+    private Integer izin;
+    private Integer alpa;
+    private Integer persentase;
+
 
     public String getKelas() {
         return kelas;
@@ -83,5 +90,45 @@ public class Kuliah {
 
     public void setJumlahSKS(Integer jumlahSKS) {
         this.jumlahSKS = jumlahSKS;
+    }
+
+    public Integer getHadir() {
+        return hadir;
+    }
+
+    public void setHadir(Integer hadir) {
+        this.hadir = hadir;
+    }
+
+    public Integer getSakit() {
+        return sakit;
+    }
+
+    public void setSakit(Integer sakit) {
+        this.sakit = sakit;
+    }
+
+    public Integer getIzin() {
+        return izin;
+    }
+
+    public void setIzin(Integer izin) {
+        this.izin = izin;
+    }
+
+    public Integer getAlpa() {
+        return alpa;
+    }
+
+    public void setAlpa(Integer alpa) {
+        this.alpa = alpa;
+    }
+
+    public Integer getPersentase() {
+        return persentase;
+    }
+
+    public void setPersentase(Integer persentase) {
+        this.persentase = persentase;
     }
 }

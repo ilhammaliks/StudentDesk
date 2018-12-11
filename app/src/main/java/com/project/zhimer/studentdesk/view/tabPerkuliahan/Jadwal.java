@@ -17,6 +17,7 @@ import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.JadwalKuliahAdapter;
 import com.project.zhimer.studentdesk.model.Kuliah;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,14 +28,15 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-
 public class Jadwal extends Fragment {
+
     View view;
     private RecyclerView recyclerView;
-    private LinearLayoutManager layoutManager;
 
     private RecyclerView.Adapter adapter;
     private ArrayList<Kuliah> listJadwal;
+
+    private ProgressView progressView;
 
     SessionManager sessionManager;
     Kuliah kuliah;
@@ -60,11 +62,17 @@ public class Jadwal extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        progressView = view.findViewById(R.id.circular);
+
         sksTotal = view.findViewById(R.id.sksTotal);
 
         sessionManager = new SessionManager(getContext());
 
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
+
         DataJadwalKuliah();
+
         return view;
     }
 
@@ -212,6 +220,8 @@ public class Jadwal extends Fragment {
                         listJadwal.add(kuliah);
                         adapter.notifyDataSetChanged();
                     }
+                    progressView.setVisibility(View.GONE);
+                    progressView.stop();
 
                     total = String.valueOf(jumlahSks);
                     sksTotal.setText(total);
