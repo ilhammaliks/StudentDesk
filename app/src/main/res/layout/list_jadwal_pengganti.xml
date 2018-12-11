@@ -17,7 +17,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/tvSks"
+        android:id="@+id/tvDosen"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"
@@ -29,55 +29,33 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/tvHadir"
+        android:id="@+id/tvBerhalangan"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="1dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="@android:color/white"
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/tvSakit"
+        android:id="@+id/tvPengganti"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="1dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="@android:color/white"
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/tvIzin"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="1dp"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        android:gravity="center_vertical"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
 
     <TextView
-        android:id="@+id/tvAlpa"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="1dp"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        android:gravity="center_vertical"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
-        android:id="@+id/tvPersentase"
+        android:id="@+id/tvRuang"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"
@@ -89,4 +67,5 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold" />
+
 </TableRow>

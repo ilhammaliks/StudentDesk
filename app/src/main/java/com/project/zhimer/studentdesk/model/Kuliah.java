@@ -19,6 +19,10 @@ public class Kuliah {
     private Integer alpa;
     private String persentase;
 
+    //pengganti
+    private String tanggalBerhalangan;
+    private String tanggalPengganti;
+
 
     public String getKelas() {
         return kelas;
@@ -130,5 +134,21 @@ public class Kuliah {
 
     public void setPersentase(String persentase) {
         this.persentase = persentase;
+    }
+
+    public String getTanggalBerhalangan() {
+        return tanggalBerhalangan;
+    }
+
+    public void setTanggalBerhalangan(String tanggalBerhalangan) {
+        this.tanggalBerhalangan = tanggalBerhalangan;
+    }
+
+    public String getTanggalPengganti() {
+        return tanggalPengganti;
+    }
+
+    public void setTanggalPengganti(String tanggalPengganti) {
+        this.tanggalPengganti = tanggalPengganti;
     }
 }

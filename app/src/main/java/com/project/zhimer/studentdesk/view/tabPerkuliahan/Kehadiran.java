@@ -108,21 +108,15 @@ public class Kehadiran extends Fragment {
                         totalpertemuan = hadir + sakit + izin + alpa;
                         //end
 
-                        Log.d("dataTotalPertemuan", totalpertemuan + "");
-
                         //hitung jumlah kehadiran
                         jumlahkehadiran = hadir + sakit + izin;
                         //end
-
-                        Log.d("dataJumlahHadir", jumlahkehadiran + "");
 
                         //hitung persentase kehadiran
                         persentase = (jumlahkehadiran / totalpertemuan) * 100;
                         //end
 
                         hasilPersen = decimalFormat.format(persentase);
-
-                        Log.d("persentase", hasilPersen);
 
                         kuliah.setMataKuliah(namaMk);
                         kuliah.setSks(sks);
