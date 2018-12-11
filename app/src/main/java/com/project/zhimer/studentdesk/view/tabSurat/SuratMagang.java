@@ -12,10 +12,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
+import com.project.zhimer.studentdesk.SessionManager;
+import com.rey.material.widget.ProgressView;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 public class SuratMagang extends Fragment {
     View view;
@@ -23,6 +32,9 @@ public class SuratMagang extends Fragment {
     private Spinner spinner;
     private EditText etKeterangan, etPerusahaan, etDitujukan, etJabatan, etDivisi;
     private Button bSave;
+    ProgressView progressView;
+
+    SessionManager sessionManager;
 
     String bahasa, keterangan, perusahaan, ditujukan, jabatan, divisi;
 
@@ -43,6 +55,9 @@ public class SuratMagang extends Fragment {
         etJabatan = view.findViewById(R.id.etJabatan);
         etDivisi = view.findViewById(R.id.etDivisi);
         bSave = view.findViewById(R.id.bSave);
+        progressView = view.findViewById(R.id.circular);
+
+        sessionManager = new SessionManager(getContext());
 
         //spinnerBahasa
         List<String> Bahasa = new ArrayList<String>();
@@ -98,13 +113,56 @@ public class SuratMagang extends Fragment {
 
                 if (checkPerusahaan && checkDitujakn && checkJabatan && checkDivisi) {
 
+                    progressView.setVisibility(View.VISIBLE);
+                    progressView.start();
 
-                    Toast.makeText(getContext(),"Surat berhasil dibuat", Toast.LENGTH_SHORT).show();
+                    SendSuratMagang();
                 }
             }
         });
 
         return view;
+    }
+
+    private void SendSuratMagang() {
+
+        String url = sessionManager.getUrl() + "";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        //send data surat magang
+        //TODO nama parameter nya sesuaikan dengan yang ada pada json asli
+        params.put("bahasa", bahasa);
+        params.put("keterangan", keterangan);
+        params.put("perusahaan", perusahaan);
+        params.put("ditujukan", ditujukan);
+        params.put("jabatan", jabatan);
+        params.put("divisi", divisi);
+
+        //end
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                Toast.makeText(getContext(),"Surat berhasil disimpan", Toast.LENGTH_SHORT).show();
+                progressView.setVisibility(View.GONE);
+                progressView.stop();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Toast.makeText(getContext(),"Terjadi kesalah pada sistem\nsilahkan coba beberapa saat lagi", Toast.LENGTH_SHORT).show();
+                progressView.setVisibility(View.GONE);
+                progressView.stop();
+            }
+        });
     }
 
 }

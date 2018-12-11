@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.model.Berita;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView judul, pengirim, tanggal, isinotif;
+        TextView judul, pengirim, tanggal, isinotif, foto;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -59,7 +60,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
             pengirim = itemView.findViewById(R.id.berita_pengirim);
             tanggal = itemView.findViewById(R.id.berita_tanggal);
             isinotif = itemView.findViewById(R.id.berita_isi);
-
+            foto = itemView.findViewById(R.id.berita_foto);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.project.zhimer.studentdesk.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,7 +42,14 @@ public class KeuanganAdapter extends RecyclerView.Adapter<KeuanganAdapter.ViewHo
         holder.biaya.setText(tagihan.getBiaya());
         holder.potongan.setText(tagihan.getPotongan());
         holder.bayar.setText(tagihan.getBayar());
-        holder.status.setText(tagihan.getStatus());
+
+        if (tagihan.getBayar().equals("0")) {
+            holder.status.setText("Lunas");
+            holder.status.setTextColor(Color.GREEN);
+        } else {
+            holder.status.setText("Kurang");
+            holder.status.setTextColor(Color.RED);
+        }
     }
 
     @Override

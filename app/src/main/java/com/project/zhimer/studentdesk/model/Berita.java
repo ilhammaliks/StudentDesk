@@ -4,6 +4,7 @@ public class Berita {
 
     private String tanggal;
     private String judul;
+    private String gambar;
     private String isinotif;
     private String pengirim;
 
@@ -37,6 +38,14 @@ public class Berita {
 
     public void setIsinotif(String isinotif) {
         this.isinotif = isinotif;
+    }
+
+    public String getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
     }
 
     public Berita() {

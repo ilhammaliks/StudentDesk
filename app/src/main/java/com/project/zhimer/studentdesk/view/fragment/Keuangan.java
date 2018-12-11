@@ -17,6 +17,7 @@ import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.KeuanganAdapter;
 import com.project.zhimer.studentdesk.model.Tagihan;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +34,8 @@ public class Keuangan extends Fragment {
     private LinearLayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private ArrayList<Tagihan> listKeuangan;
+
+    ProgressView progressView;
 
     SessionManager sessionManager;
 
@@ -57,15 +60,19 @@ public class Keuangan extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        progressView = view.findViewById(R.id.circular);
+
         sessionManager = new SessionManager(getContext());
 
-//        dataKeuangan();
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
+        GetDataKeuangan();
 
         return view;
     }
 
-    private void dataKeuangan() {
-        String url = sessionManager.getUrl() + "";
+    private void GetDataKeuangan() {
+        String url = sessionManager.getUrl() + "/keuangan/RekapKeuangan/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         client.setBasicAuth(sessionManager.getAuthUsername(),sessionManager.getAuthPassword());
@@ -86,25 +93,26 @@ public class Keuangan extends Fragment {
 
                         Tagihan tagihan = new Tagihan();
 
-                        String nilai = object.getString("nilai");
-                        Log.d("urutan", object.get("pengirim") + "");
-                        if (nilai.equals("UAI")) {
-                            String semester = object.getString("pengirim");
-                            String biaya = object.getString("pengirim");
-                            String potongan = object.getString("pengirim");
-                            String bayar = object.getString("pengirim");
-                            String status = object.getString("pengirim");
+                        Log.d("DataKeuangan", jsonArray.length() + "");
 
-                            tagihan.setSemester(semester);
-                            tagihan.setBiaya(biaya);
-                            tagihan.setPotongan(potongan);
-                            tagihan.setBayar(bayar);
-                            tagihan.setStatus(status);
+                        String semester = object.getString("semester");
+                        String biaya = object.getString("jumlah_biaya");
+                        String potongan = object.getString("jumlah_potongan");
+                        String bayar = object.getString("jumlah_bayar");
+                        String status = object.getString("kurang_lebih_bayar");
 
-                            listKeuangan.add(tagihan);
-                            adapter.notifyDataSetChanged();
-                        }
+                        tagihan.setSemester(semester);
+                        tagihan.setBiaya(biaya);
+                        tagihan.setPotongan(potongan);
+                        tagihan.setBayar(bayar);
+                        tagihan.setStatus(status);
+
+                        listKeuangan.add(tagihan);
+                        adapter.notifyDataSetChanged();
                     }
+
+                    progressView.setVisibility(View.GONE);
+                    progressView.stop();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
