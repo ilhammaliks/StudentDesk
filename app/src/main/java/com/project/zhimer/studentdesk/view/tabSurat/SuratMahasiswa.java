@@ -60,7 +60,7 @@ public class SuratMahasiswa extends Fragment {
 
                 keterangan = etKeterangan.getText().toString();
 
-
+                Toast.makeText(getContext(),"Surat berhasil dibuat", Toast.LENGTH_SHORT).show();
             }
         });
 

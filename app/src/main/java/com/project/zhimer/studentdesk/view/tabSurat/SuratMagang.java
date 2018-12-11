@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.project.zhimer.studentdesk.R;
 
@@ -97,6 +98,8 @@ public class SuratMagang extends Fragment {
 
                 if (checkPerusahaan && checkDitujakn && checkJabatan && checkDivisi) {
 
+
+                    Toast.makeText(getContext(),"Surat berhasil dibuat", Toast.LENGTH_SHORT).show();
                 }
             }
         });
