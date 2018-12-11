@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:id="@+id/oke"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:importantForAccessibility="no"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:src="@drawable/icon_check"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/notOke"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:importantForAccessibility="no"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:src="@drawable/icon_cancel"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tvSyarat"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="3"
+        android:background="@android:color/white"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+</TableRow>

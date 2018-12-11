@@ -42,14 +42,20 @@ public class JadwalPenggantiAdapter extends RecyclerView.Adapter<JadwalPengganti
         holder.namaMk.setText(kuliah.getMataKuliah());
         holder.dosen.setText(kuliah.getDosen());
         holder.berhalangan.setText(kuliah.getTanggalBerhalangan());
-        holder.pengganti.setText(kuliah.getTanggalPengganti());
+        if (kuliah.getTanggalPengganti().equals("null, -")) {
+            holder.pengganti.setText("Akan diinformasikan kembali");
+            holder.pengganti.setTextColor(Color.RED);
+        }else {
+            holder.pengganti.setText(kuliah.getTanggalPengganti());
+
+        }
+
         if (kuliah.getRuang().equals("null")) {
             holder.ruang.setText("[Belum]");
             holder.ruang.setTextColor(Color.RED);
         }else {
             holder.ruang.setText(kuliah.getRuang());
         }
-
     }
 
     @Override

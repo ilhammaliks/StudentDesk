@@ -22,6 +22,8 @@ public class Kuliah {
     //pengganti
     private String tanggalBerhalangan;
     private String tanggalPengganti;
+    private String mulaiPengganti;
+    private String kelarPengganti;
 
 
     public String getKelas() {
@@ -150,5 +152,21 @@ public class Kuliah {
 
     public void setTanggalPengganti(String tanggalPengganti) {
         this.tanggalPengganti = tanggalPengganti;
+    }
+
+    public String getMulaiPengganti() {
+        return mulaiPengganti;
+    }
+
+    public void setMulaiPengganti(String mulaiPengganti) {
+        this.mulaiPengganti = mulaiPengganti;
+    }
+
+    public String getKelarPengganti() {
+        return kelarPengganti;
+    }
+
+    public void setKelarPengganti(String kelarPengganti) {
+        this.kelarPengganti = kelarPengganti;
     }
 }

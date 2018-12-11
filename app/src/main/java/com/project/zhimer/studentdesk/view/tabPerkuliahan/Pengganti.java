@@ -99,8 +99,10 @@ public class Pengganti extends Fragment {
                         String jamMulaiPengganti = "";
                         String jamKelarPengganti = "";
 
+                        String waktpengganti = "";
+
                         String namaMk = objek.getString("mtkl_nm");
-                        String dosen =  objek.getString("ds_nm");
+                        String dosen = objek.getString("ds_nm");
                         String ruang = objek.getString("ruang");
 
 
@@ -122,19 +124,16 @@ public class Pengganti extends Fragment {
                         String mulaiPengganti = objek.getString("slot_mulai_pengganti");
                         String kelarPengganti = objek.getString("slot_selesai_pengganti");
 
-//                        if (tanggalPengganti.equals("")) {
-////
-////                        }
-////
-////                        Date ganti = null;
-////
-////                        try {
-////                            ganti = plainDate.parse(tanggalPengganti);
-////                        } catch (ParseException e) {
-////                            e.printStackTrace();
-////                        }
-////                        String waktpengganti = dateFormat.format(ganti);
+                        if (tanggalPengganti.equals("")) {
+                            Date ganti = null;
 
+                            try {
+                                ganti = plainDate.parse(tanggalPengganti);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            waktpengganti = dateFormat.format(ganti);
+                        }
 
                         //jam mulai perkuliahan
                         if (mulai.equals("1")) {
@@ -329,7 +328,11 @@ public class Pengganti extends Fragment {
                         kuliah.setDosen(dosen);
                         kuliah.setTanggalBerhalangan(waktuBerhalangan + ", " + jamMulai + "-" + jamSelesai);
 
-//                        kuliah.setTanggalPengganti(waktuPengganti + ", " + jamMulaiPengganti + "-" + jamKelarPengganti);
+                        if (tanggalPengganti == "null") {
+                            kuliah.setTanggalPengganti("null, -");
+                        } else {
+                            kuliah.setTanggalPengganti(waktpengganti + ", " + jamMulaiPengganti + "-" + jamKelarPengganti);
+                        }
                         kuliah.setRuang(ruang);
 
                         listKuliahPengganti.add(kuliah);

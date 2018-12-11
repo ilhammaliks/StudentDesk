@@ -43,6 +43,7 @@ import com.project.zhimer.studentdesk.view.fragment.RingkasanAkademik;
 import com.project.zhimer.studentdesk.view.fragment.SemesterPendek;
 import com.project.zhimer.studentdesk.view.fragment.TestQuran;
 import com.project.zhimer.studentdesk.view.fragment.UaiEnglishTest;
+import com.project.zhimer.studentdesk.view.tabQuran.Score;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Biodata biodata;
     private PermintaanSurat permintaanSurat;
     private TestQuran testQuran;
+    private Score scoreQuran;
     private UaiEnglishTest uaiEnglishTest;
     private RingkasanAkademik ringkasanAkademik;
     private Keuangan keuangan;
@@ -141,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         biodata = new Biodata();
         permintaanSurat = new PermintaanSurat();
         testQuran = new TestQuran();
+        scoreQuran = new Score();
         uaiEnglishTest = new UaiEnglishTest();
         ringkasanAkademik = new RingkasanAkademik();
         keuangan = new Keuangan();
@@ -376,12 +379,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 setFragment(biodata);
                 return true;
 
-            case R.id.surat:
+            /*case R.id.surat:
                 setFragment(permintaanSurat);
-                return true;
+                return true;*/
 
             case R.id.quran:
-                setFragment(testQuran);
+                setFragment(scoreQuran);
                 return true;
 
             case R.id.uet:
@@ -550,9 +553,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if (id == R.id.notif) {
-            Toast.makeText(this, "coming soon", Toast.LENGTH_SHORT).show();
-        }
+//        if (id == R.id.notif) {
+//            Toast.makeText(this, "coming soon", Toast.LENGTH_SHORT).show();
+//        }
 
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
