@@ -102,7 +102,7 @@ public class HalamanUtama extends Fragment {
                         String pengirim = exploreObject.getString("pengirim");
                         String tanggal = exploreObject.getString("TanggalBuat");
                         String isi = exploreObject.getString("IsiNotifikasi");
-                        String foto = exploreObject.getString("gambar");
+//                        String foto = exploreObject.getString("gambar");
 
                         //TODO tambahin parameter gambar
 
@@ -122,7 +122,7 @@ public class HalamanUtama extends Fragment {
                         berita.setPengirim(pengirim);
                         berita.setTanggal(waktu);
                         berita.setIsinotif(isinotif);
-                        berita.setGambar(foto);
+//                        berita.setGambar(foto);
 
                         beritaList.add(berita);
 

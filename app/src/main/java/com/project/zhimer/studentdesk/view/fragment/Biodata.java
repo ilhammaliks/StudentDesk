@@ -108,7 +108,6 @@ public class Biodata extends Fragment {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-//                        mahasiswa = new Mahasiswa();
 
                         String thumbnail = object.getString("foto_thumbnail");
 

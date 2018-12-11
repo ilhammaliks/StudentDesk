@@ -18,6 +18,7 @@ import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.UetAdapter;
 import com.project.zhimer.studentdesk.model.Nilai;
 import com.project.zhimer.studentdesk.model.UET;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +39,7 @@ public class UaiEnglishTest extends Fragment {
     UET uet;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
+    ProgressView progressView;
 
     private RecyclerView.Adapter adapter;
     private ArrayList<UET> uetList;
@@ -68,7 +70,12 @@ public class UaiEnglishTest extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        progressView = view.findViewById(R.id.circular);
+
         sessionManager = new SessionManager(getContext());
+
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
 
         DataUaiEnglishTest();
         return view;
@@ -115,6 +122,8 @@ public class UaiEnglishTest extends Fragment {
                         uetList.add(uet);
                         adapter.notifyDataSetChanged();
                     }
+                    progressView.setVisibility(View.GONE);
+                    progressView.stop();
                     //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
                 } catch (JSONException e) {
                     e.printStackTrace();

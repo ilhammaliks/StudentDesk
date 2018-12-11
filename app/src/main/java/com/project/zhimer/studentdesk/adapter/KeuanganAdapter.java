@@ -38,14 +38,23 @@ public class KeuanganAdapter extends RecyclerView.Adapter<KeuanganAdapter.ViewHo
     public void onBindViewHolder(@NonNull KeuanganAdapter.ViewHolder holder, int position) {
         final Tagihan tagihan = tagihanList.get(position);
 
-        holder.semester.setText(tagihan.getSemester());
+        if (tagihan.getSemester().equals("1")) {
+            holder.semester.setText("Ganjil");
+        }
+        else if (tagihan.getSemester().equals("2")) {
+            holder.semester.setText("Genap");
+        }else {
+            holder.semester.setText("konversi");
+        }
+
+
         holder.biaya.setText(tagihan.getBiaya());
         holder.potongan.setText(tagihan.getPotongan());
         holder.bayar.setText(tagihan.getBayar());
 
-        if (tagihan.getBayar().equals("0")) {
+        if (tagihan.getStatus().equals("0")) {
             holder.status.setText("Lunas");
-            holder.status.setTextColor(Color.GREEN);
+            holder.status.setTextColor(Color.BLUE);
         } else {
             holder.status.setText("Kurang");
             holder.status.setTextColor(Color.RED);

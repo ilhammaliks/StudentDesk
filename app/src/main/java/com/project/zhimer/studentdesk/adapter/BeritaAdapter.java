@@ -60,7 +60,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.ViewHolder
             pengirim = itemView.findViewById(R.id.berita_pengirim);
             tanggal = itemView.findViewById(R.id.berita_tanggal);
             isinotif = itemView.findViewById(R.id.berita_isi);
-            foto = itemView.findViewById(R.id.berita_foto);
+//            foto = itemView.findViewById(R.id.berita_foto);
         }
     }
 }

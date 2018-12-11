@@ -34,6 +34,8 @@ public class Keuangan extends Fragment {
     private LinearLayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private ArrayList<Tagihan> listKeuangan;
+    Tagihan tagihan;
+
 
     ProgressView progressView;
 
@@ -75,11 +77,11 @@ public class Keuangan extends Fragment {
         String url = sessionManager.getUrl() + "/keuangan/RekapKeuangan/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        client.setBasicAuth(sessionManager.getAuthUsername(),sessionManager.getAuthPassword());
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
-        client.post(url, new JsonHttpResponseHandler() {
+        client.post(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -88,12 +90,10 @@ public class Keuangan extends Fragment {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                    for (int i = jsonArray.length() - 1; i >= 0; i--) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
 
-                        Tagihan tagihan = new Tagihan();
-
-                        Log.d("DataKeuangan", jsonArray.length() + "");
+                        tagihan = new Tagihan();
 
                         String semester = object.getString("semester");
                         String biaya = object.getString("jumlah_biaya");
