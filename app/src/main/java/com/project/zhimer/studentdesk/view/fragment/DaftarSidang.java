@@ -56,9 +56,21 @@ public class DaftarSidang extends Fragment {
 
         progressView = view.findViewById(R.id.circular);
 
+        //info sidang
+        tanggalSidang = view.findViewById(R.id.tvTanggalsidang);
+        jam = view.findViewById(R.id.tvJam);
+        ruangan = view.findViewById(R.id.tvRuangan);
+        ketuaSidang = view.findViewById(R.id.tvKetuaSidang);
+        penguji1 = view.findViewById(R.id.tvPenguji1);
+        penguji2 = view.findViewById(R.id.tvPenguji2);
+
+        //biodata
         mahasiswa_nama = view.findViewById(R.id.mahasiswa_nama);
         mahasiswa_nim = view.findViewById(R.id.mahasiswa_nim);
         mahasiswa_prodi = view.findViewById(R.id.mahasiswa_prodi);
+        pembimbing1 = view.findViewById(R.id.tvPembimbing1);
+        pembimbing2 = view.findViewById(R.id.tvPembimbing2);
+        judulSkripsi = view.findViewById(R.id.tvJudul);
 
         sessionManager = new SessionManager(getContext());
 

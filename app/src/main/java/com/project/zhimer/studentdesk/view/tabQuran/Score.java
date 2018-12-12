@@ -22,7 +22,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -89,11 +92,22 @@ public class Score extends Fragment {
                         JSONObject object = jsonArray.getJSONObject(i);
                         quran = new Quran();
 
-                        String tanggal = object.getString("tanggal_test");
-                        String score = object.getString("score");
-                        String status = object.getString("status");
+                        String tanggal = object.getString("Tanggal");
+                        String score = object.getString("NilaiTest");
+                        String status = object.getString("Kelulusan");
 
-                        quran.setTanggalTest(tanggal);
+                        SimpleDateFormat plainDate = new SimpleDateFormat("yyyy-M-d");
+                        Date date = null;
+
+                        try {
+                            date = plainDate.parse(tanggal);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+                        String tanggalTest = dateFormat.format(date);
+
+                        quran.setTanggalTest(tanggalTest);
                         quran.setScore(score);
                         quran.setStatus(status);
 

@@ -39,7 +39,7 @@ public class HasilQuranAdapter extends RecyclerView.Adapter<HasilQuranAdapter.Vi
 
         final Quran hasilTestQuran = quranList.get(position);
 
-        holder.tanggalTest.setText(hasilTestQuran.getTanggal());
+        holder.tanggalTest.setText(hasilTestQuran.getTanggalTest());
         holder.totalScore.setText(hasilTestQuran.getScore());
 
         if (hasilTestQuran.getStatus().equals("LULUS")) {
