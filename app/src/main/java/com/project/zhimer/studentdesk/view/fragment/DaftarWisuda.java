@@ -65,101 +65,13 @@ public class DaftarWisuda extends Fragment {
         mahasiswa_nim = view.findViewById(R.id.mahasiswa_nim);
         mahasiswa_prodi = view.findViewById(R.id.mahasiswa_prodi);
 
-        mahasiswa_telp = view.findViewById(R.id.etTelepon);
-        mahasiswa_phone = view.findViewById(R.id.etPhone);
-        mahasiswa_alamat = view.findViewById(R.id.etAlamat);
-        mahasiswa_kota = view.findViewById(R.id.etKota);
-        mahasiswa_kode_pos = view.findViewById(R.id.etKodePos);
-        mahasiswa_dosen1 = view.findViewById(R.id.etDosen1);
-        mahasiswa_dosen2 = view.findViewById(R.id.etDosen2);
-        mahasiswa_judul = view.findViewById(R.id.etSkripsi);
-
-        spinner = view.findViewById(R.id.ukuranToga);
-        saran_mahasiswa = view.findViewById(R.id.etSaran);
-
-        bSave = view.findViewById(R.id.bSave);
-
         sessionManager = new SessionManager(getContext());
 
         progressView.setVisibility(View.VISIBLE);
         progressView.start();
 
-        List<String> Ukuran = new ArrayList<String>();
-        Ukuran.add("S");
-        Ukuran.add("L");
-        Ukuran.add("M");
-        Ukuran.add("XL");
+//        GetDataMahasiswa();
 
-        ArrayAdapter<String> adapterUkuran = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, Ukuran);
-        adapterUkuran.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapterUkuran);
-
-        GetDataMahasiswa();
-
-
-        bSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean checkTelp = false, checkPhone = false, checkAlamat = false,
-                        checkKota = false, checkKode = false, checkDosen1 = false, checkJudul = false;
-
-                sTelp = mahasiswa_telp.getText().toString();
-                sPhone = mahasiswa_phone.getText().toString();
-                sAlamat = mahasiswa_alamat.getText().toString();
-                sKota = mahasiswa_kota.getText().toString();
-                sKode = mahasiswa_kode_pos.getText().toString();
-                sDosen1 = mahasiswa_dosen1.getText().toString();
-                sJudul = mahasiswa_judul.getText().toString();
-
-                //set Required Field
-                if (sTelp.isEmpty()) {
-                    mahasiswa_telp.setError("No.Telp mohon diisi");
-                } else {
-                    checkTelp = true;
-                }
-
-                if (sPhone.isEmpty()) {
-                    mahasiswa_telp.setError("No.Handphone mohon diisi");
-                } else {
-                    checkPhone = true;
-                }
-
-                if (sAlamat.isEmpty()) {
-                    mahasiswa_alamat.setError("Alamat mohon diisi");
-                } else {
-                    checkAlamat = true;
-                }
-
-                if (sKota.isEmpty()) {
-                    mahasiswa_kota.setError("Kota mohon diisi");
-                } else {
-                    checkKota = true;
-                }
-
-                if (sKode.isEmpty()) {
-                    mahasiswa_kode_pos.setError("Kode Pos mohon diisi");
-                } else {
-                    checkKode = true;
-                }
-
-                if (sDosen1.isEmpty()) {
-                    mahasiswa_dosen1.setError("Pembimbing 1 mohon diisi");
-                } else {
-                    checkDosen1 = true;
-                }
-
-                if (sJudul.isEmpty()) {
-                    mahasiswa_judul.setError("Judul Skripsi mohon diisi");
-                } else {
-                    checkJudul = true;
-                }
-
-                if (checkTelp && checkPhone && checkAlamat && checkKota && checkKode && checkDosen1 && checkJudul) {
-
-                    //TODO Push data Daftar Sidang
-                }
-            }
-        });
 
         return view;
     }
@@ -184,24 +96,7 @@ public class DaftarWisuda extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
 
-                        String nama = object.getString("mhs_nm");
-                        String nim = object.getString("mhs_nim");
-                        String prodi = object.getString("NamaProgdi");
-                        String telepon = object.getString("mhs_telepon");
-                        String phone = object.getString("mhs_hp");
-                        String alamat = object.getString("mhs_alm");
-                        String kota = object.getString("mhs_kota");
-                        String kodePos = object.getString("kodepos");
 
-                        mahasiswa_nama.setText(nama);
-                        mahasiswa_nim.setText(nim);
-                        mahasiswa_prodi.setText(prodi);
-
-                        mahasiswa_telp.setText(telepon);
-                        mahasiswa_phone.setText(phone);
-                        mahasiswa_alamat.setText(alamat);
-                        mahasiswa_kota.setText(kota);
-                        mahasiswa_kode_pos.setText(kodePos);
 
                         progressView.stop();
                         progressView.setVisibility(View.GONE);

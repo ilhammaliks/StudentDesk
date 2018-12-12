@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:text="@string/pendaftaran_sidang"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -39,6 +40,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
                     android:background="@android:color/white"
                     android:orientation="vertical"
                     android:padding="15dp">
@@ -132,6 +134,183 @@
                             android:textColor="@android:color/black" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/telp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:text="No. Telepon"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/mahasiswa_telp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:text="No. Handphone"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/mahasiswa_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="Alamat"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/mahasiswa_alamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:text="Kota"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/mahasiswa_kota"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:text="Kode Pos"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/mahasiswa_kodePos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/directWebsite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/petunjukSidang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kunjungi Website Student Desk untuk Daftar Wisuda"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@android:color/black"
+                        android:visibility="visible"/>
+
+                    <TextView
+                        android:id="@+id/urlSidang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoLink="web"
+                        android:text="https://studentdesk.uai.ac.id"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:visibility="visible"/>
+
+                </LinearLayout>
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -143,10 +322,11 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
+            android:id="@+id/dataWisuda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="15dp">
+            android:visibility="visible">
 
             <com.rey.material.widget.ProgressView
                 android:id="@+id/circular"
@@ -162,208 +342,219 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/etTelepon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="2dp"
-                    android:layout_weight="1"
-                    android:hint="No. Telepon"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textCursorDrawable="@drawable/cursor_text"
-                    app:met_baseColor="@android:color/black"
-                    app:met_floatingLabel="highlight"
-                    app:met_primaryColor="@android:color/black"
-                    app:met_textColorHint="@android:color/black"
-                    app:met_underlineColor="@android:color/black" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/etPhone"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_weight="1"
-                    android:hint="No. Handphone"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textCursorDrawable="@drawable/cursor_text"
-                    app:met_baseColor="@android:color/black"
-                    app:met_floatingLabel="highlight"
-                    app:met_primaryColor="@android:color/black"
-                    app:met_textColorHint="@android:color/black"
-                    app:met_underlineColor="@android:color/black" />
-            </LinearLayout>
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etAlamat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Alamat"
-                android:imeOptions="actionNext"
-                android:inputType="text|textLongMessage|textMultiLine"
-                android:maxLines="5"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColorHint="@android:color/black"
-                android:textCursorDrawable="@drawable/cursor_text"
-                app:met_baseColor="@android:color/black"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@android:color/black"
-                app:met_textColorHint="@android:color/black"
-                app:met_underlineColor="@android:color/black" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/etKota"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="2dp"
-                    android:layout_weight="1.5"
-                    android:hint="Kota"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColorHint="@android:color/black"
-                    android:textCursorDrawable="@drawable/cursor_text"
-                    app:met_baseColor="@android:color/black"
-                    app:met_floatingLabel="highlight"
-                    app:met_primaryColor="@android:color/black"
-                    app:met_textColorHint="@android:color/black"
-                    app:met_underlineColor="@android:color/black" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/etKodePos"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_weight="1"
-                    android:hint="kode Pos"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColorHint="@android:color/black"
-                    android:textCursorDrawable="@drawable/cursor_text"
-                    app:met_baseColor="@android:color/black"
-                    app:met_floatingLabel="highlight"
-                    app:met_primaryColor="@android:color/black"
-                    app:met_textColorHint="@android:color/black"
-                    app:met_underlineColor="@android:color/black" />
-            </LinearLayout>
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etDosen1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Pembimbing 1"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColorHint="@android:color/black"
-                android:textCursorDrawable="@drawable/cursor_text"
-                app:met_baseColor="@android:color/black"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@android:color/black"
-                app:met_textColorHint="@android:color/black"
-                app:met_underlineColor="@android:color/black" />
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etDosen2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Pembimbing 2"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColorHint="@android:color/black"
-                android:textCursorDrawable="@drawable/cursor_text"
-                app:met_baseColor="@android:color/black"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@android:color/black"
-                app:met_textColorHint="@android:color/black"
-                app:met_underlineColor="@android:color/black" />
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etSkripsi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Judul Skripsi"
-                android:inputType="textLongMessage|textMultiLine"
-                android:maxLines="5"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textCursorDrawable="@drawable/cursor_text"
-                app:met_baseColor="@android:color/black"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@android:color/black"
-                app:met_textColorHint="@android:color/black"
-                app:met_underlineColor="@android:color/black" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:layout_weight="2"
-                    android:text="Ukuran Toga \t :"
+                    android:text="Pembimbing 1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
-                <Spinner
-                    android:id="@+id/ukuranToga"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tvPembimbing1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1" />
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/etSaran"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Saran Perbaikan Kurikulum"
-                android:inputType="textLongMessage|textMultiLine"
-                android:maxLines="5"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textCursorDrawable="@drawable/cursor_text"
-                app:met_baseColor="@android:color/black"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@android:color/black"
-                app:met_textColorHint="@android:color/black"
-                app:met_underlineColor="@android:color/black" />
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
 
-            <Button
-                android:id="@+id/bSave"
-                android:layout_width="260dp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Pembimbing 2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPembimbing2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_button_input"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:text="@string/button_save"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Judul Skripsi"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvJudulSkripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Ukuran Toga"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUkuranToga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Saran Untuk perbaikan Kurikulum"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSaran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Nama Perusahanaan Bekerja"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPerusahaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Bidang Pekerjaan"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvBidang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Pekerjaan Sesuai dengan Bidang Studi"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvKesesuaian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+
         </LinearLayout>
+
+
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

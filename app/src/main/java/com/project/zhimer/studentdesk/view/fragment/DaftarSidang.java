@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -40,6 +41,8 @@ public class DaftarSidang extends Fragment {
 
     //data skripsi
     TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi, pembimbing1, pembimbing2, judulSkripsi;
+
+    LinearLayout directWebsite;
 
 
     ProgressView progressView;
@@ -78,6 +81,7 @@ public class DaftarSidang extends Fragment {
         pembimbing1 = view.findViewById(R.id.tvPembimbing1);
         pembimbing2 = view.findViewById(R.id.tvPembimbing2);
         judulSkripsi = view.findViewById(R.id.tvJudul);
+
 
         sessionManager = new SessionManager(getContext());
 
@@ -167,6 +171,10 @@ public class DaftarSidang extends Fragment {
                     String pembimbingSatu = objectBio.getString("pembimbing1");
                     String pembimbingDua = objectBio.getString("pembimbing2");
                     String judul = objectBio.getString("judulskripsi");
+
+                    if (!judul.equals("")) {
+
+                    }
 
                     pembimbing1.setText(pembimbingSatu);
 
