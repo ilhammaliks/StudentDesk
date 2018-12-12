@@ -78,16 +78,55 @@ public class DaftarSidang extends Fragment {
         progressView.start();
 
         GetDataMahasiswa();
+        GetDataSkripsiMahasiswa();
 
 
         return view;
     }
 
     private void GetDataMahasiswa() {
+        String url = sessionManager.getUrl() + "/biodata/LihatBiodata/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+
+                        String nama = object.getString("mhs_nm");
+                        String nim = object.getString("mhs_nim");
+                        String prodi = object.getString("NamaProgdi");
+
+                        mahasiswa_nama.setText(nama);
+                        mahasiswa_nim.setText(nim);
+                        mahasiswa_prodi.setText(prodi);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
+    private void GetDataSkripsiMahasiswa() {
         String url = sessionManager.getUrl() + "/sidang/SyaratSidang/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
@@ -105,8 +144,18 @@ public class DaftarSidang extends Fragment {
 
 
 
-                        progressView.stop();
-                        progressView.setVisibility(View.GONE);
+                        String biodata = object.getString("biodata");
+
+
+                        String datapembimbing1 = object.getString("pembimbing1");
+                        String datapembimbing2 = object.getString("pembimbing2");
+                        String datajudul = object.getString("judulskripsi");
+
+                        pembimbing1.setText(datapembimbing1);
+                        pembimbing2.setText(datapembimbing2);
+                        judulSkripsi.setText(datajudul);
+
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
