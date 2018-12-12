@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -34,16 +35,13 @@ public class DaftarWisuda extends Fragment {
     View view;
     SessionManager sessionManager;
 
-    TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi;
+    //biodata
+    TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi, mahasiswa_telp, mahasiswa_phone, mahasiswa_alamat, mahasiswa_kota, mahasiswa_kodePos;
 
-    EditText mahasiswa_telp, mahasiswa_phone, mahasiswa_alamat, mahasiswa_kota, mahasiswa_kode_pos,
-            mahasiswa_dosen1, mahasiswa_dosen2, mahasiswa_judul, saran_mahasiswa;
+    //data skripsi
+    TextView pembimbing1, pembimbing2, judulSkripsi, ukuranToga, saran, namaPerusahaan, bidang, kesesuaian;
 
-    Spinner spinner;
-
-    String sTelp, sPhone, sAlamat, sKota, sKode, sDosen1, sJudul;
-
-    Button bSave;
+    LinearLayout directWebsite, dataWisuda;
 
     ProgressView progressView;
 
@@ -64,14 +62,32 @@ public class DaftarWisuda extends Fragment {
         mahasiswa_nama = view.findViewById(R.id.mahasiswa_nama);
         mahasiswa_nim = view.findViewById(R.id.mahasiswa_nim);
         mahasiswa_prodi = view.findViewById(R.id.mahasiswa_prodi);
+        mahasiswa_telp = view.findViewById(R.id.mahasiswa_telp);
+        mahasiswa_phone = view.findViewById(R.id.mahasiswa_phone);
+        mahasiswa_alamat = view.findViewById(R.id.mahasiswa_alamat);
+        mahasiswa_kota = view.findViewById(R.id.mahasiswa_kota);
+        mahasiswa_kodePos = view.findViewById(R.id.mahasiswa_kodePos);
+
+        pembimbing1 = view.findViewById(R.id.tvPembimbing1);
+        pembimbing2 = view.findViewById(R.id.tvPembimbing2);
+        judulSkripsi = view.findViewById(R.id.tvJudulSkripsi);
+        ukuranToga = view.findViewById(R.id.tvUkuranToga);
+        saran = view.findViewById(R.id.tvSaran);
+        namaPerusahaan = view.findViewById(R.id.tvPerusahaan);
+        bidang = view.findViewById(R.id.tvBidang);
+        kesesuaian = view.findViewById(R.id.tvKesesuaian);
+
+        directWebsite = view.findViewById(R.id.directWebsite);
+        dataWisuda = view.findViewById(R.id.dataWisuda);
+
 
         sessionManager = new SessionManager(getContext());
 
         progressView.setVisibility(View.VISIBLE);
         progressView.start();
 
-//        GetDataMahasiswa();
-
+        GetDataMahasiswa();
+        GetDataWisuda();
 
         return view;
     }
@@ -96,10 +112,24 @@ public class DaftarWisuda extends Fragment {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
 
+                        String nama = object.getString("mhs_nm");
+                        String nim = object.getString("mhs_nim");
+                        String prodi = object.getString("NamaProgdi");
+                        String telp = object.getString("mhs_telepon");
+                        String phone = object.getString("mhs_hp");
+                        String alamat = object.getString("mhs_alm");
+                        String kota = object.getString("mhs_kota");
+                        String kode = object.getString("kodepos");
 
+                        mahasiswa_nama.setText(nama);
+                        mahasiswa_nim.setText(nim);
+                        mahasiswa_prodi.setText(prodi);
+                        mahasiswa_telp.setText(telp);
+                        mahasiswa_phone.setText(phone);
+                        mahasiswa_alamat.setText(alamat);
+                        mahasiswa_kota.setText(kota);
+                        mahasiswa_kodePos.setText(kode);
 
-                        progressView.stop();
-                        progressView.setVisibility(View.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -111,6 +141,70 @@ public class DaftarWisuda extends Fragment {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
+    }
+
+    private void GetDataWisuda() {
+        String url = sessionManager.getUrl() + "/wisuda/DataWisuda/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    JSONObject objectData = jsonObject.getJSONObject("data");
+                    JSONObject objectStat = objectData.getJSONObject("status");
+
+                    String status = objectStat.getString("status");
+                    if (status.equals("sudah_daftar")) {
+                        directWebsite.setVisibility(View.GONE);
+                        dataWisuda.setVisibility(View.VISIBLE);
+                    }
+
+                    JSONObject objectDatas = objectData.getJSONObject("data");
+
+                    String pembimbingSatu = objectDatas.getString("pembimbing1");
+                    String pembimbingDua = objectDatas.getString("pembimbing2");
+                    String judul = objectDatas.getString("judulSkripsi");
+                    String toga = objectDatas.getString("ukuranToga");
+                    String saranKurikulum = objectDatas.getString("saran_kurikulum");
+                    String perusahaan = objectDatas.getString("tempatKerja");
+                    String BidangPekerjaan = objectDatas.getString("bidangKerja");
+                    String sesuai = objectDatas.getString("kesesuaian_bidang_pekerjaan");
+
+
+
+
+                    pembimbing1.setText(pembimbingSatu);
+                    pembimbing2.setText(pembimbingDua);
+                    judulSkripsi.setText(judul);
+                    ukuranToga.setText(toga);
+                    saran.setText(saranKurikulum);
+                    namaPerusahaan.setText(perusahaan);
+                    bidang.setText(BidangPekerjaan);
+                    kesesuaian.setText(sesuai);
+
+                    progressView.setVisibility(View.GONE);
+                    progressView.stop();
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+
     }
 
 }
