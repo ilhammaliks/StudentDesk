@@ -31,7 +31,7 @@
                     android:background="@color/white"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="@string/pendaftaran_sidang"
+                    android:text="Daftar Wisuda"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black"
