@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -40,6 +41,8 @@ public class DaftarSidang extends Fragment {
 
     //data skripsi
     TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi, pembimbing1, pembimbing2, judulSkripsi;
+
+    LinearLayout infoSidang;
 
 
     ProgressView progressView;
@@ -78,6 +81,7 @@ public class DaftarSidang extends Fragment {
         pembimbing1 = view.findViewById(R.id.tvPembimbing1);
         pembimbing2 = view.findViewById(R.id.tvPembimbing2);
         judulSkripsi = view.findViewById(R.id.tvJudul);
+        infoSidang = view.findViewById(R.id.infoSidang);
 
         sessionManager = new SessionManager(getContext());
 
@@ -159,10 +163,12 @@ public class DaftarSidang extends Fragment {
                 progressView.stop();
 
                 try {
+
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONObject objectData = jsonObject.getJSONObject("data");
                     JSONObject objectBio = objectData.getJSONObject("biodata");
                     JSONArray listSyarat = objectData.getJSONArray("syarat");
+                    JSONObject objectInfoSidang = objectData.getJSONObject("info_sidang");
 
                     String pembimbingSatu = objectBio.getString("pembimbing1");
                     String pembimbingDua = objectBio.getString("pembimbing2");
@@ -177,6 +183,29 @@ public class DaftarSidang extends Fragment {
                     }
 
                     judulSkripsi.setText(judul);
+
+                    //for info sidang
+                    String statusSidang = objectInfoSidang.getString("status");
+                    String tanggalSidangData = objectInfoSidang.getString("tanggal");
+                    String jamSidangData = objectInfoSidang.getString("jam");
+                    String ruangSidangData = objectInfoSidang.getString("ruang");
+                    String ketuaSidangData = objectInfoSidang.getString("ketua");
+                    String penguji1Data = objectInfoSidang.getString("penguji1");
+                    String penguji2Data = objectInfoSidang.getString("penguji2");
+
+                    if (statusSidang.equalsIgnoreCase("ok")) {
+                        infoSidang.setVisibility(View.VISIBLE);
+                    } else {
+                        infoSidang.setVisibility(View.GONE);
+                    }
+                    
+                    tanggalSidang.setText(tanggalSidangData);
+                    jam.setText(jamSidangData);
+                    ruangan.setText(ruangSidangData);
+                    ketuaSidang.setText(ketuaSidangData);
+                    penguji1.setText(penguji1Data);
+                    penguji2.setText(penguji2Data);
+
 
                     //for rv syarat sidang
                     for (int i = 0; i < listSyarat.length(); i++) {
