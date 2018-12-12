@@ -173,53 +173,44 @@ public class DaftarSidang extends Fragment {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONObject objectData = jsonObject.getJSONObject("data");
                     JSONObject objectBio = objectData.getJSONObject("biodata");
-                    JSONObject objectInfo = objectData.getJSONObject("info_sidang");
                     JSONArray listSyarat = objectData.getJSONArray("syarat");
-
-                    //infoSidang
-                    String statusSidang = objectInfo.getString("status");
-                    if (statusSidang.equals("OK")) {
-                        infoSidang.setVisibility(View.VISIBLE);
-                    }
-                    String tanggal = objectInfo.getString("tanggal");
-                    String jamSidang = objectInfo.getString("jam");
-                    String ruang = objectInfo.getString("ruang");
-                    String ketua = objectInfo.getString("ketua");
-                    String pengujiSatu = objectInfo.getString("penguji1");
-                    String pengujiDua = objectInfo.getString("penguji2");
-
-                    tanggalSidang.setText(tanggal);
-                    jam.setText(jamSidang);
-                    ruangan.setText(ruang);
-                    ketuaSidang.setText(ketua);
-                    penguji1.setText(pengujiSatu);
-                    if (pengujiDua.equalsIgnoreCase("null")) {
-                        penguji2.setText("-");
-                    } else {
-                        penguji2.setText(pengujiDua);
-                    }
-
-
-
+                    JSONObject objectInfoSidang = objectData.getJSONObject("info_sidang");
 
                     String pembimbingSatu = objectBio.getString("pembimbing1");
                     String pembimbingDua = objectBio.getString("pembimbing2");
                     String judul = objectBio.getString("judulskripsi");
 
-                    if (!judul.equals("")) {
-                        petunjukSidang.setVisibility(View.GONE);
-                        urlSidang.setVisibility(View.GONE);
-                    }
-
                     pembimbing1.setText(pembimbingSatu);
 
-                    if (pembimbingDua.equals("null")) {
+                    if (pembimbingDua.equalsIgnoreCase("null")) {
                         pembimbing2.setText("-");
                     } else {
                         pembimbing2.setText(pembimbingDua);
                     }
 
                     judulSkripsi.setText(judul);
+
+                    //for info sidang
+                    String statusSidang = objectInfoSidang.getString("status");
+                    String tanggalSidangData = objectInfoSidang.getString("tanggal");
+                    String jamSidangData = objectInfoSidang.getString("jam");
+                    String ruangSidangData = objectInfoSidang.getString("ruang");
+                    String ketuaSidangData = objectInfoSidang.getString("ketua");
+                    String penguji1Data = objectInfoSidang.getString("penguji1");
+                    String penguji2Data = objectInfoSidang.getString("penguji2");
+
+                    if (statusSidang.equalsIgnoreCase("ok")) {
+                        infoSidang.setVisibility(View.VISIBLE);
+                    } else {
+                        infoSidang.setVisibility(View.GONE);
+                    }
+
+                    tanggalSidang.setText(tanggalSidangData);
+                    jam.setText(jamSidangData);
+                    ruangan.setText(ruangSidangData);
+                    ketuaSidang.setText(ketuaSidangData);
+                    penguji1.setText(penguji1Data);
+                    penguji2.setText(penguji2Data);
 
                     //for rv syarat sidang
                     for (int i = 0; i < listSyarat.length(); i++) {
