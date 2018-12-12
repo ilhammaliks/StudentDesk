@@ -6,8 +6,6 @@
 
     <string name="menu_halaman_utama">Halaman Utama</string>
     <string name="menu_biodata">Biodata</string>
-    <string name="menu_permintaan_surat">Permintaan Surat</string>
-    <string name="menu_chat_online">Chat Online</string>
     <string name="menu_test_qur_an">Test Qur\'an</string>
     <string name="menu_uai_english_test">UAI English Test</string>
     <string name="menu_ringkasan_akademik">Ringkasan Akademik</string>
@@ -17,30 +15,21 @@
     <string name="menu_nilai">Nilai</string>
     <string name="menu_krs_semester_pendek">KRS Semester Pendek</string>
     <string name="menu_perkuliahan_sp">Perkuliahan SP</string>
-    <string name="menu_nilai_sp">Nilai SP</string>
     <string name="menu_daftar_sidang">Daftar Sidang</string>
     <string name="menu_daftar_wisuda">Daftar Wisuda</string>
 
     <string name="hint_nim">NIM</string>
     <string name="hint_password">Password</string>
-    <string name="hint_login">Login</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_halaman_utama">Halaman Utama</string>
-    <string name="nav_biodata">Biodata</string>
     <string name="nav_permintaan_surat">Permintaan Surat</string>
     <string name="nav_test_qur_an">Test Qur\'an</string>
     <string name="nav_uai_english_test">UAI English Test</string>
     <string name="nav_ringkasan_akademik">Ringkasan Akademik</string>
-    <string name="nav_keuangan">Keuangan</string>
-    <string name="nav_isi_krs">Isi KRS</string>
     <string name="nav_perkuliahan">Perkuliahan</string>
     <string name="nav_nilai">Nilai</string>
-    <string name="nav_krs_sp">KRS Semester Pendek</string>
     <string name="nav_semester_pendek">Semester Pendek</string>
-    <string name="nav_perkuliahan_sp">Semester Pendek</string>
-    <string name="nav_daftar_sidang">Daftar Sidang</string>
-    <string name="nav_daftar_wisuda">Daftar Wisuda</string>
     <string name="nav_log_out">Log Out</string>
 
     <string name="sub_nav_halaman_utama">Selamat Datang di Student Desk</string>
@@ -62,7 +51,6 @@
     <string name="field_e_mail">E - Mail</string>
     <string name="field_sks_taken">Total SKS Diambil</string>
     <string name="field_nilai_uet">Nilai UET</string>
-    <string name="field_ttl">Tempat, Tanggal Lahir</string>
 
     <string name="field_sks">SKS</string>
     <string name="field_ipk">IPK</string>
@@ -111,7 +99,6 @@
     <string name="kolom_angka">Angka</string>
     <string name="kolom_bobot">Bobot</string>
 
-    <string name="text">TextView</string>
     <string name="login">Login</string>
     <string name="error_toast">Data yang anda masukan salah</string>
     <string name="button_save">Save</string>
@@ -119,19 +106,6 @@
 
     <string name="msg_token" translatable="false">InstanceID Token: %s</string>
     <string name="total_sks">Total SKS</string>
-    <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="notif">Notification</string>
     <string name="pendaftaran_sidang">Pendaftaran Sidang</string>
 </resources>

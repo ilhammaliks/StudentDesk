@@ -2,11 +2,10 @@
 <resources>
     <color name="colorPrimary">#263849</color>
     <color name="colorPrimaryDark">#001221</color>
-    <color name="colorPrimaryLight">#506275</color>
-    <color name="colorAccent">#001221</color>
+    <color name="colorAccent">#CC8800</color> <!--#001221-->
+    <color name="colorAccent2">#CC8800</color>
 
-    <color name="colorPrimary50">#263849</color>
-    <color name="colorGray">#6c6c6c</color>
+    <color name="colorGray">#e66c6c6c</color>
     <color name="cyan_500">#00bcd4</color>
     <color name="white">#FFFFFF</color>
 </resources>

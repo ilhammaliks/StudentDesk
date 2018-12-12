@@ -7,7 +7,6 @@
     tools:context=".view.fragment.ChatOnline">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/inputChat"
@@ -28,7 +27,6 @@
         app:cardElevation="10dp">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -51,7 +49,6 @@
         android:src="@android:drawable/ic_menu_send" />
 
     <ImageView
-        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

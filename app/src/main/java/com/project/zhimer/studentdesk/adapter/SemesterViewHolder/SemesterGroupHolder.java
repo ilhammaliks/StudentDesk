@@ -12,8 +12,8 @@ public class SemesterGroupHolder extends GroupViewHolder {
 
     public SemesterGroupHolder(View itemView) {
         super(itemView);
-        hTahunAjaran = itemView.findViewById(R.id.headerTahunAjaran);
-        hSemester = itemView.findViewById(R.id.headerSemester);
+       /* hTahunAjaran = itemView.findViewById(R.id.headerTahunAjaran);
+        hSemester = itemView.findViewById(R.id.headerSemester);*/
     }
 
     public void setHeader(String data) {

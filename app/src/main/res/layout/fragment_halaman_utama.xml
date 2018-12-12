@@ -35,7 +35,6 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header">
@@ -57,7 +56,6 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/shadow_header"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@id/header"

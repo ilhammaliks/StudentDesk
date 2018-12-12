@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:id="@+id/menu_general"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/halamanUtama"
@@ -31,9 +29,7 @@
             android:title="@string/menu_uai_english_test" />
     </group>
 
-    <group
-        android:id="@+id/menu_perkuliahan"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/akademik"
@@ -61,9 +57,7 @@
             android:title="@string/menu_nilai" />
     </group>
 
-    <group
-        android:id="@+id/menu_semester_pendek"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/sp_krs"
@@ -76,9 +70,7 @@
             android:title="@string/menu_perkuliahan_sp" />
     </group>
 
-    <group
-        android:id="@+id/menu_pendaftaran"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/daftar_sidang"
@@ -91,9 +83,7 @@
             android:title="@string/menu_daftar_wisuda" />
     </group>
 
-    <group
-        android:id="@+id/menu_logout"
-        android:checkableBehavior="none">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/logout"

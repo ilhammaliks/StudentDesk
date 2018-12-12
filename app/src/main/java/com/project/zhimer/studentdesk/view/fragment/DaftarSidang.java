@@ -1,15 +1,15 @@
 package com.project.zhimer.studentdesk.view.fragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -17,12 +17,15 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
+import com.project.zhimer.studentdesk.adapter.DaftarSidangAdapter;
+import com.project.zhimer.studentdesk.model.SyaratSidang;
 import com.rey.material.widget.ProgressView;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -39,8 +42,12 @@ public class DaftarSidang extends Fragment {
     TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi, pembimbing1, pembimbing2, judulSkripsi;
 
 
-
     ProgressView progressView;
+
+    ArrayList<SyaratSidang> listSyaratSidang;
+    DaftarSidangAdapter adapter;
+    RecyclerView recyclerView;
+    SyaratSidang syaratSidang;
 
 
     public DaftarSidang() {
@@ -49,7 +56,7 @@ public class DaftarSidang extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_daftar_sidang_new, container, false);
@@ -77,11 +84,25 @@ public class DaftarSidang extends Fragment {
         progressView.setVisibility(View.VISIBLE);
         progressView.start();
 
+        //syarat sidang
+        recyclerView = view.findViewById(R.id.recyclerView);
+        setRecyclerView(getActivity());
+
         GetDataMahasiswa();
         GetDataSkripsiMahasiswa();
 
-
         return view;
+    }
+
+    private void setRecyclerView(Activity activity) {
+
+        listSyaratSidang = new ArrayList<>();
+        adapter = new DaftarSidangAdapter(listSyaratSidang, activity);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+
     }
 
     private void GetDataMahasiswa() {
@@ -135,27 +156,42 @@ public class DaftarSidang extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
 
+                progressView.stop();
+
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    JSONObject objectData = jsonObject.getJSONObject("data");
+                    JSONObject objectBio = objectData.getJSONObject("biodata");
+                    JSONArray listSyarat = objectData.getJSONArray("syarat");
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject object = jsonArray.getJSONObject(i);
+                    String pembimbingSatu = objectBio.getString("pembimbing1");
+                    String pembimbingDua = objectBio.getString("pembimbing2");
+                    String judul = objectBio.getString("judulskripsi");
 
+                    pembimbing1.setText(pembimbingSatu);
 
+                    if (pembimbingDua.equalsIgnoreCase("null")) {
+                        pembimbing2.setText("-");
+                    } else {
+                        pembimbing2.setText(pembimbingDua);
+                    }
 
-                        String biodata = object.getString("biodata");
+                    judulSkripsi.setText(judul);
 
+                    //for rv syarat sidang
+                    for (int i = 0; i < listSyarat.length(); i++) {
 
-                        String datapembimbing1 = object.getString("pembimbing1");
-                        String datapembimbing2 = object.getString("pembimbing2");
-                        String datajudul = object.getString("judulskripsi");
+                        syaratSidang = new SyaratSidang();
 
-                        pembimbing1.setText(datapembimbing1);
-                        pembimbing2.setText(datapembimbing2);
-                        judulSkripsi.setText(datajudul);
+                        JSONObject object = listSyarat.getJSONObject(i);
+                        String syarat = object.getString("NamaSyarat");
+                        String status = object.getString("status");
 
+                        syaratSidang.setSyarat(syarat);
+                        syaratSidang.setStatus(status);
 
+                        listSyaratSidang.add(syaratSidang);
+                        adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
