@@ -42,7 +42,9 @@ public class DaftarSidang extends Fragment {
     //data skripsi
     TextView mahasiswa_nama, mahasiswa_nim, mahasiswa_prodi, pembimbing1, pembimbing2, judulSkripsi;
 
-    LinearLayout directWebsite;
+    TextView petunjukSidang, urlSidang;
+
+    LinearLayout infoSidang;
 
 
     ProgressView progressView;
@@ -81,6 +83,11 @@ public class DaftarSidang extends Fragment {
         pembimbing1 = view.findViewById(R.id.tvPembimbing1);
         pembimbing2 = view.findViewById(R.id.tvPembimbing2);
         judulSkripsi = view.findViewById(R.id.tvJudul);
+
+        //hiding
+        infoSidang = view.findViewById(R.id.infoSidang);
+        petunjukSidang = view.findViewById(R.id.petunjukSidang);
+        urlSidang = view.findViewById(R.id.urlSidang);
 
 
         sessionManager = new SessionManager(getContext());
@@ -166,19 +173,47 @@ public class DaftarSidang extends Fragment {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONObject objectData = jsonObject.getJSONObject("data");
                     JSONObject objectBio = objectData.getJSONObject("biodata");
+                    JSONObject objectInfo = objectData.getJSONObject("info_sidang");
                     JSONArray listSyarat = objectData.getJSONArray("syarat");
+
+                    //infoSidang
+                    String statusSidang = objectInfo.getString("status");
+                    if (statusSidang.equals("OK")) {
+                        infoSidang.setVisibility(View.VISIBLE);
+                    }
+                    String tanggal = objectInfo.getString("tanggal");
+                    String jamSidang = objectInfo.getString("jam");
+                    String ruang = objectInfo.getString("ruang");
+                    String ketua = objectInfo.getString("ketua");
+                    String pengujiSatu = objectInfo.getString("penguji1");
+                    String pengujiDua = objectInfo.getString("penguji2");
+
+                    tanggalSidang.setText(tanggal);
+                    jam.setText(jamSidang);
+                    ruangan.setText(ruang);
+                    ketuaSidang.setText(ketua);
+                    penguji1.setText(pengujiSatu);
+                    if (pengujiDua.equalsIgnoreCase("null")) {
+                        penguji2.setText("-");
+                    } else {
+                        penguji2.setText(pengujiDua);
+                    }
+
+
+
 
                     String pembimbingSatu = objectBio.getString("pembimbing1");
                     String pembimbingDua = objectBio.getString("pembimbing2");
                     String judul = objectBio.getString("judulskripsi");
 
                     if (!judul.equals("")) {
-
+                        petunjukSidang.setVisibility(View.GONE);
+                        urlSidang.setVisibility(View.GONE);
                     }
 
                     pembimbing1.setText(pembimbingSatu);
 
-                    if (pembimbingDua.equalsIgnoreCase("null")) {
+                    if (pembimbingDua.equals("null")) {
                         pembimbing2.setText("-");
                     } else {
                         pembimbing2.setText(pembimbingDua);
