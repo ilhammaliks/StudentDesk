@@ -117,7 +117,9 @@ public class NilaiAktif extends Fragment {
                         Integer sks = objek.getInt("SKS");
                         String huruf = objek.getString("Nilai_Huruf");
 
-                        if (!object.getString("Nilai_Angka").equals(null)) {
+
+
+                        if (!object.getString("Nilai_Angka").equals("null")) {
                             nilaiAngka = object.getInt("Nilai_Angka");
                         } else {
                             nilaiAngka = 0;

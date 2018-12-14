@@ -42,7 +42,7 @@ public class NilaiAktifAdapter extends RecyclerView.Adapter<NilaiAktifAdapter.Vi
         holder.nomor.setText(String.valueOf(position + 1));
         holder.kodeMK.setText(nilai.getKodeMK());
         holder.namaMK.setText(nilai.getNamaMK());
-        holder.sksMK.setText(nilai.getSks());
+        holder.sksMK.setText(String.valueOf(nilai.getSks()));
 
         if (nilai.getHuruf().equals("D") || nilai.getHuruf().equals("E")) {
             holder.hurufMK.setText(nilai.getHuruf());
