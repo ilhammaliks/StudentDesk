@@ -17,6 +17,7 @@ import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.SessionManager;
 import com.project.zhimer.studentdesk.adapter.MatakuliahUlangAdapter;
 import com.project.zhimer.studentdesk.model.Nilai;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +40,8 @@ public class RingkasanAkademik extends Fragment {
     private ArrayList<Nilai> listMatkulUlang;
     SessionManager sessionManager;
     Nilai nilai;
+
+    ProgressView progressView;
 
 
 
@@ -75,6 +78,8 @@ public class RingkasanAkademik extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
+        progressView = view.findViewById(R.id.circular);
 
         sessionManager = new SessionManager(getContext());
 
@@ -210,6 +215,8 @@ public class RingkasanAkademik extends Fragment {
                     }
                     //TODO Set Text gabisa di masukin value int, jadi harus di convert ke String dulu
 
+                    progressView.setVisibility(View.GONE);
+                    progressView.stop();
                     jumlahSks.setText(totalLulus);
 
                     //operasi penjumlahan ipk

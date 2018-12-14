@@ -44,7 +44,6 @@ public class NilaiSemesterAdapter extends RecyclerView.Adapter<NilaiSemesterAdap
         holder.namaMK.setText(nilai.getNamaMK());
         holder.sksMK.setText(nilai.getSks().toString());
 
-        Log.d("mk", nilai.getHuruf());
         holder.hurufMK.setText(nilai.getHuruf());
 
         if (nilai.getHuruf().equals("D") || nilai.getHuruf().equals("E")) {

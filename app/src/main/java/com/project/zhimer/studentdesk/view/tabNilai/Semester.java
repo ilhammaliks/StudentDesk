@@ -24,6 +24,7 @@ import com.project.zhimer.studentdesk.adapter.NilaiSemesterAdapter;
 import com.project.zhimer.studentdesk.model.Nilai;
 import com.project.zhimer.studentdesk.model.SemesterChild;
 import com.project.zhimer.studentdesk.model.SemesterGroup;
+import com.rey.material.widget.ProgressView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +59,8 @@ public class Semester extends Fragment {
     TextView sks, ips;
     ImageView ipsPending;
 
+    ProgressView progressView;
+
     public Semester() {
         // Required empty public constructor
     }
@@ -77,11 +80,16 @@ public class Semester extends Fragment {
         ips = view.findViewById(R.id.ips);
         ipsPending = view.findViewById(R.id.ipsPending);
 
+        progressView = view.findViewById(R.id.circular);
+
         sessionManager = new SessionManager(getContext());
         semesterGroupList = new ArrayList<>();
 
         //get data
         GetNilaiSemester();
+
+        progressView.setVisibility(View.VISIBLE);
+        progressView.start();
 
         dataTahun = new ArrayList<>();
         dataSemester = new ArrayList<>();
@@ -93,6 +101,7 @@ public class Semester extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
 
 
         return view;
@@ -372,6 +381,9 @@ public class Semester extends Fragment {
             ips.setVisibility(View.VISIBLE);
             ipsPending.setVisibility(View.GONE);
         }
+
+        progressView.setVisibility(View.GONE);
+        progressView.stop();
     }
 }
 

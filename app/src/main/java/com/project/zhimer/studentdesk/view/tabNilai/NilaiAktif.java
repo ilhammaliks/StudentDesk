@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,11 +80,11 @@ public class NilaiAktif extends Fragment {
     }
 
     private void NilaiAktif() {
-        String url = sessionManager.getUrl() + "/akademik/DaftarNilaiSemesterAktif";
+        String url = sessionManager.getUrl() + "/akademik/DaftarNilaiSemesterAktif/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
-        params.put("nim", sessionManager.getNim());
+        params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
 
         client.post(url, params, new JsonHttpResponseHandler() {
@@ -101,6 +102,7 @@ public class NilaiAktif extends Fragment {
                     //inisialisasi penjumlahan IPS
                     double jumlahBobot = 0;
                     double penjumlahanIPS;
+                    Integer nilaiAngka = null;
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
                     //end inisialisasi penjumlahan IPS
@@ -114,18 +116,25 @@ public class NilaiAktif extends Fragment {
                         String namaMK = objek.getString("Nama_MK");
                         Integer sks = objek.getInt("SKS");
                         String huruf = objek.getString("Nilai_Huruf");
-                        Integer angka = objek.getInt("Nilai_Angka");
+
+                        if (!object.getString("Nilai_Angka").equals(null)) {
+                            nilaiAngka = object.getInt("Nilai_Angka");
+                        } else {
+                            nilaiAngka = 0;
+                        }
+
+//                        Integer angka = objek.getInt("Nilai_Angka");
 
                         nilai.setKodeMK(kodeMK);
                         nilai.setNamaMK(namaMK);
                         nilai.setSks(sks);
                         nilai.setHuruf(huruf);
-                        nilai.setAngka(angka);
+                        nilai.setAngka(nilaiAngka);
 
                         jumlahSks += sks;
                         total = String.valueOf(jumlahSks);
 
-                        jumlahBobot += (sks * angka);
+                        jumlahBobot += (sks * nilaiAngka);
 
 
                         listNilaiAktif.add(nilai);
@@ -140,6 +149,8 @@ public class NilaiAktif extends Fragment {
 
                     totalSks.setText(total);
 
+                    Log.d("DataNilaiAktif", response + "");
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -148,6 +159,8 @@ public class NilaiAktif extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Log.d("DataNilaiAktif", errorResponse + "");
             }
         });
     }

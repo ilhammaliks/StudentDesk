@@ -3,7 +3,6 @@ package com.project.zhimer.studentdesk.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -148,6 +147,7 @@ public class DaftarWisuda extends Fragment {
         String url = sessionManager.getUrl() + "/wisuda/DataWisuda/format/json";
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
+
         client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
         params.put("uname", sessionManager.getNim());
         params.put("pwd", sessionManager.getPassword());
@@ -156,46 +156,43 @@ public class DaftarWisuda extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
 
-                progressView.stop();
-
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONObject objectData = jsonObject.getJSONObject("data");
+                    JSONObject objectStat = objectData.getJSONObject("status");
 
-                    String status = objectData.getString("status");
-                    
-                    if (status.equalsIgnoreCase("sudah_daftar")) {
+                    String status = objectStat.getString("status");
+                    if (status.equals("sudah_daftar")) {
                         directWebsite.setVisibility(View.GONE);
                         dataWisuda.setVisibility(View.VISIBLE);
-                    } else {
-                        directWebsite.setVisibility(View.VISIBLE);
-                        dataWisuda.setVisibility(View.GONE);
                     }
 
-                    JSONArray arrayData = objectData.getJSONArray("data");
+                    JSONObject objectDatas = objectData.getJSONObject("data");
 
-                    JSONObject obj = arrayData.getJSONObject(0);
-                    mahasiswa_nama.setText(obj.getString("nama"));
-                    mahasiswa_nim.setText(obj.getString("nim"));
-                    mahasiswa_telp.setText(obj.getString("telepon"));
-                    mahasiswa_phone.setText(obj.getString("hape"));
-                    mahasiswa_alamat.setText(obj.getString("alamat"));
-                    mahasiswa_kota.setText(obj.getString("kota"));
-                    mahasiswa_kodePos.setText(obj.getString("kodepos"));
-                    pembimbing1.setText(obj.getString("pembimbing1"));
+                    String pembimbingSatu = objectDatas.getString("pembimbing1");
+                    String pembimbingDua = objectDatas.getString("pembimbing2");
+                    String judul = objectDatas.getString("judulSkripsi");
+                    String toga = objectDatas.getString("ukuranToga");
+                    String saranKurikulum = objectDatas.getString("saran_kurikulum");
+                    String perusahaan = objectDatas.getString("tempatKerja");
+                    String BidangPekerjaan = objectDatas.getString("bidangKerja");
+                    String sesuai = objectDatas.getString("kesesuaian_bidang_pekerjaan");
 
-                    if (obj.getString("pembimbing2").equals("")) {
-                        pembimbing2.setText("-");
-                    } else {
-                        pembimbing2.setText(obj.getString("pembimbing2"));
-                    }
 
-                    judulSkripsi.setText(obj.getString("judulSkripsi"));
-                    ukuranToga.setText(obj.getString("ukuranToga"));
-                    saran.setText(obj.getString("saran_kurikulum"));
-                    namaPerusahaan.setText(obj.getString("tempatKerja"));
-                    bidang.setText(obj.getString("bidangKerja"));
-                    kesesuaian.setText(obj.getString("kesesuaian_bidang_pekerjaan"));
+
+
+                    pembimbing1.setText(pembimbingSatu);
+                    pembimbing2.setText(pembimbingDua);
+                    judulSkripsi.setText(judul);
+                    ukuranToga.setText(toga);
+                    saran.setText(saranKurikulum);
+                    namaPerusahaan.setText(perusahaan);
+                    bidang.setText(BidangPekerjaan);
+                    kesesuaian.setText(sesuai);
+
+                    progressView.setVisibility(View.GONE);
+                    progressView.stop();
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
