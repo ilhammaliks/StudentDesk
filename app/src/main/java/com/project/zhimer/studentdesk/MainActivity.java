@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //    session instance
     SessionManager sessionManager;
+    NetworkChecker networkChecker;
 
     private TextView sks, ipk, uet, tilawah, nama, nim, prodi, tahun;
     private ImageView foto, ipkUp, ipkDown;
@@ -104,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sessionManager = new SessionManager(this);
         sessionManager.getToken();
+
+        //TODO masih salah dimari
+//        networkChecker = NetworkChecker(this.)
+        networkChecker.StatInetUser();
 
         Log.d("token", sessionManager.getToken() + "");
 
