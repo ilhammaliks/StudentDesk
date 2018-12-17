@@ -1,6 +1,9 @@
 package com.project.zhimer.studentdesk.view.fragment;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -69,6 +73,7 @@ public class HalamanUtama extends Fragment {
         recyclerView.setAdapter(adapter);
 
         sessionManager = new SessionManager(getContext());
+
 
         DataHalamanUtama();
 
@@ -132,8 +137,10 @@ public class HalamanUtama extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+
+//                Toast.makeText(getContext(), "Koneksi Anda Bermasalah \nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
+
             }
         });
     }
-
 }

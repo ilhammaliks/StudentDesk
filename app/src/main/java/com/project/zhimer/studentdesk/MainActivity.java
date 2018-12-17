@@ -366,6 +366,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    private void DeleteToken() {
+        String url = sessionManager.getUrl() + "/login/setToken/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
+        params.remove("uname");
+        params.remove("pwd");
+        params.remove("token");
+        client.post(url, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -431,7 +453,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.logout:
                 sessionManager.setLogin(false);
                 Intent logout = new Intent(MainActivity.this, Login.class);
-
+                DeleteToken();
                 //todo https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_CLEAR_TASK
                 logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(logout);
