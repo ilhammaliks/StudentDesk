@@ -138,7 +138,7 @@ public class HalamanUtama extends Fragment {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
 
-//                Toast.makeText(getContext(), "Koneksi Anda Bermasalah \nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
 
             }
         });

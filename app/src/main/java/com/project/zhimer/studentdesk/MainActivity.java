@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sessionManager = new SessionManager(this);
         sessionManager.getToken();
 
-        //TODO masih salah dimari
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connMgr != null) {
@@ -118,9 +117,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Boolean isConnect = networkChecker.StatInetUser();
 
             if (isConnect) {
-                Toast.makeText(this, "Ada internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Selamat Datang di Student Desk Mobile", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Ga ada internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         }
         
@@ -223,6 +222,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Toast.makeText(getApplicationContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -289,6 +290,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Toast.makeText(getApplicationContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -327,6 +330,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Toast.makeText(getApplicationContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -379,6 +384,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Toast.makeText(getApplicationContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         });
     }
