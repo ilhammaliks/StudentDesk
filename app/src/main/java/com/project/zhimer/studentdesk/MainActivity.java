@@ -1,7 +1,10 @@
 package com.project.zhimer.studentdesk;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -107,11 +110,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sessionManager.getToken();
 
         //TODO masih salah dimari
-//        networkChecker = NetworkChecker(this.)
-        networkChecker.StatInetUser();
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        Log.d("token", sessionManager.getToken() + "");
+        if (connMgr != null) {
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            networkChecker = new NetworkChecker(networkInfo);
+            Boolean isConnect = networkChecker.StatInetUser();
 
+            if (isConnect) {
+                Toast.makeText(this, "Ada internet", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Ga ada internet", Toast.LENGTH_SHORT).show();
+            }
+        }
+        
         //firebase instance
         ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
 

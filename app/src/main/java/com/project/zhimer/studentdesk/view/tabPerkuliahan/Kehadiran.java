@@ -114,6 +114,7 @@ public class Kehadiran extends Fragment {
 
                         //hitung persentase kehadiran
                         persentase = (jumlahkehadiran / totalpertemuan) * 100;
+                        Log.d("dataPrese", persentase+"");
                         //end
 
                         hasilPersen = decimalFormat.format(persentase);

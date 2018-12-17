@@ -19,16 +19,7 @@ public class NetworkChecker {
 
     public boolean StatInetUser() {
 
-
-        if (networkInfo != null && networkInfo.isConnected()) {
-
-
-            return true;
-
-        } else {
-            Toast.makeText(context, "Koneksi Anda Bermasalah\nSilahkan Coba Beberapa Saat Lagi", Toast.LENGTH_LONG).show();
-            return false;
-        }
+        return networkInfo != null && networkInfo.isConnected();
     }
 
 
