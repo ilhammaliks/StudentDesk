@@ -36,14 +36,14 @@ public class MainMenu extends Fragment {
         view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
         menuList = new ArrayList<>();
-        menuList.add(new Menu("Pengumuman", R.drawable.icon_dashboard));
-        menuList.add(new Menu("Biodata", R.drawable.icon_biodata));
-        menuList.add(new Menu("Test Qur'an", R.drawable.icon_test));
-        menuList.add(new Menu("UET", R.drawable.icon_test));
-        menuList.add(new Menu("Ringkasan\nAkademik", R.drawable.icon_akademik));
-        menuList.add(new Menu("Keuangan", R.drawable.icon_keuangan));
-        menuList.add(new Menu("Perkuliahan", R.drawable.icon_perkuliahan));
-        menuList.add(new Menu("Nilai", R.drawable.icon_nilai));
+        menuList.add(new Menu("Pengumuman", R.drawable.menu_biodata));
+        menuList.add(new Menu("Biodata", R.drawable.menu_biodata));
+        menuList.add(new Menu("Test Qur'an", R.drawable.menu_quran));
+        menuList.add(new Menu("UET", R.drawable.menu_uet));
+        menuList.add(new Menu("Ringkasan\nAkademik", R.drawable.menu_ringkasan));
+        menuList.add(new Menu("Keuangan", R.drawable.menu_keuangan));
+        menuList.add(new Menu("Perkuliahan", R.drawable.menu_perkuliahan));
+        menuList.add(new Menu("Nilai", R.drawable.menu_nilai));
 
         adapter = new MenuAdapter(getContext(), menuList);
 
