@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -65,8 +66,8 @@ public class NilaiAktif extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        ips = view.findViewById(R.id.sksTotal);
-        totalSks = view.findViewById(R.id.ips);
+        ips = view.findViewById(R.id.ips);
+        totalSks = view.findViewById(R.id.sksTotal);
         progressView = view.findViewById(R.id.circular);
 
         sessionManager = new SessionManager(getContext());
@@ -102,6 +103,7 @@ public class NilaiAktif extends Fragment {
                     //inisialisasi penjumlahan IPS
                     double jumlahBobot = 0;
                     double penjumlahanIPS;
+                    String nilaiHuruf = "";
                     Integer nilaiAngka = null;
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -112,25 +114,33 @@ public class NilaiAktif extends Fragment {
                         JSONObject objek = jsonArray.getJSONObject(i);
                         nilai = new Nilai();
 
+
                         String kodeMK = objek.getString("Kode_MK");
                         String namaMK = objek.getString("Nama_MK");
                         Integer sks = objek.getInt("SKS");
                         String huruf = objek.getString("Nilai_Huruf");
+                        Boolean nilaiAngka2 = object.isNull("Nilai_Angka");
 
 
-
-                        if (!object.getString("Nilai_Angka").equals("null")) {
-                            nilaiAngka = object.getInt("Nilai_Angka");
-                        } else {
-                            nilaiAngka = 0;
+                        //kodisi
+                        if (huruf.equals("null")) {
+                            nilaiHuruf = "-";
                         }
 
-//                        Integer angka = objek.getInt("Nilai_Angka");
+
+                        if (nilaiAngka2 == true) {
+                            nilaiAngka = 0;
+                        } else {
+                            nilaiAngka = object.getInt("Nilai_Angka");
+                        }
+
+                        Log.d("dataNilai", nilaiAngka + "");
+
 
                         nilai.setKodeMK(kodeMK);
                         nilai.setNamaMK(namaMK);
                         nilai.setSks(sks);
-                        nilai.setHuruf(huruf);
+                        nilai.setHuruf(nilaiHuruf);
                         nilai.setAngka(nilaiAngka);
 
                         jumlahSks += sks;
@@ -151,8 +161,6 @@ public class NilaiAktif extends Fragment {
 
                     totalSks.setText(total);
 
-                    Log.d("DataNilaiAktif", response + "");
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -162,7 +170,7 @@ public class NilaiAktif extends Fragment {
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
 
-                Log.d("DataNilaiAktif", errorResponse + "");
+                Toast.makeText(getContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         });
     }

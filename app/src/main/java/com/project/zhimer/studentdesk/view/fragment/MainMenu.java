@@ -31,7 +31,7 @@ public class MainMenu extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new GridLayoutManager(getContext()));
+//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), ));
 
 
 
