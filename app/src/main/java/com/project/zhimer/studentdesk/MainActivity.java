@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
             }
         }
-        
+
         //firebase instance
         ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
 
