@@ -36,7 +36,7 @@ public class MainMenu extends Fragment {
         view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
         menuList = new ArrayList<>();
-        menuList.add(new Menu("Pengumuman", R.drawable.menu_biodata));
+        menuList.add(new Menu("Pengumuman", R.drawable.menu_pengumuman));
         menuList.add(new Menu("Biodata", R.drawable.menu_biodata));
         menuList.add(new Menu("Test Qur'an", R.drawable.menu_quran));
         menuList.add(new Menu("UET", R.drawable.menu_uet));
@@ -48,7 +48,7 @@ public class MainMenu extends Fragment {
         adapter = new MenuAdapter(getContext(), menuList);
 
         recyclerView = view.findViewById(R.id.recyclerViewMenu);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(adapter);
 
 

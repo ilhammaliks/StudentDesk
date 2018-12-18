@@ -41,7 +41,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         final Menu menu = listMenu.get(position);
 
         holder.title.setText(menu.getTitle());
-        Picasso.with(context).load(menu.getImage());
+        Picasso.with(context).load(menu.getImage()).into(holder.icon);
 
     }
 
