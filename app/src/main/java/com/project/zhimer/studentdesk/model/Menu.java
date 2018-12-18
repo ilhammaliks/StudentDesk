@@ -5,7 +5,9 @@ public class Menu {
     private String title;
     private int image;
 
-    public Menu() {
+    public Menu(String title, int image) {
+        this.title = title;
+        this.image = image;
     }
 
     public String getTitle() {

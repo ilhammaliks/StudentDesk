@@ -39,6 +39,7 @@ import com.project.zhimer.studentdesk.view.fragment.DaftarWisuda;
 import com.project.zhimer.studentdesk.view.fragment.HalamanUtama;
 import com.project.zhimer.studentdesk.view.fragment.IsiKrs;
 import com.project.zhimer.studentdesk.view.fragment.Keuangan;
+import com.project.zhimer.studentdesk.view.fragment.MainMenu;
 import com.project.zhimer.studentdesk.view.fragment.Nilai;
 import com.project.zhimer.studentdesk.view.fragment.Perkuliahan;
 import com.project.zhimer.studentdesk.view.fragment.PermintaanSurat;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SemesterPendek semesterPendek;
     private DaftarSidang daftarSidang;
     private DaftarWisuda daftarWisuda;
+
+    private MainMenu mainMenu;
 
     //    session instance
     SessionManager sessionManager;
@@ -157,7 +160,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //fragment variable
         halamanUtama = new HalamanUtama();
         biodata = new Biodata();
-        permintaanSurat = new PermintaanSurat();
+//        permintaanSurat = new PermintaanSurat();
+        mainMenu = new MainMenu();
+
         testQuran = new TestQuran();
         scoreQuran = new Score();
         uaiEnglishTest = new UaiEnglishTest();
@@ -425,9 +430,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 setFragment(biodata);
                 return true;
 
-            /*case R.id.surat:
-                setFragment(permintaanSurat);
-                return true;*/
+            case R.id.surat:
+                setFragment(mainMenu);
+                return true;
 
             case R.id.quran:
                 setFragment(scoreQuran);

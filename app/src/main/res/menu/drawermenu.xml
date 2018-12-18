@@ -15,10 +15,10 @@
             android:icon="@drawable/icon_biodata"
             android:title="@string/menu_biodata" />
 
-        <!--<item
+        <item
             android:id="@+id/surat"
-            android:icon="@drawable/icon_surat"
-            android:title="@string/menu_permintaan_surat" />-->
+            android:icon="@drawable/icon_check"
+            android:title="draft greeting layout" />
 
         <item
             android:id="@+id/quran"
