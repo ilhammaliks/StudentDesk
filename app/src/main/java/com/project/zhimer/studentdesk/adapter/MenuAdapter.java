@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.zhimer.studentdesk.R;
 import com.project.zhimer.studentdesk.model.Menu;
@@ -19,12 +20,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     private Context context;
     private List<Menu> listMenu;
-    private LayoutInflater inflater = null;
 
     public MenuAdapter(Context context, List<Menu> listMenu) {
         this.context = context;
         this.listMenu = listMenu;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
@@ -43,6 +42,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         holder.title.setText(menu.getTitle());
         Picasso.with(context).load(menu.getImage()).into(holder.icon);
 
+        //set onClickListener
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Menu " + menu.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

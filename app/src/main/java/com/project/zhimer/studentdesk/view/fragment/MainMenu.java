@@ -2,6 +2,7 @@ package com.project.zhimer.studentdesk.view.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,19 +19,17 @@ import java.util.List;
 
 public class MainMenu extends Fragment {
 
-    private View view;
-    private RecyclerView recyclerView;
-    private List<Menu> menuList;
-    private RecyclerView.Adapter adapter;
-
+    View view;
+    RecyclerView recyclerView;
+    List<Menu> menuList;
+    RecyclerView.Adapter adapter;
 
     public MainMenu() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_main_menu, container, false);
@@ -45,14 +44,13 @@ public class MainMenu extends Fragment {
         menuList.add(new Menu("Perkuliahan", R.drawable.menu_perkuliahan));
         menuList.add(new Menu("Nilai", R.drawable.menu_nilai));
 
-        adapter = new MenuAdapter(getContext(), menuList);
+        if (getContext() != null) {
+            adapter = new MenuAdapter(getContext(), menuList);
+        }
 
         recyclerView = view.findViewById(R.id.recyclerViewMenu);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(adapter);
-
-
-
 
         return view;
     }
