@@ -59,10 +59,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 Toast.makeText(context, "Menu " + menu.getTitle(), Toast.LENGTH_SHORT).show();
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment fragment = new Fragment();
-
                 HalamanUtama halamanUtama = new HalamanUtama();
-
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
             }
         });
