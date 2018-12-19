@@ -151,11 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DataMahasiswa();
         DataGradeSksIpk();
         DataUet();
-
-        //Hardcode
-//        Picasso.with(getApplicationContext()).load(R.drawable.photo).into(foto);
-
-        tilawah.setText("---");
+        DataTilawah();
 
         //fragment variable
         halamanUtama = new HalamanUtama();
@@ -177,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         if (savedInstanceState == null) {
-            setFragment(halamanUtama);
+            setFragment(mainMenu);
         } else {
             onResumeFragments();
         }
@@ -327,6 +323,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         uet.setText(score);
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                Toast.makeText(getApplicationContext(), "Koneksi internet anda bermasalah\nSilahkan coba beberapa saat lagi", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void DataTilawah() {
+        String url = sessionManager.getUrl() + "/akademik/BacaQuran/format/json";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.setBasicAuth(sessionManager.getAuthUsername(), sessionManager.getAuthPassword());
+        params.put("uname", sessionManager.getNim());
+        params.put("pwd", sessionManager.getPassword());
+
+        client.post(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+
+                try {
+                    JSONObject object = new JSONObject(response.toString());
+                    JSONArray jsonArray = object.getJSONArray("data");
+
+                    String score1 = "";
+
+
+                    for (int i = jsonArray.length() - 1; i >= 0; i--) {
+                        JSONObject objek = jsonArray.getJSONObject(i);
+
+                        Boolean score = objek.isNull("NilaiTest");
+
+                        if (score == true) {
+                            score1 = "---";
+                        } else {
+                            score1 = objek.getString("NilaiTest");
+                        }
+
+                        tilawah.setText(score1);
+
+
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
