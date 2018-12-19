@@ -61,42 +61,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment fragment = new Fragment();
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
+                HalamanUtama halamanUtama = new HalamanUtama();
 
-                switch (position) {
-
-                    case 0 :
-                        new HalamanUtama();
-                        break;
-
-                    case 1 :
-                        new Biodata();
-                        break;
-
-                    case 2 :
-                        new Score();
-                        break;
-
-                    case 3 :
-                        new UaiEnglishTest();
-                        break;
-
-                    case 4 :
-                        new RingkasanAkademik();
-                        break;
-
-                    case 5 :
-                        new Keuangan();
-                        break;
-
-                    case 6 :
-                        new Perkuliahan();
-                        break;
-
-                    case 7 :
-                        new Nilai();
-                        break;
-                }
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
             }
         });
     }
