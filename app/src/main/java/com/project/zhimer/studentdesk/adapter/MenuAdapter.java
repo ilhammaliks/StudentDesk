@@ -70,12 +70,40 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 Perkuliahan perkuliahan = new Perkuliahan();
                 Nilai nilai = new Nilai();
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
 
                 switch (position) {
 
-                    case 0 :
-                        
+                    case  0 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
+                        break;
+
+                    case 1 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, biodata).addToBackStack(null).commit();
+                        break;
+
+                    case 2 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, quran).addToBackStack(null).commit();
+                        break;
+
+                    case 3 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, uet).addToBackStack(null).commit();
+                        break;
+
+                    case 4 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, ringkasanAkademik).addToBackStack(null).commit();
+                        break;
+
+                    case 5 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, keuangan).addToBackStack(null).commit();
+                        break;
+
+                    case 6 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, perkuliahan).addToBackStack(null).commit();
+                        break;
+
+                    case 7 :
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, nilai).addToBackStack(null).commit();
+                        break;
                 }
             }
         });
@@ -98,4 +126,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             icon = itemView.findViewById(R.id.menu_icon);
         }
     }
+/*
+    private void MenuFragment(Fragment fragment) {
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+    }*/
 }
