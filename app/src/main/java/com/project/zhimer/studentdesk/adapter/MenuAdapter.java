@@ -76,7 +76,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 switch (position) {
 
                     case 0:
-
+                          menuFragment(activity, halamanUtama);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
                         break;
 
@@ -129,7 +129,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             icon = itemView.findViewById(R.id.menu_icon);
         }
     }
-    private void MenuFragment(AppCompatActivity activity, Fragment fragment) {
+
+    //todo biasain nama method awalnya huruf kecil
+    private void menuFragment(AppCompatActivity activity, Fragment fragment) {
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
     }
 }
