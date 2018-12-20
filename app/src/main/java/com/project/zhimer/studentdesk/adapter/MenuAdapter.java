@@ -59,8 +59,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 Toast.makeText(context, "Menu " + menu.getTitle(), Toast.LENGTH_SHORT).show();
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                Fragment fragment = new Fragment();
+
                 HalamanUtama halamanUtama = new HalamanUtama();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
+                Biodata biodata = new Biodata();
+                Score quran = new Score();
+                UaiEnglishTest uet = new UaiEnglishTest();
+                RingkasanAkademik ringkasanAkademik = new RingkasanAkademik();
+                Keuangan keuangan = new Keuangan();
+                Perkuliahan perkuliahan = new Perkuliahan();
+                Nilai nilai = new Nilai();
+
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
+
+                switch (position) {
+
+                    case 0 :
+                        
+                }
             }
         });
     }
