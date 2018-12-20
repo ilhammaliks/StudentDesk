@@ -3,6 +3,8 @@ package com.project.zhimer.studentdesk.adapter;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -59,7 +61,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 Toast.makeText(context, "Menu " + menu.getTitle(), Toast.LENGTH_SHORT).show();
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment fragment = new Fragment();
+//                Fragment fragment = new Fragment();
 
                 HalamanUtama halamanUtama = new HalamanUtama();
                 Biodata biodata = new Biodata();
@@ -73,36 +75,37 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
                 switch (position) {
 
-                    case  0 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
+                    case 0:
+
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, halamanUtama).addToBackStack(null).commit();
                         break;
 
-                    case 1 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, biodata).addToBackStack(null).commit();
+                    case 1:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, biodata).addToBackStack(null).commit();
                         break;
 
-                    case 2 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, quran).addToBackStack(null).commit();
+                    case 2:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, quran).addToBackStack(null).commit();
                         break;
 
-                    case 3 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, uet).addToBackStack(null).commit();
+                    case 3:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, uet).addToBackStack(null).commit();
                         break;
 
-                    case 4 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, ringkasanAkademik).addToBackStack(null).commit();
+                    case 4:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, ringkasanAkademik).addToBackStack(null).commit();
                         break;
 
-                    case 5 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, keuangan).addToBackStack(null).commit();
+                    case 5:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, keuangan).addToBackStack(null).commit();
                         break;
 
-                    case 6 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, perkuliahan).addToBackStack(null).commit();
+                    case 6:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, perkuliahan).addToBackStack(null).commit();
                         break;
 
-                    case 7 :
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, nilai).addToBackStack(null).commit();
+                    case 7:
+//                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, nilai).addToBackStack(null).commit();
                         break;
                 }
             }
@@ -126,8 +129,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             icon = itemView.findViewById(R.id.menu_icon);
         }
     }
-/*
-    private void MenuFragment(Fragment fragment) {
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-    }*/
+    private void MenuFragment(AppCompatActivity activity, Fragment fragment) {
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
+    }
 }
