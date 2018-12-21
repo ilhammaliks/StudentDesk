@@ -12,15 +12,17 @@
         android:id="@+id/header_menu"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/color_gradient"
+        android:background="@android:color/white"
         android:orientation="vertical">
+
 
         <ImageView
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:importantForAccessibility="no"
-            app:srcCompat="@drawable/logo_uai_full" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/logo_uai_baru" />
 
         <TextView
             android:layout_width="match_parent"
@@ -28,7 +30,7 @@
             android:text="@string/nav_halaman_utama"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
 
         <TextView
@@ -37,7 +39,7 @@
             android:text="@string/sub_nav_halaman_utama"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="16sp" />
     </LinearLayout>
 

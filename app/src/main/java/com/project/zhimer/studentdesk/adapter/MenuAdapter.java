@@ -58,7 +58,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Menu " + menu.getTitle(), Toast.LENGTH_SHORT).show();
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
 //                Fragment fragment = new Fragment();
@@ -81,30 +80,37 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                         break;
 
                     case 1:
+                        menuFragment(activity, biodata);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, biodata).addToBackStack(null).commit();
                         break;
 
                     case 2:
+                        menuFragment(activity, quran);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, quran).addToBackStack(null).commit();
                         break;
 
                     case 3:
+                        menuFragment(activity, uet);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, uet).addToBackStack(null).commit();
                         break;
 
                     case 4:
+                        menuFragment(activity, ringkasanAkademik);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, ringkasanAkademik).addToBackStack(null).commit();
                         break;
 
                     case 5:
+                        menuFragment(activity, keuangan);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, keuangan).addToBackStack(null).commit();
                         break;
 
                     case 6:
+                        menuFragment(activity, perkuliahan);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, perkuliahan).addToBackStack(null).commit();
                         break;
 
                     case 7:
+                        menuFragment(activity, nilai);
 //                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, nilai).addToBackStack(null).commit();
                         break;
                 }
@@ -130,7 +136,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         }
     }
 
-    //todo biasain nama method awalnya huruf kecil
+    //todo nama method awalnya huruf kecil
     private void menuFragment(AppCompatActivity activity, Fragment fragment) {
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commit();
     }
