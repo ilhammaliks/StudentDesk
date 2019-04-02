@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
+
+
         //firebase instance
         ForceUpdateChecker.with(this).onUpdateNeeded(this).check();
 
@@ -650,9 +652,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-//        if (id == R.id.notif) {
-//            Toast.makeText(this, "coming soon", Toast.LENGTH_SHORT).show();
-//        }
+        if (id == R.id.notif) {
+            Toast.makeText(this, "coming soon", Toast.LENGTH_SHORT).show();
+        }
 
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;

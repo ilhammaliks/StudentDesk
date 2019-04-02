@@ -4,7 +4,7 @@
     <string name="open">open</string>
     <string name="close">close</string>
 
-    <string name="menu_halaman_utama">Halaman Utama</string>
+    <string name="menu_halaman_utama">Pengumuman</string>
     <string name="menu_biodata">Biodata</string>
     <string name="menu_test_qur_an">Test Qur\'an</string>
     <string name="menu_uai_english_test">UAI English Test</string>
